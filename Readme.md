@@ -1,35 +1,70 @@
+```mermaid
 classDiagram
-    class Torneo {
-        torneo_id
-        nombre
-        fecha
-        ... (otros atributos)
+    class Tournaments {
+        tournament_id
+        tournament_name
+        tournament_description
+        tournament_size
+        group_stage
+        group_stage_size
+        tournament_points_req
+        looser_bracket
+        tournament_date
+        game_id
+        region_id
     }
     
-    class Equipo {
-        equipo_id
-        nombre
-        ... (otros atributos)
+    class Teams {
+        team_id
+        team_name
+        team_description
+        team_creation_date
+        game_id
+        region_id
     }
     
-    class Jugador {
-        jugador_id
-        nombre
-        apellido
-        fecha_nacimiento
-        pais
-        ... (otros atributos)
+    class Games {
+        game_id
+        game_name
+        game_description
+        team_size
+        team_max_size
     }
     
-    class Participacion {
-        participacion_id
-        torneo_id
-        equipo_id
-        jugador_id
-        fecha_asignacion
-        ... (otros atributos)
+    class Inscription {
+        inscription_id
+        inscription_date
+        tournament_id
+        team_id
     }
     
-    Torneo "1" -- "n" Equipo
-    Equipo "n" -- "n" Jugador
-    Torneo "n" -- "n" Participacion
+    class Roster {
+        roster_id
+        join_date
+        left_date
+        team_id
+        player_id
+    }
+    
+    class Players {
+        player_id
+        player_name
+        player_password
+        player_description
+        region_id
+    }
+
+    class Regions {
+        region_id
+        region_name
+    }
+    Tournaments "1" --> "n" Inscription
+    Teams "1" --> "n" Inscription
+    Teams "1" --> "n" Roster
+    Games "1" --> "n" Tournaments
+    Games "1" --> "n" Teams
+    Players "1" --> "n" Roster
+    Regions "1" --> "n" Players
+    Regions "1" --> "n" Teams
+    Regions "1" --> "n" Tournaments
+```
