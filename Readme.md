@@ -1,3 +1,6 @@
+
+# DATABASE SCHEME:
+
 ```mermaid
 classDiagram
     class Tournaments {
@@ -51,6 +54,7 @@ classDiagram
         player_name
         player_password
         player_description
+        tournament_points
         region_id
     }
 
