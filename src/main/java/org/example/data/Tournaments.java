@@ -1,3 +1,5 @@
+package org.example.data;
+
 public class Tournaments {
 
     //Class with the attributes of the teams

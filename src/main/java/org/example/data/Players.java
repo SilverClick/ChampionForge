@@ -1,3 +1,5 @@
+package org.example.data;
+
 public class Players {
 
 //Class with the attributes of the players

@@ -1,3 +1,5 @@
+package org.example.data;
+
 public class Games {
 
     //Class with the attributes of the games

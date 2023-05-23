@@ -1,3 +1,5 @@
+package org.example.data;
+
 public class Regions {
 
     //Class with the attributes of the regions
