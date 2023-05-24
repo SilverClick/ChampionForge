@@ -20,4 +20,52 @@ public class Teams {
         this.game_id = game_id;
         this.region_id = region_id;
     }
+
+    public int getTeam_id() {
+        return team_id;
+    }
+
+    public void setTeam_id(int team_id) {
+        this.team_id = team_id;
+    }
+
+    public String getTeam_name() {
+        return team_name;
+    }
+
+    public void setTeam_name(String team_name) {
+        this.team_name = team_name;
+    }
+
+    public String getTeam_creation_date() {
+        return team_creation_date;
+    }
+
+    public void setTeam_creation_date(String team_creation_date) {
+        this.team_creation_date = team_creation_date;
+    }
+
+    public String getTeam_description() {
+        return team_description;
+    }
+
+    public void setTeam_description(String team_description) {
+        this.team_description = team_description;
+    }
+
+    public int getGame_id() {
+        return game_id;
+    }
+
+    public void setGame_id(int game_id) {
+        this.game_id = game_id;
+    }
+
+    public int getRegion_id() {
+        return region_id;
+    }
+
+    public void setRegion_id(int region_id) {
+        this.region_id = region_id;
+    }
 }
