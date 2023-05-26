@@ -55,10 +55,11 @@ public class Conection {
         try
         {
             ccn.close();
-            System.exit(0);
         } catch (SQLException ex)
         {
             Logger.getLogger(Conection.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            System.exit(0);
         }
     }
 }

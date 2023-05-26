@@ -21,6 +21,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+       
     }
 
     /**
@@ -34,7 +35,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
-        menuBar = new javax.swing.JMenuBar();
+        menuBar = new CustomMenuBar();
         settings = new javax.swing.JMenu();
         logOut = new javax.swing.JMenuItem();
         exit = new javax.swing.JMenuItem();
@@ -48,6 +49,11 @@ public class MainFrame extends javax.swing.JFrame {
         setResizable(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\uiMenu\\bg.png")); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -143,6 +149,11 @@ public class MainFrame extends javax.swing.JFrame {
         Controller.desconection();
     }//GEN-LAST:event_exitActionPerformed
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+         Controller.logIn(this);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
 
     public static void launch() {
         /* Set the Nimbus look and feel */
@@ -178,7 +189,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem exit;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    public javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem logOut;
     private javax.swing.JMenuBar menuBar;
