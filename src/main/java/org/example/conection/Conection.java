@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class Conection {
 
-    private static Conection con = new Conection();
+    private static Conection con = null;
     Connection ccn = null;
     Statement st = null;
 
@@ -34,6 +34,9 @@ public class Conection {
      * @return Conection instance.
      */
     public static Conection getInstance(){
+        if (con == null){
+            con= new Conection();
+        }
         return con;
     }
 
