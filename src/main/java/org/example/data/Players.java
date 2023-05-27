@@ -1,4 +1,4 @@
-package org.example.data;
+package main.java.org.example.data;
 
 public class Players {
 
@@ -68,5 +68,8 @@ public class Players {
 
     public void setRegion_id(int region_id) {
         this.region_id = region_id;
+    }
+
+    public Players() {
     }
 }

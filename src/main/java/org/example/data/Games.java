@@ -1,4 +1,4 @@
-package org.example.data;
+package main.java.org.example.data;
 
 public class Games {
 

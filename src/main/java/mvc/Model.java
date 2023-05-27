@@ -1,6 +1,6 @@
-package mvc;
+package main.java.mvc;
 
-import org.example.data.*;
+import main.java.org.example.data.*;
 
 public class Model {
 

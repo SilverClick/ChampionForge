@@ -1,4 +1,4 @@
-package org.example.data;
+package main.java.org.example.data;
 
 public class Tournaments {
 
@@ -15,6 +15,8 @@ public class Tournaments {
     private int game_id;
     private int region_id;
 
+    public Tournaments() {
+    }
 
     public Tournaments(int tournament_id, String tournament_name, String tournament_description, int tournament_size, boolean group_stage, int group_stage_size, int tournament_points_req, boolean looser_bracket, String tournament_date, int game_id, int region_id) {
         this.tournament_id = tournament_id;

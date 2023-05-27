@@ -1,4 +1,4 @@
-package mvc;
+package main.java.mvc;
 
 public class View {
 }

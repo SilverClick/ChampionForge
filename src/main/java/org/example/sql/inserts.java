@@ -1,6 +1,6 @@
-package org.example.sql;
+package main.java.org.example.sql;
 
-import org.example.conection.Conection;
+import main.java.org.example.conection.Conection;
 
 public class inserts {
     Conection con= null;
