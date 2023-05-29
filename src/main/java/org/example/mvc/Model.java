@@ -15,8 +15,7 @@ public class Model {
      * @return aux
      */
 
-    public Players createPlayer( int player_id, String player_name, String player_password, String player_description,
-     int tournament_points, int region_id){
+    public Players createPlayer( int player_id, String player_name, String player_password, String player_description, int tournament_points, int region_id){
         Players aux = new Players(player_id, player_name,player_password, player_description,
         tournament_points, region_id);
         return aux;
@@ -66,7 +65,7 @@ public class Model {
      * @param game_description
      * @param team_size
      * @param team_max_size
-     * @return
+     * @return aux
      */
     public Games createGame(  int game_id, String game_name,  String game_description,
    int team_size,  int team_max_size){
@@ -84,7 +83,7 @@ public class Model {
      * @param teams_points_req
      * @param game_id
      * @param region_id
-     * @return
+     * @return aux
      */
     public Teams createTeam( int team_id, String team_name, String team_creation_date ,String team_description,int teams_points_req,
      int game_id, int region_id){

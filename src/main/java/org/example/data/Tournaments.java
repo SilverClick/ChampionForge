@@ -107,13 +107,7 @@ public class Tournaments {
         this.tournament_date = tournament_date;
     }
 
-    public boolean isStarted() {
-        return started;
-    }
 
-    public void setStarted(boolean started) {
-        this.started = started;
-    }
 
     public int getGame_id() {
         return game_id;

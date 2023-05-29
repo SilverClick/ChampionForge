@@ -123,7 +123,7 @@ public class Query {
                 team.setTeam_name(rs.getString("team_name"));
                 team.setTeam_creation_date(rs.getString("team_creation_date"));
                team.setTeam_description(rs.getString("team_description"));
-               team.setTeamspoints_req(rs.getInt("teams_points_req"));
+               team.setTeam_point_req(rs.getInt("team_point_req"));
                 team.setGame_id(rs.getInt("game_id"));
                 team.setRegion_id(rs.getInt("region_id"));
                 teams.add(team);
