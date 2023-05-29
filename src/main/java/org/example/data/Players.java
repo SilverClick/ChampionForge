@@ -21,4 +21,52 @@ public class Players {
         this.tournament_points=tournament_points;
         this.region_id = region_id;
     }
+
+    public int getPlayer_id() {
+        return player_id;
+    }
+
+    public void setPlayer_id(int player_id) {
+        this.player_id = player_id;
+    }
+
+    public String getPlayer_name() {
+        return player_name;
+    }
+
+    public void setPlayer_name(String player_name) {
+        this.player_name = player_name;
+    }
+
+    public String getPlayer_password() {
+        return player_password;
+    }
+
+    public void setPlayer_password(String player_password) {
+        this.player_password = player_password;
+    }
+
+    public String getPlayer_description() {
+        return player_description;
+    }
+
+    public void setPlayer_description(String player_description) {
+        this.player_description = player_description;
+    }
+
+    public int getTournament_points() {
+        return tournament_points;
+    }
+
+    public void setTournament_points(int tournament_points) {
+        this.tournament_points = tournament_points;
+    }
+
+    public int getRegion_id() {
+        return region_id;
+    }
+
+    public void setRegion_id(int region_id) {
+        this.region_id = region_id;
+    }
 }
