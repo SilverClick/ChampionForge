@@ -1,8 +1,7 @@
-package main.java.mvc;
+package org.example.mvc;
 
-import main.java.org.example.conection.Conection;
-import main.java.org.example.data.Players;
-import main.java.org.example.sql.Query;
+import org.example.conection.Conection;
+import org.example.sql.Query;
 
 public class Controller {
     static Model miModelo = new Model();

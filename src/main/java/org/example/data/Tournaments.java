@@ -1,4 +1,4 @@
-package main.java.org.example.data;
+package org.example.data;
 
 public class Tournaments {
 
@@ -12,14 +12,16 @@ public class Tournaments {
     private int tournament_points_req;
     private boolean looser_bracket;
     private String tournament_date;
+    private boolean started;
     private int game_id;
     private int region_id;
 
     public Tournaments() {
     }
 
-    public Tournaments(int tournament_id, String tournament_name, String tournament_description, int tournament_size, boolean group_stage, int group_stage_size, int tournament_points_req, boolean looser_bracket, String tournament_date, int game_id, int region_id) {
+    public Tournaments(int tournament_id, String tournament_name, String tournament_description, int tournament_size, boolean group_stage, int group_stage_size, int tournament_points_req, boolean looser_bracket, String tournament_date,boolean started, int game_id, int region_id) {
         this.tournament_id = tournament_id;
+        this.started=started;
         this.tournament_name = tournament_name;
         this.tournament_description = tournament_description;
         this.tournament_size = tournament_size;
@@ -118,5 +120,13 @@ public class Tournaments {
 
     public void setRegion_id(int region_id) {
         this.region_id = region_id;
+    }
+
+    public boolean isStarted() {
+        return started;
+    }
+
+    public void setStarted(boolean started) {
+        this.started = started;
     }
 }

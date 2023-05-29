@@ -1,4 +1,4 @@
-package main.java.org.example.sql;
+package org.example.sql;
 
 public class updates {
 }
