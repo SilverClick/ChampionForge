@@ -10,10 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class updates {
+public class Updates {
 
     Conection c = null;
-    public updates(Conection c){
+    public Updates(Conection c){
         this.c =c;
     }
 

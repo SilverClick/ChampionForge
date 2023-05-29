@@ -155,7 +155,7 @@ public class Query {
                 tournament.setTournament_points_req(rs.getInt("tournament_points_req"));
                 tournament.setLooser_bracket(rs.getBoolean("looser_bracket"));
                 tournament.setTournament_date(rs.getString("tournament_date"));
-                tournament.setStarted(rs.getBoolean("started"));
+                tournament.setStarted(rs.getBoolean("starte1d"));
                 tournament.setGame_id(rs.getInt("game_id"));
                 tournament.setRegion_id(rs.getInt("region_id"));
                 tournaments.add(tournament);
