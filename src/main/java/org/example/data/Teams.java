@@ -1,4 +1,4 @@
-package org.example.data;
+package main.java.org.example.data;
 
 public class Teams {
 
@@ -8,20 +8,19 @@ public class Teams {
     private String team_name;
     private String team_creation_date;
     private String team_description;
-
-    private int teams_points_req;
+    private int team_point_req;
     private int game_id;
     private int region_id;
 
     public Teams() {
     }
 
-    public Teams(int team_id, String team_name, String team_creation_date, String team_description,int teams_points_req, int game_id, int region_id) {
+    public Teams(int team_id, String team_name, String team_creation_date, String team_description,int team_point_req, int game_id, int region_id) {
         this.team_id = team_id;
-        this.teams_points_req=teams_points_req;
         this.team_name = team_name;
         this.team_creation_date = team_creation_date;
         this.team_description = team_description;
+        this.team_point_req=team_point_req;
         this.game_id = game_id;
         this.region_id = region_id;
     }
@@ -58,6 +57,14 @@ public class Teams {
         this.team_description = team_description;
     }
 
+    public int getTeam_point_req() {
+        return team_point_req;
+    }
+
+    public void setTeam_point_req(int team_point_req) {
+        this.team_point_req = team_point_req;
+    }
+
     public int getGame_id() {
         return game_id;
     }
@@ -72,13 +79,5 @@ public class Teams {
 
     public void setRegion_id(int region_id) {
         this.region_id = region_id;
-    }
-
-    public int getTeams_points_req() {
-        return teams_points_req;
-    }
-
-    public void setTeamspoints_req(int points_req) {
-        this.teams_points_req = points_req;
     }
 }

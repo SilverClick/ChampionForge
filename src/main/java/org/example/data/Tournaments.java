@@ -30,6 +30,7 @@ public class Tournaments {
         this.tournament_points_req = tournament_points_req;
         this.looser_bracket = looser_bracket;
         this.tournament_date = tournament_date;
+        this.started = started;
         this.game_id = game_id;
         this.region_id = region_id;
     }
@@ -104,6 +105,14 @@ public class Tournaments {
 
     public void setTournament_date(String tournament_date) {
         this.tournament_date = tournament_date;
+    }
+
+    public boolean isStarted() {
+        return started;
+    }
+
+    public void setStarted(boolean started) {
+        this.started = started;
     }
 
     public int getGame_id() {
