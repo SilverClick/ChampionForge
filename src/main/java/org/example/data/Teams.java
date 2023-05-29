@@ -1,4 +1,4 @@
-package org.example.data;
+package main.java.org.example.data;
 
 public class Teams {
 
@@ -12,6 +12,8 @@ public class Teams {
     private int game_id;
     private int region_id;
 
+    public Teams() {
+    }
 
     public Teams(int team_id, String team_name, String team_creation_date, String team_description,int team_point_req, int game_id, int region_id) {
         this.team_id = team_id;

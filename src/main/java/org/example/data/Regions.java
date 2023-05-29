@@ -1,10 +1,13 @@
-package org.example.data;
+package main.java.org.example.data;
 
 public class Regions {
 
     //Class with the attributes of the regions
     private int region_id;
     private String region_name;
+
+    public Regions() {
+    }
 
     public Regions(int region_id, String region_name) {
         this.region_id = region_id;

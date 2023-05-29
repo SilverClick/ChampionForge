@@ -1,11 +1,13 @@
-package org.example.sql;
+package main.java.org.example.sql;
 
+import main.java.org.example.conection.Conection;
 import org.example.conection.Conection;
 import org.example.data.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
+
 
 public class inserts {
     Conection c = null;

@@ -1,4 +1,4 @@
-package org.example.sql;
+package main.java.org.example.sql;
 
 import org.example.conection.Conection;
 import org.example.data.*;
