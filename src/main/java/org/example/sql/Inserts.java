@@ -1,6 +1,5 @@
-package main.java.org.example.sql;
+package org.example.sql;
 
-import main.java.org.example.conection.Conection;
 import org.example.conection.Conection;
 import org.example.data.*;
 
@@ -9,9 +8,9 @@ import java.awt.*;
 import java.sql.*;
 
 
-public class inserts {
+public class Inserts {
     Conection c = null;
-    public inserts(Conection c){
+    public Inserts(Conection c){
         this.c =c;
     }
 

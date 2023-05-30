@@ -9,9 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class deletes {
+public class Deletes {
     Conection c = null;
-    public deletes(Conection c){
+    public Deletes(Conection c){
         this.c =c;
     }
 

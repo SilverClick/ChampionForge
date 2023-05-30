@@ -4,11 +4,7 @@
  */
 package org.example.ui;
 
-import org.example.Controller;
-
-import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
-import java.awt.*;
+import org.example.mvc.Controller;
 
 /**
  *

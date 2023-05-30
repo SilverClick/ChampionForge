@@ -1,4 +1,4 @@
-package main.java.org.example.data;
+package org.example.data;
 
 public class Tournaments {
 

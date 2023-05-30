@@ -1,7 +1,7 @@
-package main.java.org.example.sql;
+package org.example.sql;
 
-import main.java.org.example.conection.Conection;
-import main.java.org.example.data.*;
+import org.example.conection.Conection;
+import org.example.data.*;
 
 import javax.swing.*;
 import java.sql.ResultSet;
