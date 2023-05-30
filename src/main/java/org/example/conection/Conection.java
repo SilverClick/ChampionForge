@@ -20,7 +20,7 @@ public class Conection {
     private Conection(){
         try
         {
-            String rutafile = "db/db.accdb";
+            String rutafile = "db/db(1).accdb";
             String Url = "jdbc:ucanaccess://" + rutafile;
             ccn = DriverManager.getConnection(Url);
             st = ccn.createStatement();

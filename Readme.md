@@ -72,3 +72,11 @@ classDiagram
     Regions "1" --> "n" Teams
     Regions "1" --> "n" Tournaments
 ```
+
+# To Do:
+ - [ ] Terminar UIs 
+ - [ ] Implementar métodos de creación.
+ - [ ] Conectar UIs al MVC.
+ - [ ] Implementar métodos de actualización y de borrado.
+ - [ ] Poder unirse tanto a equipos como torneos.
+ - [ ] Editar resultados.
