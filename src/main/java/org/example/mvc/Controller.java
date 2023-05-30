@@ -15,8 +15,11 @@ public class Controller {
     static Inserts myInserts = new Inserts(C);
 
     public static void main(String[] args) {
-
-
+    Controller c = new Controller();
+    c.createAndInsertRegion(1,"EUW");
+    c.createAndInsertPlayer(1,"Elyoya","yoya","Mejor jungla Español",200,1);
+   // c.createAndInsertGame(1,"LEAGUE OF LEGENDS","No lo juegues, no es bueno pa la salud",5,7);
+    c.createAndInsertTeam(1,"MAD LIONS","07/08/2017","Son todos buenos menos Carzzy",100,1,1);
     }
 
     /**

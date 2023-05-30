@@ -40,7 +40,7 @@ public class Inserts {
         {
             Connection conect = null;
             conect = c.getConnection();
-            String sql = "insert into tournaments (tournament_name,tournament_description,tournament_size,group_stage,group_stage_size,tournamnt_points_req,looser_bracket,tournament_date,started,game_id,region_id) values (?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into tournaments (tournament_name,tournament_description,tournament_size,group_stage,group_stage_size,tournament_points_req,looser_bracket,tournament_date,started,game_id,region_id) values (?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = conect.prepareStatement(sql);
             pst.setString(1, tournament.getTournament_name());
             pst.setString(2,tournament.getTournament_description());
