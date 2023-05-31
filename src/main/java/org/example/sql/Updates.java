@@ -17,6 +17,10 @@ public class Updates {
         this.c =c;
     }
 
+    /**
+     * Update Player
+     * @param player
+     */
     public void updatePlayer(Players player){
         try
         {
@@ -41,6 +45,11 @@ public class Updates {
             JOptionPane.showMessageDialog(null, "LOS DATOS NO HAN SIDO GUARDADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    /**
+     * Update Tournament
+     * @param tournament
+     */
     public void updateTournament(Tournaments tournament) {
         try
         {
@@ -71,6 +80,11 @@ public class Updates {
             JOptionPane.showMessageDialog(null, "LOS DATOS NO HAN SIDO GUARDADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    /**
+     * Update Team
+     * @param team
+     */
     public void updateTeam(Teams team){
         try
         {
@@ -96,6 +110,11 @@ public class Updates {
             JOptionPane.showMessageDialog(null, "LOS DATOS NO HAN SIDO GUARDADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    /**
+     * Update Game
+     * @param game
+     */
     public void updateGame(Games game){
         try
         {
@@ -119,6 +138,11 @@ public class Updates {
             JOptionPane.showMessageDialog(null, "LOS DATOS NO HAN SIDO GUARDADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    /**
+     * Update Region
+     * @param region
+     */
     public void updateRegion(Regions region){
         try
         {
@@ -139,4 +163,83 @@ public class Updates {
             JOptionPane.showMessageDialog(null, "LOS DATOS NO HAN SIDO GUARDADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    /**
+     * Update Roster
+     * @param roster
+     */
+    public void updateRoster(Roster roster) {
+        try {
+            Connection con = null;
+            con = c.getConnection();
+            Statement st = con.createStatement();
+            String sql = "update roster set join_date=?,left_date=?,team_id=?,player_id=? where roster_id=?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, roster.getJoin_date());
+            pst.setString(2, roster.getLeft_date());
+            pst.setInt(3, roster.getTeam_id());
+            pst.setInt(4, roster.getPlayer_id());
+            pst.setInt(5, roster.getRoster_id());
+            int n = pst.executeUpdate();
+            if (n > 0) {
+                JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+
+            }
+        } catch (SQLException | HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "LOS DATOS NO HAN SIDO GUARDADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    /**
+     * Update Inscription
+     * @param inscription
+     */
+        public void updateInscription(Inscription inscription) {
+            try {
+                Connection con = null;
+                con = c.getConnection();
+                Statement st = con.createStatement();
+                String sql = "update inscription set inscription_date=?,tournament_id=?,team_id=? where inscription_id=?";
+                PreparedStatement pst = con.prepareStatement(sql);
+                pst.setString(1, inscription.getInscription_date());
+                pst.setInt(2, inscription.getTournament_id());
+                pst.setInt(3, inscription.getTeam_id());
+                pst.setInt(4, inscription.getInscription_id());
+                int n = pst.executeUpdate();
+                if (n > 0) {
+                    JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+
+                }
+            } catch (SQLException | HeadlessException e) {
+                JOptionPane.showMessageDialog(null, "LOS DATOS NO HAN SIDO GUARDADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+    }
+
+    /**
+     * Update Match
+     * @param match
+     */
+    public void updateMatch(Match match) {
+        try {
+            Connection con = null;
+            con = c.getConnection();
+            Statement st = con.createStatement();
+            String sql = "update match set team1_id=?,team2_id=?,result=?,winner=? where match_id=?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, match.getTeam1_id());
+            pst.setInt(2,  match.getTeam2_id());
+            pst.setString(3,match.getResult());
+            pst.setInt(4,match.getWinner());
+            pst.setInt(5,match.getMatch_id());
+            int n = pst.executeUpdate();
+            if (n > 0) {
+                JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+
+            }
+        } catch (SQLException | HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "LOS DATOS NO HAN SIDO GUARDADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+
 }
