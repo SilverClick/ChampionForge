@@ -2,8 +2,10 @@ package org.example.mvc;
 
 import org.example.conection.Conection;
 import org.example.data.*;
+import org.example.sql.Deletes;
 import org.example.sql.Query;
 import org.example.sql.Inserts;
+import org.example.sql.Updates;
 
 import java.util.ArrayList;
 
@@ -12,6 +14,8 @@ public class Controller {
     static View myView = new View();
     static Conection C = Conection.getInstance();
     static Query myQuery = new Query(C);
+    static Deletes myDeletes = new Deletes(C);
+    static Updates myUpdates = new Updates(C);
     static Inserts myInserts = new Inserts(C);
 
     public static void main(String[] args) {
@@ -171,6 +175,86 @@ public class Controller {
             }
         }
         return null;
+    }
+
+    /**
+     * Delete Games
+     * @param game
+     */
+    public void deleteGame(Games game) {
+        myDeletes.deleteGame(game);
+    }
+
+    /**
+     * Delete Players
+     * @param player
+     */
+    public void deletePlayer(Players player) {
+        myDeletes.deletePlayer(player);
+    }
+
+    /**
+     * Delete Regions
+     * @param region
+     */
+    public void deleteRegion(Regions region) {
+        myDeletes.deleteRegion(region);
+    }
+
+    /**
+     * Delete Teams
+     * @param team
+     */
+    public void deleteTeam(Teams team) {
+        myDeletes.deleteTeam(team);
+    }
+
+    /**
+     * Delete Tournaments
+     * @param tournament
+     */
+    public void deleteTournaments(Tournaments tournament) {
+        myDeletes.deleteTournament(tournament);
+    }
+
+    /**
+     * Update Games
+     * @param game
+     */
+    public void updateGames(Games game){
+        myUpdates.updateGame(game);
+    }
+
+    /**
+     * Update Players
+     * @param player
+     */
+    public void updatePlayers(Players player){
+        myUpdates.updatePlayer(player);
+    }
+
+    /**
+     * Update Regions
+     * @param region
+     */
+    public void updateRegions(Regions region){
+        myUpdates.updateRegion(region);
+    }
+
+    /**
+     * Update Teams
+     * @param team
+     */
+    public void updateTeams(Teams team){
+        myUpdates.updateTeam(team);
+    }
+
+    /**
+     * Update Tournaments
+     * @param tournament
+     */
+    public void updateTournaments(Tournaments tournament){
+        myUpdates.updateTournament(tournament);
     }
 
 
