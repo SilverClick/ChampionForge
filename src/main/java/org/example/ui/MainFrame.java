@@ -4,7 +4,12 @@
  */
 package org.example.ui;
 
+import com.sun.tools.javac.Main;
 import org.example.mvc.Controller;
+
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,7 +36,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
-        menuBar = new CustomMenuBar();
+        menuBar = new javax.swing.JMenuBar();
         settings = new javax.swing.JMenu();
         logOut = new javax.swing.JMenuItem();
         exit = new javax.swing.JMenuItem();
@@ -108,6 +113,11 @@ public class MainFrame extends javax.swing.JFrame {
         tournament.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tournament.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tournament.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        tournament.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tournamentMouseClicked(evt);
+            }
+        });
         menuBar.add(tournament);
 
         teams.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\uiMenu\\teams.png")); // NOI18N
@@ -149,6 +159,11 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
          Controller.logIn(this);
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void tournamentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tournamentMouseClicked
+        // TODO add your handling code here:
+        Controller.createTournament(this);
+    }//GEN-LAST:event_tournamentMouseClicked
 
 
     public static void launch() {

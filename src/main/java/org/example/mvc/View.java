@@ -4,6 +4,7 @@ import com.sun.tools.javac.Main;
 import org.example.ui.LogInFrame;
 import org.example.ui.MainFrame;
 import org.example.ui.PlayerCreationUI;
+import org.example.ui.TournamentCreationUI;
 
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
@@ -38,6 +39,18 @@ public class View {
         playerCreationUI.setVisible(true);
     }
 
+    public void createTournamentUI(MainFrame frame){
+        TournamentCreationUI tournamentUI = new TournamentCreationUI();
+        frame.jDesktopPane1.add(tournamentUI);
+        tournamentUI.toFront();
+        tournamentUI.setLocation(frame.jDesktopPane1.getWidth() / 2 - tournamentUI.getWidth() / 2, frame.jDesktopPane1.getHeight() / 2 - tournamentUI.getHeight() / 2);
+        try {
+            tournamentUI.setMaximum(true); //OPCIONAL
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tournamentUI.setVisible(true);
+    }
 
 
 }

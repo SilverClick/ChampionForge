@@ -70,7 +70,7 @@ public class Inserts {
             String sql = "insert into teams (team_name,team_creation_date,team_description,team_points_req,game_id,region_id) values (?,?,?,?,?,?)";
             PreparedStatement pst = conect.prepareStatement(sql);
             pst.setString(1, team.getTeam_name());
-            pst.setString(2, team.getTeam_creation_date());
+            pst.setDate(2, team.getTeam_creation_date());
             pst.setString(3, team.getTeam_description());
             pst.setInt(4, team.getTeam_point_req());
             pst.setInt(5, team.getGame_id());

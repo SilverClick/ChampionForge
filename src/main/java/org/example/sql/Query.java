@@ -121,7 +121,7 @@ public class Query {
                 team= new Teams();
                 team.setTeam_id(rs.getInt("team_id"));
                 team.setTeam_name(rs.getString("team_name"));
-                team.setTeam_creation_date(rs.getString("team_creation_date"));
+                team.setTeam_creation_date(rs.getDate("team_creation_date"));
                team.setTeam_description(rs.getString("team_description"));
                team.setTeam_point_req(rs.getInt("team_point_req"));
                 team.setGame_id(rs.getInt("game_id"));

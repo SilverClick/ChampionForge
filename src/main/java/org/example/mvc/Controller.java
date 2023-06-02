@@ -4,8 +4,13 @@ import org.example.conection.Conection;
 import org.example.data.*;
 import org.example.sql.Query;
 import org.example.sql.Inserts;
+import org.example.ui.MainFrame;
 
+import javax.swing.*;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.sql.Date;
 
 public class Controller {
     static Model myModel = new Model();
@@ -16,10 +21,14 @@ public class Controller {
 
     public static void main(String[] args) {
     Controller c = new Controller();
+    /*
     c.createAndInsertRegion(1,"EUW");
     c.createAndInsertPlayer(1,"Elyoya","yoya","Mejor jungla Español",200,1);
    // c.createAndInsertGame(1,"LEAGUE OF LEGENDS","No lo juegues, no es bueno pa la salud",5,7);
-    c.createAndInsertTeam(1,"MAD LIONS","07/08/2017","Son todos buenos menos Carzzy",100,1,1);
+    c.createAndInsertTeam(1,"MAD LIONS",Date.valueOf(LocalDate.ofYearDay(2022,2)),"Son todos buenos menos Carzzy",100,1,1);
+
+     */
+        MainFrame.launch();
     }
 
     /**
@@ -97,7 +106,7 @@ public class Controller {
      * @param game_id
      * @param region_id
      */
-    public void createAndInsertTeam(int team_id, String team_name, String team_creation_date, String team_description, int teams_points_req, int game_id, int region_id) {
+    public void createAndInsertTeam(int team_id, String team_name, Date team_creation_date, String team_description, int teams_points_req, int game_id, int region_id) {
         Teams team = myModel.createTeam(team_id, team_name, team_creation_date, team_description, teams_points_req, game_id, region_id);
         myInserts.createTeam(team);
     }
@@ -173,7 +182,39 @@ public class Controller {
         return null;
     }
 
+    /**
+     * LogIn UI launching
+     * @param frame
+     */
+    public static void logIn(MainFrame frame){
+        myView.logIn(frame);
+    }
 
+    /**
+     * SignIn UI launching
+     * @param frame
+     * @param username
+     * @param password
+     */
+    public static void signIn(MainFrame frame,String username,String password){
+        myView.signIn(frame,username,password);
+    }
+
+    /**
+     * Desconection and exit
+     */
+    public static void desconection(){
+        if (JOptionPane.showConfirmDialog(null,"Are you sure you want to exit?")==0)
+        Conection.getInstance().Desconexion();
+    }
+
+    /**
+     * Tournament creation UI
+     * @param frame
+     */
+    public static void createTournament(MainFrame frame){
+        myView.createTournamentUI(frame);
+    }
 
 }
 
