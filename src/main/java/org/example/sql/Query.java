@@ -49,6 +49,65 @@ public class Query {
         }
         return games;
     }
+
+    /**
+     *Query Inscriptions
+     * @return inscriptions
+     */
+    public ArrayList<Inscription> getInscription() {
+        ArrayList<Inscription> inscriptions = new ArrayList<Inscription>();
+        Inscription inscription;
+        try {
+            Statement sentence = c.getConnection().createStatement();
+            String sql = "select * from inscription;";
+            sentence.execute(sql);
+            ResultSet rs = sentence.executeQuery(sql);
+            while (rs.next()) {
+                inscription = new Inscription();
+                inscription.setInscription_id(rs.getInt("inscription_id"));
+                inscription.setInscription_date(rs.getString("inscription_date"));
+                inscription.setTournament_id(rs.getInt("tournament_id"));
+                inscription.setTeam_id(rs.getInt("team_id"));
+                inscriptions.add(inscription);
+
+
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Excepcion", JOptionPane.ERROR_MESSAGE);
+        }
+        return inscriptions;
+    }
+    /**
+     *Query Matches
+     * @return matches
+     */
+    public ArrayList<Match> getMatch() {
+        ArrayList<Match> matches = new ArrayList<Match>();
+        Match match;
+        try {
+            Statement sentence = c.getConnection().createStatement();
+            String sql = "select * from match;";
+            sentence.execute(sql);
+            ResultSet rs = sentence.executeQuery(sql);
+            while (rs.next()) {
+                match = new Match();
+                match.setMatch_id(rs.getInt("match_id"));
+                match.setTeam1_id(rs.getInt("team1_id"));
+                match.setTeam2_id(rs.getInt("team2_id"));
+                match.setResult(rs.getString("result"));
+                match.setWinner(rs.getInt("winner"));
+                matches.add(match);
+
+
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Excepcion", JOptionPane.ERROR_MESSAGE);
+        }
+        return matches;
+    }
+
     /**
      * Query Players
      * @return players
@@ -104,6 +163,35 @@ public class Query {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Excepcion", JOptionPane.ERROR_MESSAGE);
         }
         return regions;
+    }
+    /**
+     *Query Rosters
+     * @return rosters
+     */
+    public ArrayList<Roster> getRoster() {
+        ArrayList<Roster> rosters = new ArrayList<Roster>();
+        Roster roster;
+        try {
+            Statement sentence = c.getConnection().createStatement();
+            String sql = "select * from roster;";
+            sentence.execute(sql);
+            ResultSet rs = sentence.executeQuery(sql);
+            while (rs.next()) {
+                roster= new Roster();
+                roster.setRoster_id(rs.getInt("roster_id"));
+                roster.setJoin_date(rs.getString("join_date"));
+                roster.setLeft_date(rs.getString("left_date"));
+                roster.setTeam_id(rs.getInt("team_id"));
+                roster.setPlayer_id(rs.getInt("player_id"));
+                rosters.add(roster);
+
+
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Excepcion", JOptionPane.ERROR_MESSAGE);
+        }
+        return rosters;
     }
     /**
      * Query Teams

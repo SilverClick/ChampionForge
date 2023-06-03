@@ -14,6 +14,11 @@ public class Inserts {
         this.c =c;
     }
 
+    /**
+     * Insert Player
+     * @param player
+     */
+
     public void createPlayer(Players player){
         try
         {
@@ -35,6 +40,11 @@ public class Inserts {
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * Insert Tournament
+     * @param tournament
+     */
     public void createTournament(Tournaments tournament){
         try
         {
@@ -62,6 +72,11 @@ public class Inserts {
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * Insert Team
+     * @param team
+     */
     public void createTeam(Teams team){
         try
         {
@@ -84,6 +99,11 @@ public class Inserts {
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * Insert Game
+     * @param game
+     */
     public void createGame(Games game){
         try
         {
@@ -104,6 +124,11 @@ public class Inserts {
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * Insert Regions
+     * @param region
+     */
     public void createRegion(Regions region){
         try
         {
@@ -115,6 +140,76 @@ public class Inserts {
             int n = pst.executeUpdate();
             if (n > 0)
             {
+                JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+            }
+        } catch (SQLException | HeadlessException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Insert Roster
+     * @param roster
+     */
+    public void createRoster(Roster roster){
+        try
+        {
+            Connection conect = null;
+            conect = c.getConnection();
+            String sql = "insert into roster (join_date,left_date,team_id,player_id) values (?,?,?,?)";
+            PreparedStatement pst = conect.prepareStatement(sql);
+            pst.setString(1,roster.getJoin_date());
+            pst.setString(2,roster.getLeft_date());
+            pst.setInt(3,roster.getTeam_id());
+            pst.setInt(4,roster.getPlayer_id());
+            int n = pst.executeUpdate();
+            if (n > 0)
+            {
+                JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+            }
+        } catch (SQLException | HeadlessException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Insert Inscription
+     * @param inscription
+     */
+    public void createInscription(Inscription inscription) {
+        try {
+            Connection conect = null;
+            conect = c.getConnection();
+            String sql = "insert into inscription (String inscription_date, int tournament_id, int team_id) values (?,?,?)";
+            PreparedStatement pst = conect.prepareStatement(sql);
+            pst.setString(1, inscription.getInscription_date());
+            pst.setInt(2, inscription.getTournament_id());
+            pst.setInt(3, inscription.getTeam_id());
+            int n = pst.executeUpdate();
+            if (n > 0) {
+                JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+            }
+        } catch (SQLException | HeadlessException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Create Match
+     * @param match
+     */
+    public void createMatch(Match match) {
+        try {
+            Connection conect = null;
+            conect = c.getConnection();
+            String sql = "insert into match (int team1_id, int team2_id, String result,int winner) values (?,?,?,?)";
+            PreparedStatement pst = conect.prepareStatement(sql);
+            pst.setInt(1, match.getTeam1_id());
+            pst.setInt(2, match.getTeam2_id());
+            pst.setString(3, match.getResult());
+            pst.setInt(4, match.getWinner());
+            int n = pst.executeUpdate();
+            if (n > 0) {
                 JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
             }
         } catch (SQLException | HeadlessException e) {
