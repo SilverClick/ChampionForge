@@ -1,4 +1,4 @@
-package main.java.org.example.data;
+package org.example.data;
 
 public class Players {
 
@@ -11,6 +11,7 @@ public class Players {
 
    private int tournament_points;
    private int region_id;
+
 
 
     public Players(int player_id, String player_name, String player_password, String player_description,int tournament_points,int region_id) {

@@ -1,4 +1,4 @@
-package main.java.org.example.conection;
+package org.example.conection;
 
 import javax.swing.*;
 import java.sql.Connection;

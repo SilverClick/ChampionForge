@@ -1,6 +1,6 @@
-package main.java.org.example.sql;
+package org.example.sql;
 
-import org.example.conection.Conection;
+import org.example.conection.*;
 import org.example.data.*;
 
 import javax.swing.*;
@@ -10,10 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class updates {
+public class Updates {
 
     Conection c = null;
-    public updates(Conection c){
+    public Updates(Conection c){
         this.c =c;
     }
 
@@ -80,7 +80,7 @@ public class updates {
             String sql = "update teams set team_name=?,team_creation_date=?,team_description=?,team_points_req=?,game_id=?,region_id=? where team_id=?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, team.getTeam_name());
-            pst.setString(2, team.getTeam_creation_date());
+            pst.setDate(2, team.getTeam_creation_date());
             pst.setString(3, team.getTeam_description());
             pst.setInt(4, team.getTeam_point_req());
             pst.setInt(5, team.getGame_id());

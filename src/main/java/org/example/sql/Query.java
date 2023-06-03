@@ -1,7 +1,7 @@
-package main.java.org.example.sql;
+package org.example.sql;
 
-import main.java.org.example.conection.Conection;
-import main.java.org.example.data.*;
+import org.example.conection.Conection;
+import org.example.data.*;
 
 import javax.swing.*;
 import java.sql.ResultSet;
@@ -121,8 +121,9 @@ public class Query {
                 team= new Teams();
                 team.setTeam_id(rs.getInt("team_id"));
                 team.setTeam_name(rs.getString("team_name"));
-                team.setTeam_creation_date(rs.getString("team_creation_date"));
+                team.setTeam_creation_date(rs.getDate("team_creation_date"));
                team.setTeam_description(rs.getString("team_description"));
+               team.setTeam_point_req(rs.getInt("team_point_req"));
                 team.setGame_id(rs.getInt("game_id"));
                 team.setRegion_id(rs.getInt("region_id"));
                 teams.add(team);
@@ -154,6 +155,7 @@ public class Query {
                 tournament.setTournament_points_req(rs.getInt("tournament_points_req"));
                 tournament.setLooser_bracket(rs.getBoolean("looser_bracket"));
                 tournament.setTournament_date(rs.getString("tournament_date"));
+                tournament.setStarted(rs.getBoolean("starte1d"));
                 tournament.setGame_id(rs.getInt("game_id"));
                 tournament.setRegion_id(rs.getInt("region_id"));
                 tournaments.add(tournament);

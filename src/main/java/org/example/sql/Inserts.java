@@ -1,6 +1,5 @@
-package main.java.org.example.sql;
+package org.example.sql;
 
-import main.java.org.example.conection.Conection;
 import org.example.conection.Conection;
 import org.example.data.*;
 
@@ -9,9 +8,9 @@ import java.awt.*;
 import java.sql.*;
 
 
-public class inserts {
+public class Inserts {
     Conection c = null;
-    public inserts(Conection c){
+    public Inserts(Conection c){
         this.c =c;
     }
 
@@ -41,7 +40,7 @@ public class inserts {
         {
             Connection conect = null;
             conect = c.getConnection();
-            String sql = "insert into tournaments (tournament_name,tournament_description,tournament_size,group_stage,group_stage_size,tournamnt_points_req,looser_bracket,tournament_date,started,game_id,region_id) values (?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into tournaments (tournament_name,tournament_description,tournament_size,group_stage,group_stage_size,tournament_points_req,looser_bracket,tournament_date,started,game_id,region_id) values (?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = conect.prepareStatement(sql);
             pst.setString(1, tournament.getTournament_name());
             pst.setString(2,tournament.getTournament_description());
@@ -71,7 +70,7 @@ public class inserts {
             String sql = "insert into teams (team_name,team_creation_date,team_description,team_points_req,game_id,region_id) values (?,?,?,?,?,?)";
             PreparedStatement pst = conect.prepareStatement(sql);
             pst.setString(1, team.getTeam_name());
-            pst.setString(2, team.getTeam_creation_date());
+            pst.setDate(2, team.getTeam_creation_date());
             pst.setString(3, team.getTeam_description());
             pst.setInt(4, team.getTeam_point_req());
             pst.setInt(5, team.getGame_id());

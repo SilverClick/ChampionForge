@@ -4,8 +4,11 @@
  */
 package org.example.ui;
 
+import org.example.mvc.Controller;
+
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import java.awt.*;
+import java.util.Arrays;
 
 /**
  *
@@ -13,10 +16,14 @@ import java.awt.*;
  */
 public class LogInFrame extends javax.swing.JInternalFrame {
 
+    MainFrame frame;
+
+
     /**
      * Creates new form LogInFrame
      */
-    public LogInFrame() {
+    public LogInFrame(MainFrame frame) {
+        this.frame = frame;
         initComponents();
 
         // Eliminar el borde decorativo
@@ -60,14 +67,14 @@ public class LogInFrame extends javax.swing.JInternalFrame {
 
         userField.setBackground(new java.awt.Color(0, 0, 0));
         userField.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
-        userField.setForeground(new java.awt.Color(204, 0, 0));
-        userField.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 0, 0), java.awt.Color.red));
+        userField.setForeground(new java.awt.Color(255, 157, 0));
+        userField.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0)));
         logPanel.add(userField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 250, 40));
 
         pwdField.setBackground(new java.awt.Color(0, 0, 0));
-        pwdField.setForeground(new java.awt.Color(204, 0, 0));
+        pwdField.setForeground(new java.awt.Color(255, 157, 0));
         pwdField.setToolTipText("");
-        pwdField.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 0, 0), java.awt.Color.red));
+        pwdField.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0)));
         pwdField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         pwdField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,10 +84,10 @@ public class LogInFrame extends javax.swing.JInternalFrame {
         logPanel.add(pwdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 250, 40));
 
         pwdLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\password.png")); // NOI18N
-        logPanel.add(pwdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 290, 70));
+        logPanel.add(pwdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 350, 70));
 
         userLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\user.png")); // NOI18N
-        logPanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 180, 80));
+        logPanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 370, 80));
 
         logButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\logInButton.png")); // NOI18N
         logButton.setBorderPainted(false);
@@ -105,7 +112,7 @@ public class LogInFrame extends javax.swing.JInternalFrame {
         logPanel.add(signButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 480, 210, 80));
 
         logBg.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\logPanel.jpg")); // NOI18N
-        logBg.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 0, 0), new java.awt.Color(255, 0, 0), new java.awt.Color(153, 0, 0), new java.awt.Color(153, 0, 0)));
+        logBg.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(6, 27, 42), new java.awt.Color(6, 27, 42), new java.awt.Color(0, 0, 51), new java.awt.Color(0, 0, 51)));
         logPanel.add(logBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 600));
 
         mainPanel.add(logPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 190, 550, 600));
@@ -129,6 +136,8 @@ public class LogInFrame extends javax.swing.JInternalFrame {
 
     private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signButtonActionPerformed
         // TODO add your handling code here:
+        Controller.signIn(frame,userField.getText(), Arrays.toString(pwdField.getPassword()));
+
     }//GEN-LAST:event_signButtonActionPerformed
 
     private void logButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logButtonActionPerformed
