@@ -265,7 +265,7 @@ public class Model {
      * @param region_id
      */
     public void createAndInsertTeam(int team_id, String team_name, String team_creation_date, String team_description, int teams_points_req, int game_id, int region_id) {
-        Teams team = createTeam(team_id, team_name, team_creation_date, team_description, teams_points_req, game_id, region_id);
+        Teams team = createTeam(team_id, team_name, Date.valueOf(team_creation_date), team_description, teams_points_req, game_id, region_id);
         myInserts.createTeam(team);
     }
     /**
