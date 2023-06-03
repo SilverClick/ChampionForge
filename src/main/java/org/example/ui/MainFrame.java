@@ -7,6 +7,7 @@ package org.example.ui;
 import com.sun.tools.javac.Main;
 import org.example.mvc.Controller;
 
+import javax.swing.*;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -122,6 +123,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         teams.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\uiMenu\\teams.png")); // NOI18N
         teams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        teams.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                teamsMouseClicked(evt);
+            }
+        });
         menuBar.add(teams);
 
         players.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\uiMenu\\players.png")); // NOI18N
@@ -158,12 +164,18 @@ public class MainFrame extends javax.swing.JFrame {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
          Controller.logIn(this);
+         
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void tournamentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tournamentMouseClicked
         // TODO add your handling code here:
         Controller.createTournament(this);
     }//GEN-LAST:event_tournamentMouseClicked
+
+    private void teamsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teamsMouseClicked
+        // TODO add your handlinsg code here:
+
+    }//GEN-LAST:event_teamsMouseClicked
 
 
     public static void launch() {

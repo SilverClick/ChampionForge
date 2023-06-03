@@ -6,6 +6,7 @@ import org.example.ui.MainFrame;
 import org.example.ui.PlayerCreationUI;
 import org.example.ui.TournamentCreationUI;
 
+import javax.swing.*;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,5 +53,10 @@ public class View {
         tournamentUI.setVisible(true);
     }
 
+    public void closeUIs(MainFrame frame) {
+        for (JInternalFrame allFrame : frame.jDesktopPane1.getAllFrames()) {
+            allFrame.dispose();
+        }
+    }
 
 }

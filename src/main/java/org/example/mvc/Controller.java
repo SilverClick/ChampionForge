@@ -26,7 +26,6 @@ public class Controller {
     c.createAndInsertPlayer(1,"Elyoya","yoya","Mejor jungla Español",200,1);
    // c.createAndInsertGame(1,"LEAGUE OF LEGENDS","No lo juegues, no es bueno pa la salud",5,7);
     c.createAndInsertTeam(1,"MAD LIONS",Date.valueOf(LocalDate.ofYearDay(2022,2)),"Son todos buenos menos Carzzy",100,1,1);
-
      */
         MainFrame.launch();
     }
@@ -187,6 +186,7 @@ public class Controller {
      * @param frame
      */
     public static void logIn(MainFrame frame){
+        myView.closeUIs(frame);
         myView.logIn(frame);
     }
 
@@ -197,6 +197,7 @@ public class Controller {
      * @param password
      */
     public static void signIn(MainFrame frame,String username,String password){
+        myView.closeUIs(frame);
         myView.signIn(frame,username,password);
     }
 
@@ -213,6 +214,7 @@ public class Controller {
      * @param frame
      */
     public static void createTournament(MainFrame frame){
+        myView.closeUIs(frame);
         myView.createTournamentUI(frame);
     }
 
