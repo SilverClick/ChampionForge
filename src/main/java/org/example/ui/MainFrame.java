@@ -42,8 +42,16 @@ public class MainFrame extends javax.swing.JFrame {
         logOut = new javax.swing.JMenuItem();
         exit = new javax.swing.JMenuItem();
         tournament = new javax.swing.JMenu();
+        inspectTournaments = new javax.swing.JMenuItem();
+        createTournaments = new javax.swing.JMenuItem();
+        myTournaments = new javax.swing.JMenuItem();
         teams = new javax.swing.JMenu();
+        inspectTeams = new javax.swing.JMenuItem();
+        createTeams = new javax.swing.JMenuItem();
+        myTeams = new javax.swing.JMenuItem();
         players = new javax.swing.JMenu();
+        allPlayers = new javax.swing.JMenuItem();
+        myProfile = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -119,6 +127,27 @@ public class MainFrame extends javax.swing.JFrame {
                 tournamentMouseClicked(evt);
             }
         });
+
+        inspectTournaments.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
+        inspectTournaments.setForeground(new java.awt.Color(255, 157, 0));
+        inspectTournaments.setText("ALL TOURNAMENTS");
+        inspectTournaments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inspectTournamentsActionPerformed(evt);
+            }
+        });
+        tournament.add(inspectTournaments);
+
+        createTournaments.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
+        createTournaments.setForeground(new java.awt.Color(255, 157, 0));
+        createTournaments.setText("CREATE");
+        tournament.add(createTournaments);
+
+        myTournaments.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
+        myTournaments.setForeground(new java.awt.Color(255, 157, 0));
+        myTournaments.setText("MY TOURNAMENTS");
+        tournament.add(myTournaments);
+
         menuBar.add(tournament);
 
         teams.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\uiMenu\\teams.png")); // NOI18N
@@ -128,10 +157,42 @@ public class MainFrame extends javax.swing.JFrame {
                 teamsMouseClicked(evt);
             }
         });
+
+        inspectTeams.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
+        inspectTeams.setForeground(new java.awt.Color(255, 157, 0));
+        inspectTeams.setText("ALL TEAMS");
+        inspectTeams.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inspectTeamsActionPerformed(evt);
+            }
+        });
+        teams.add(inspectTeams);
+
+        createTeams.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
+        createTeams.setForeground(new java.awt.Color(255, 157, 0));
+        createTeams.setText("CREATE");
+        teams.add(createTeams);
+
+        myTeams.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
+        myTeams.setForeground(new java.awt.Color(255, 157, 0));
+        myTeams.setText("MY TEAMS");
+        teams.add(myTeams);
+
         menuBar.add(teams);
 
         players.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\uiMenu\\players.png")); // NOI18N
         players.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        allPlayers.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
+        allPlayers.setForeground(new java.awt.Color(255, 157, 0));
+        allPlayers.setText("ALL PLAYERS");
+        players.add(allPlayers);
+
+        myProfile.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
+        myProfile.setForeground(new java.awt.Color(255, 157, 0));
+        myProfile.setText("MY PROFILE");
+        players.add(myProfile);
+
         menuBar.add(players);
 
         setJMenuBar(menuBar);
@@ -177,6 +238,14 @@ public class MainFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_teamsMouseClicked
 
+    private void inspectTournamentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inspectTournamentsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inspectTournamentsActionPerformed
+
+    private void inspectTeamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inspectTeamsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inspectTeamsActionPerformed
+
 
     public static void launch() {
         /* Set the Nimbus look and feel */
@@ -211,11 +280,19 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem allPlayers;
+    private javax.swing.JMenuItem createTeams;
+    private javax.swing.JMenuItem createTournaments;
     private javax.swing.JMenuItem exit;
+    private javax.swing.JMenuItem inspectTeams;
+    private javax.swing.JMenuItem inspectTournaments;
     public javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem logOut;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem myProfile;
+    private javax.swing.JMenuItem myTeams;
+    private javax.swing.JMenuItem myTournaments;
     private javax.swing.JMenu players;
     private javax.swing.JMenu settings;
     private javax.swing.JMenu teams;
