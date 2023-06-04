@@ -19,6 +19,7 @@ public class Inserts {
      * @param player
      */
 
+    //Method that connect to the database and insert a player.
     public void createPlayer(Players player){
         try
         {
@@ -45,6 +46,8 @@ public class Inserts {
      * Insert Tournament
      * @param tournament
      */
+
+    //Method that connect to the database and insert a tournament.
     public void createTournament(Tournaments tournament){
         try
         {
@@ -77,6 +80,8 @@ public class Inserts {
      * Insert Team
      * @param team
      */
+
+    //Method that connect to the database and insert a team.
     public void createTeam(Teams team){
         try
         {
@@ -104,6 +109,8 @@ public class Inserts {
      * Insert Game
      * @param game
      */
+
+    //Method that connect to the database and insert a game.
     public void createGame(Games game){
         try
         {
@@ -129,6 +136,8 @@ public class Inserts {
      * Insert Regions
      * @param region
      */
+
+    //Method that connect to the database and insert a region.
     public void createRegion(Regions region){
         try
         {
@@ -151,6 +160,8 @@ public class Inserts {
      * Insert Roster
      * @param roster
      */
+
+    //Method that connect to the database and insert a roster.
     public void createRoster(Roster roster){
         try
         {
@@ -176,6 +187,8 @@ public class Inserts {
      * Insert Inscription
      * @param inscription
      */
+
+    //Method that connect to the database and insert an inscription.
     public void createInscription(Inscription inscription) {
         try {
             Connection conect = null;
@@ -198,6 +211,8 @@ public class Inserts {
      * Create Match
      * @param match
      */
+
+    //Method that connect to the database and insert a match.
     public void createMatch(Match match) {
         try {
             Connection conect = null;
