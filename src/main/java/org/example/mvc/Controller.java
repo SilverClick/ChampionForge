@@ -1,6 +1,6 @@
 package org.example.mvc;
 
-import org.example.conection.Conection;
+import conect.Conection;
 import org.example.data.*;
 import org.example.sql.Query;
 import org.example.sql.Inserts;
@@ -16,8 +16,7 @@ public class Controller {
     static Model myModel = new Model();
     static View myView = new View();
     static Conection C = Conection.getInstance();
-    static Query myQuery = new Query(C);
-    static Inserts myInserts = new Inserts(C);
+
 
     public static void main(String[] args) {
     Controller c = new Controller();
@@ -41,8 +40,8 @@ public class Controller {
      * @param region_id
      */
     public void createAndInsertPlayer(int player_id, String player_name, String player_password, String player_description, int tournament_points, int region_id) {
-        Players player = myModel.createPlayer(player_id, player_name, player_password, player_description, tournament_points, region_id);
-        myInserts.createPlayer(player);
+      myModel.createAndInsertPlayer(player_id, player_name, player_password, player_description, tournament_points, region_id);
+
     }
 
     /**
@@ -61,11 +60,11 @@ public class Controller {
      * @param game_id
      * @param region_id
      */
+
     public void createAndInsertTournament(int tournament_id, String tournament_name, String tournament_description, int tournament_size, boolean group_stage, int group_stage_size, int tournament_points_req, boolean looser_bracket, String tournament_date, boolean started, int game_id, int region_id) {
-        Tournaments tournament = myModel.createTournament(tournament_id, tournament_name, tournament_description,
-                tournament_size, group_stage, group_stage_size, tournament_points_req, looser_bracket,
-                tournament_date, started, game_id, region_id);
-        myInserts.createTournament(tournament);
+      myModel.createAndInsertTournament(tournament_id, tournament_name, tournament_description,
+              tournament_size, group_stage, group_stage_size, tournament_points_req, looser_bracket,
+              tournament_date, started, game_id, region_id);
 
     }
 
@@ -76,8 +75,7 @@ public class Controller {
      * @param region_name
      */
     public void createAndInsertRegion(int region_id, String region_name) {
-        Regions region = myModel.createRegion(region_id, region_name);
-        myInserts.createRegion(region);
+        myModel.createAndInsertRegion(region_id, region_name);
     }
 
     /**
@@ -90,8 +88,7 @@ public class Controller {
      * @param team_max_size
      */
     public void createAndInsertGame(int game_id, String game_name, String game_description, int team_size, int team_max_size) {
-        Games game = myModel.createGame(game_id, game_name, game_description, team_size, team_max_size);
-        myInserts.createGame(game);
+       myModel.createAndInsertGame(game_id, game_name, game_description, team_size, team_max_size);
     }
 
     /**
@@ -105,9 +102,8 @@ public class Controller {
      * @param game_id
      * @param region_id
      */
-    public void createAndInsertTeam(int team_id, String team_name, Date team_creation_date, String team_description, int teams_points_req, int game_id, int region_id) {
-        Teams team = myModel.createTeam(team_id, team_name, team_creation_date, team_description, teams_points_req, game_id, region_id);
-        myInserts.createTeam(team);
+    public void createAndInsertTeam(int team_id, String team_name, String team_creation_date, String team_description, int teams_points_req, int game_id, int region_id) {
+      myModel.createAndInsertTeam(team_id, team_name, team_creation_date, team_description, teams_points_req, game_id, region_id);
     }
     /**
      * Query Games
@@ -115,13 +111,8 @@ public class Controller {
      * @return game
      */
     public  Games queryGames(int game_id) {
-        ArrayList<Games> games = myQuery.getGames();
-        for ( Games game : games) {
-            if (game_id == game.getGame_id()) {
-                return game;
-            }
-        }
-        return null;
+      Games game= myModel.queryGames(game_id);
+      return game;
     }
 
     /**
@@ -130,27 +121,17 @@ public class Controller {
      * @return player
      */
     public Players queryPlayer(int player_id) {
-        ArrayList<Players> players = myQuery.getPlayers();
-        for (Players player : players) {
-            if (player_id == player.getPlayer_id()) {
-                return player;
-            }
-        }
-        return null;
+        Players player= myModel.queryPlayer(player_id);
+        return player;
     }
     /**
-     * Query Regions
+     * Query Region
      * @param region_id
      * @return region
      */
     public Regions queryRegion(int region_id) {
-        ArrayList<Regions> regions = myQuery.getRegions();
-        for ( Regions region : regions) {
-            if (region_id == region.getRegion_id()) {
-                return region;
-            }
-        }
-        return null;
+        Regions region= myModel.queryRegion(region_id);
+        return region;
     }
     /**
      * Query Teams
@@ -158,13 +139,8 @@ public class Controller {
      * @return team
      */
     public  Teams queryTeams(int team_id) {
-        ArrayList<Teams> teams = myQuery.getTeams();
-        for ( Teams team : teams) {
-            if (team_id == team.getTeam_id()) {
-                return team;
-            }
-        }
-        return null;
+        Teams team= myModel.queryTeams(team_id);
+        return team;
     }
     /**
      * Query Tournament
@@ -172,13 +148,8 @@ public class Controller {
      * @return tournament
      */
     public Tournaments queryTournament(int tournament_id) {
-        ArrayList<Tournaments> tournaments = myQuery.getTournaments();
-        for (Tournaments tournament : tournaments) {
-            if (tournament_id == tournament.getTournament_id()) {
-                return tournament;
-            }
-        }
-        return null;
+        Tournaments tournament= myModel.queryTournament(tournament_id);
+        return tournament;
     }
 
     /**

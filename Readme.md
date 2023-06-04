@@ -1,6 +1,11 @@
 
 # DATABASE SCHEME:
 
+# Champion Forge:
+-Nuestra aplicación se basa en un gestor de torneos en el cúal
+para diferentes juegos puedas crear tu propio torneo con sus equipos y
+jugadores correspondientes y gestionarlos.
+
 ```mermaid
 classDiagram
     class Tournaments {
@@ -73,10 +78,3 @@ classDiagram
     Regions "1" --> "n" Tournaments
 ```
 
-# To Do:
- - [ ] Terminar UIs 
- - [ ] Implementar métodos de creación.
- - [ ] Conectar UIs al MVC.
- - [ ] Implementar métodos de actualización y de borrado.
- - [ ] Poder unirse tanto a equipos como torneos.
- - [ ] Editar resultados.

@@ -1,6 +1,5 @@
 package org.example.sql;
-
-import org.example.conection.Conection;
+import conect.Conection;
 import org.example.data.*;
 
 import javax.swing.*;
@@ -10,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Deletes {
+    //Class with the delete methods of the database.
     Conection c = null;
     public Deletes(Conection c){
         this.c =c;
@@ -19,6 +19,8 @@ public class Deletes {
      * Delete Player
      * @param player
      */
+
+    //Method to connect to the database and delete a player.
     public void deletePlayer(Players player){
         try
         {
@@ -43,6 +45,8 @@ public class Deletes {
      * Delete Tournament
      * @param tournament
      */
+
+    //Method to connect to the database and delete a tournament.
     public void deleteTournament(Tournaments tournament){
         try
         {
@@ -67,6 +71,8 @@ public class Deletes {
      * Delete Team
      * @param team
      */
+
+    //Method to connect to the database and delete a team.
     public void deleteTeam(Teams team){
         try
         {
@@ -91,6 +97,8 @@ public class Deletes {
      * Delete Inscription
      * @param inscription
      */
+
+    //Method to connect to the database and delete a inscription.
     public void deleteInscription(Inscription inscription){
         try
         {
@@ -115,6 +123,8 @@ public class Deletes {
      * Delete Match
      * @param match
      */
+
+    //Method to connect to the database and delete a match.
     public void deleteMatch(Match match){
         try
         {
@@ -139,6 +149,8 @@ public class Deletes {
      * Delete Roster
      * @param roster
      */
+
+    //Method to connect to the database and delete a roster.
     public void deleteRoster(Roster roster){
         try
         {
@@ -163,6 +175,8 @@ public class Deletes {
      * Delete Game
      * @param game
      */
+
+    //Method to connect to the database and delete a game.
     public void deleteGame(Games game){
         try
         {
@@ -187,6 +201,8 @@ public class Deletes {
      * Delete Region
      * @param region
      */
+
+    //Method to connect to the database and delete a region.
     public void deleteRegion(Regions region){
         try
         {

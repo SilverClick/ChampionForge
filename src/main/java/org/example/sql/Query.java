@@ -1,6 +1,6 @@
 package org.example.sql;
 
-import org.example.conection.Conection;
+import conect.Conection;
 import org.example.data.*;
 
 import javax.swing.*;
@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Query {
+    //Class with the query methods of the database.
    Conection c=null;
 
    /**
@@ -24,6 +25,8 @@ public class Query {
      * Query Games
      * @return games
      */
+
+    //Method that connect to the database and query the games.
     public ArrayList<Games> getGames() {
         ArrayList<Games> games = new ArrayList<Games>();
         Games game;
@@ -54,6 +57,8 @@ public class Query {
      *Query Inscriptions
      * @return inscriptions
      */
+
+    //Method that connect to the database and query the inscriptions.
     public ArrayList<Inscription> getInscription() {
         ArrayList<Inscription> inscriptions = new ArrayList<Inscription>();
         Inscription inscription;
@@ -82,6 +87,8 @@ public class Query {
      *Query Matches
      * @return matches
      */
+
+    //Method that connect to the database and query the matches.
     public ArrayList<Match> getMatch() {
         ArrayList<Match> matches = new ArrayList<Match>();
         Match match;
@@ -112,6 +119,8 @@ public class Query {
      * Query Players
      * @return players
      */
+
+    //Method that connect to the database and query the players.
         public ArrayList<Players> getPlayers() {
             ArrayList<Players> players = new ArrayList<Players>();
             Players player;
@@ -142,6 +151,8 @@ public class Query {
      * Query Regions
      * @return regions
      */
+
+    //Method that connect to the database and query the regions.
     public ArrayList<Regions> getRegions() {
         ArrayList<Regions> regions = new ArrayList<Regions>();
         Regions region;
@@ -168,6 +179,8 @@ public class Query {
      *Query Rosters
      * @return rosters
      */
+
+    //Method that connect to the database and query the rosters.
     public ArrayList<Roster> getRoster() {
         ArrayList<Roster> rosters = new ArrayList<Roster>();
         Roster roster;
@@ -197,6 +210,8 @@ public class Query {
      * Query Teams
      * @return teams
      */
+
+    //Method that connect to the database and query the teams.
     public ArrayList<Teams> getTeams() {
         ArrayList<Teams> teams = new ArrayList<Teams>();
         Teams team;
@@ -224,6 +239,13 @@ public class Query {
         }
         return teams;
     }
+
+    /**
+     * Query Tournaments
+     * @return
+     */
+
+    //Method that connect to the database and query the tournaments.
     public ArrayList<Tournaments> getTournaments() {
         ArrayList<Tournaments> tournaments = new ArrayList<Tournaments>();
         Tournaments tournament;

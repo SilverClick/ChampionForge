@@ -1,6 +1,6 @@
 package org.example.sql;
 
-import org.example.conection.*;
+import conect.*;
 import org.example.data.*;
 
 import javax.swing.*;
@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Updates {
+    //Class with the update methods of the database.
 
     Conection c = null;
     public Updates(Conection c){
@@ -21,6 +22,8 @@ public class Updates {
      * Update Player
      * @param player
      */
+
+    //Method that connect to the database and update a player.
     public void updatePlayer(Players player){
         try
         {
@@ -50,6 +53,8 @@ public class Updates {
      * Update Tournament
      * @param tournament
      */
+
+    //Method that connect to the database and update a tournament.
     public void updateTournament(Tournaments tournament) {
         try
         {
@@ -85,6 +90,8 @@ public class Updates {
      * Update Team
      * @param team
      */
+
+    //Method that connect to the database and update a team.
     public void updateTeam(Teams team){
         try
         {
@@ -115,6 +122,8 @@ public class Updates {
      * Update Game
      * @param game
      */
+
+    //Method that connect to the database and update a game.
     public void updateGame(Games game){
         try
         {
@@ -143,6 +152,8 @@ public class Updates {
      * Update Region
      * @param region
      */
+
+    //Method that connect to the database and update a region.
     public void updateRegion(Regions region){
         try
         {
@@ -168,6 +179,8 @@ public class Updates {
      * Update Roster
      * @param roster
      */
+
+    //Method that connect to the database and update a roster.
     public void updateRoster(Roster roster) {
         try {
             Connection con = null;
@@ -194,6 +207,8 @@ public class Updates {
      * Update Inscription
      * @param inscription
      */
+
+    //Method that connect to the database and update a inscription.
         public void updateInscription(Inscription inscription) {
             try {
                 Connection con = null;
@@ -219,6 +234,8 @@ public class Updates {
      * Update Match
      * @param match
      */
+
+    //Method that connect to the database and update a match.
     public void updateMatch(Match match) {
         try {
             Connection con = null;
