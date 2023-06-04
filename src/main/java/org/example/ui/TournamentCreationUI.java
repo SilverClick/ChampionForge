@@ -178,22 +178,6 @@ public class TournamentCreationUI extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_signButtonActionPerformed
-
-    private void looserbBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_looserbBActionPerformed
-        // TODO add your handling code here:
-        String checked = "src/icons/creationUI/cbox.png";
-        String empty = "src/icons/creationUI/emptyCbox.png";
-        if (looserbB.getIcon().toString().equals(checked)) {
-            looserbB.setIcon(new ImageIcon(empty));
-        }else {
-            looserbB.setIcon(new ImageIcon(checked));
-        }
-
-    }//GEN-LAST:event_looserbBActionPerformed
-
     private void gstageBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gstageBActionPerformed
         // TODO add your handling code here:
         String checked = "src/icons/creationUI/cbox.png";
@@ -204,6 +188,21 @@ public class TournamentCreationUI extends javax.swing.JInternalFrame {
             gstageB.setIcon(new ImageIcon(checked));
         }
     }//GEN-LAST:event_gstageBActionPerformed
+
+    private void looserbBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_looserbBActionPerformed
+        // TODO add your handling code here:
+        String checked = "src/icons/creationUI/cbox.png";
+        String empty = "src/icons/creationUI/emptyCbox.png";
+        if (looserbB.getIcon().toString().equals(checked)) {
+            looserbB.setIcon(new ImageIcon(empty));
+        }else {
+            looserbB.setIcon(new ImageIcon(checked));
+        }
+    }//GEN-LAST:event_looserbBActionPerformed
+
+    private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_signButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
