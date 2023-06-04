@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Deletes {
+    //Class with the delete methods of the database.
     Conection c = null;
     public Deletes(Conection c){
         this.c =c;
@@ -20,7 +21,7 @@ public class Deletes {
      * @param player
      */
 
-    //Method that connect to the database and delete a player.
+    //Method to connect to the database and delete a player.
     public void deletePlayer(Players player){
         try
         {
@@ -46,7 +47,7 @@ public class Deletes {
      * @param tournament
      */
 
-    //Method that connect to the database and delete a tournament.
+    //Method to connect to the database and delete a tournament.
     public void deleteTournament(Tournaments tournament){
         try
         {
@@ -72,7 +73,7 @@ public class Deletes {
      * @param team
      */
 
-    //Method that connect to the database and delete a team.
+    //Method to connect to the database and delete a team.
     public void deleteTeam(Teams team){
         try
         {
@@ -98,7 +99,7 @@ public class Deletes {
      * @param inscription
      */
 
-    //Method that connect to the database and delete a inscription.
+    //Method to connect to the database and delete a inscription.
     public void deleteInscription(Inscription inscription){
         try
         {
@@ -124,7 +125,7 @@ public class Deletes {
      * @param match
      */
 
-    //Method that connect to the database and delete a match.
+    //Method to connect to the database and delete a match.
     public void deleteMatch(Match match){
         try
         {
@@ -150,7 +151,7 @@ public class Deletes {
      * @param roster
      */
 
-    //Method that connect to the database and delete a roster.
+    //Method to connect to the database and delete a roster.
     public void deleteRoster(Roster roster){
         try
         {
@@ -176,7 +177,7 @@ public class Deletes {
      * @param game
      */
 
-    //Method that connect to the database and delete a game.
+    //Method to connect to the database and delete a game.
     public void deleteGame(Games game){
         try
         {
@@ -202,7 +203,7 @@ public class Deletes {
      * @param region
      */
 
-    //Method that connect to the database and delete a region.
+    //Method to connect to the database and delete a region.
     public void deleteRegion(Regions region){
         try
         {

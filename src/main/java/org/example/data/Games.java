@@ -10,6 +10,18 @@ public class Games {
     private int team_max_size;
 
 
+    public Games() {
+    }
+
+    public Games(int game_id, String game_name, String game_description, int team_size, int team_max_size) {
+        this.game_id = game_id;
+        this.game_name = game_name;
+        this.game_description = game_description;
+        this.team_size = team_size;
+        this.team_max_size = team_max_size;
+
+
+    }
 
     public int getGame_id() {
         return game_id;
@@ -50,19 +62,4 @@ public class Games {
     public void setTeam_max_size(int team_max_size) {
         this.team_max_size = team_max_size;
     }
-
-    public Games() {
-    }
-
-    public Games(int game_id, String game_name, String game_description, int team_size, int team_max_size) {
-        this.game_id = game_id;
-        this.game_name = game_name;
-        this.game_description = game_description;
-        this.team_size = team_size;
-        this.team_max_size = team_max_size;
-
-
-    }
-
-
 }

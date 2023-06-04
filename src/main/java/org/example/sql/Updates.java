@@ -1,6 +1,6 @@
 package org.example.sql;
 
-import org.example.conection.Conection;
+import org.example.conection.*;
 import org.example.data.*;
 
 import javax.swing.*;
@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Updates {
+    //Class with the update methods of the database.
 
     Conection c = null;
     public Updates(Conection c){
@@ -100,7 +101,7 @@ public class Updates {
             String sql = "update teams set team_name=?,team_creation_date=?,team_description=?,team_points_req=?,game_id=?,region_id=? where team_id=?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, team.getTeam_name());
-            pst.setString(2, team.getTeam_creation_date());
+            pst.setDate(2, team.getTeam_creation_date());
             pst.setString(3, team.getTeam_description());
             pst.setInt(4, team.getTeam_point_req());
             pst.setInt(5, team.getGame_id());
@@ -207,7 +208,7 @@ public class Updates {
      * @param inscription
      */
 
-    //Method that connect to the database and update an inscription.
+    //Method that connect to the database and update a inscription.
         public void updateInscription(Inscription inscription) {
             try {
                 Connection con = null;

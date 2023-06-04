@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Query {
+    //Class with the query methods of the database.
    Conection c=null;
 
    /**
@@ -223,7 +224,7 @@ public class Query {
                 team= new Teams();
                 team.setTeam_id(rs.getInt("team_id"));
                 team.setTeam_name(rs.getString("team_name"));
-                team.setTeam_creation_date(rs.getString("team_creation_date"));
+                team.setTeam_creation_date(rs.getDate("team_creation_date"));
                team.setTeam_description(rs.getString("team_description"));
                team.setTeam_point_req(rs.getInt("team_point_req"));
                 team.setGame_id(rs.getInt("game_id"));
@@ -240,8 +241,8 @@ public class Query {
     }
 
     /**
-     *Query Tournaments
-     *@return tournaments
+     * Query Tournaments
+     * @return
      */
 
     //Method that connect to the database and query the tournaments.

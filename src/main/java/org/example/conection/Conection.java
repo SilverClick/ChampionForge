@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Conection {
+    //Class with the methods to connect and disconnect to the database.
 
     private static Conection con = null;
     Connection ccn = null;
@@ -22,7 +23,7 @@ public class Conection {
     private Conection(){
         try
         {
-            String rutafile = "db/db(1).accdb";
+            String rutafile = "db/db.accdb";
             String Url = "jdbc:ucanaccess://" + rutafile;
             ccn = DriverManager.getConnection(Url);
             st = ccn.createStatement();

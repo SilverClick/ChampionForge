@@ -9,6 +9,7 @@ import java.sql.*;
 
 
 public class Inserts {
+    //Class with the insert methods of the database.
     Conection c = null;
     public Inserts(Conection c){
         this.c =c;
@@ -19,7 +20,7 @@ public class Inserts {
      * @param player
      */
 
-    //Method that connect to the database and insert a player.
+    //Method to connect to the database and insert a player.
     public void createPlayer(Players player){
         try
         {
@@ -47,7 +48,7 @@ public class Inserts {
      * @param tournament
      */
 
-    //Method that connect to the database and insert a tournament.
+    //Method to connect to the database and insert a player.
     public void createTournament(Tournaments tournament){
         try
         {
@@ -81,7 +82,7 @@ public class Inserts {
      * @param team
      */
 
-    //Method that connect to the database and insert a team.
+    //Method to connect to the database and insert a player.
     public void createTeam(Teams team){
         try
         {
@@ -90,7 +91,7 @@ public class Inserts {
             String sql = "insert into teams (team_name,team_creation_date,team_description,team_points_req,game_id,region_id) values (?,?,?,?,?,?)";
             PreparedStatement pst = conect.prepareStatement(sql);
             pst.setString(1, team.getTeam_name());
-            pst.setString(2, team.getTeam_creation_date());
+            pst.setDate(2, team.getTeam_creation_date());
             pst.setString(3, team.getTeam_description());
             pst.setInt(4, team.getTeam_point_req());
             pst.setInt(5, team.getGame_id());
@@ -110,7 +111,7 @@ public class Inserts {
      * @param game
      */
 
-    //Method that connect to the database and insert a game.
+    //Method to connect to the database and insert a game.
     public void createGame(Games game){
         try
         {
@@ -137,7 +138,7 @@ public class Inserts {
      * @param region
      */
 
-    //Method that connect to the database and insert a region.
+    //Method to connect to the database and insert a region.
     public void createRegion(Regions region){
         try
         {
@@ -161,7 +162,7 @@ public class Inserts {
      * @param roster
      */
 
-    //Method that connect to the database and insert a roster.
+    //Method to connect to the database and insert a roster.
     public void createRoster(Roster roster){
         try
         {
@@ -188,7 +189,7 @@ public class Inserts {
      * @param inscription
      */
 
-    //Method that connect to the database and insert an inscription.
+    //Method to connect to the database and insert an inscription.
     public void createInscription(Inscription inscription) {
         try {
             Connection conect = null;
@@ -212,7 +213,7 @@ public class Inserts {
      * @param match
      */
 
-    //Method that connect to the database and insert a match.
+    //Method to connect to the database and insert a match.
     public void createMatch(Match match) {
         try {
             Connection conect = null;

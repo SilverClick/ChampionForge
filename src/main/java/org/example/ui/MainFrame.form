@@ -85,6 +85,9 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tournamentMouseClicked"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="teams">
           <Properties>
@@ -95,6 +98,9 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teamsMouseClicked"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="players">
           <Properties>

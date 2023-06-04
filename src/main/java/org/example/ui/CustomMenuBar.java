@@ -8,7 +8,8 @@ public class CustomMenuBar extends JMenuBar {
 
     public CustomMenuBar() {
         super();
-        backgroundColor = Color.BLACK; // Cambia este color según tus preferencias
+        float[] hsbValues = Color.RGBtoHSB(6, 26, 41, null); // Convertir RGB a HSB
+        backgroundColor = Color.getHSBColor(hsbValues[0], hsbValues[1], hsbValues[2]); // Establecer el color de fondo en HSB // Cambia este color según tus preferencias
     }
 
     @Override
