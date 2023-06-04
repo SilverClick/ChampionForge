@@ -1,6 +1,6 @@
 package org.example.sql;
 
-import org.example.conection.*;
+import conect.*;
 import org.example.data.*;
 
 import javax.swing.*;

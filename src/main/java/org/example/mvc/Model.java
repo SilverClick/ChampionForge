@@ -1,6 +1,6 @@
 package org.example.mvc;
 
-import org.example.conection.Conection;
+import conect.Conection;
 import org.example.data.*;
 import org.example.sql.Deletes;
 import org.example.sql.Inserts;
