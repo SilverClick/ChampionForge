@@ -15,8 +15,10 @@ public class Conection {
     Statement st = null;
 
     /**
-     * Database conection.
+     * Database connection.
      */
+
+    //Method to connect on database.
     private Conection(){
         try
         {
@@ -31,8 +33,10 @@ public class Conection {
     }
 
     /**
-     * @return Conection instance.
+     * @return Connection instance.
      */
+
+    //Method to get the connection instance.
     public static Conection getInstance(){
         if (con == null){
             con= new Conection();
@@ -43,14 +47,18 @@ public class Conection {
     /**
      * @return connection status.
      */
+
+    //Method to get the connection status.
     public Connection getConnection(){
         return ccn;
     }
 
 
     /**
-     * Database desconection and program exit.
+     * Database disconnection and program exit.
      */
+
+    //Method to disconnect on database and program exit.
     public void Desconexion(){
         try
         {
