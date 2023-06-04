@@ -25,6 +25,8 @@ public class Model {
      * @param team_max_size
      * @return aux
      */
+
+    //Method to create auxiliar games.
     public Games createGame(  int game_id, String game_name,  String game_description,
                               int team_size,  int team_max_size){
         Games aux = new Games(  game_id,  game_name,   game_description,
@@ -40,7 +42,9 @@ public class Model {
      * @param team_id
      * @return aux
      */
-    public Inscription createInscription(int inscription_id,String inscription_date,int tournament_id,int team_id ){
+
+    //Method to create auxiliar inscription.
+       public Inscription createInscription(int inscription_id,String inscription_date,int tournament_id,int team_id ){
         Inscription aux = new Inscription(inscription_id,inscription_date,tournament_id,team_id);
         return aux;
     }
@@ -54,6 +58,8 @@ public class Model {
      * @param winner
      * @return aux
      */
+
+    //Method to create auxiliar match.
     public Match createMatch(int match_id,int team1_id, int team2_id, String result, int winner){
         Match aux = new Match( match_id, team1_id, team2_id, result, winner);
         return aux;
@@ -69,13 +75,12 @@ public class Model {
      * @return aux
      */
 
+    //Method to create auxiliar player.
     public Players createPlayer( int player_id, String player_name, String player_password, String player_description, int tournament_points, int region_id){
         Players aux = new Players(player_id, player_name,player_password, player_description,
                 tournament_points, region_id);
         return aux;
     }
-
-
 
     /**
      * Create Regions
@@ -83,6 +88,8 @@ public class Model {
      * @param region_name
      * @return aux
      */
+
+    //Method to create auxiliar region.
     public Regions createRegion( int region_id,String region_name){
         Regions aux = new Regions( region_id, region_name);
         return aux;
@@ -97,6 +104,8 @@ public class Model {
      * @param player_id
      * @return aux
      */
+
+    //Method to create auxiliar roster.
     public Roster createRoster(int roster_id,  String join_date,String left_date,int team_id,int player_id){
         Roster aux = new Roster(  roster_id,  join_date, left_date,team_id  ,player_id);
         return aux;
@@ -114,6 +123,8 @@ public class Model {
      * @param region_id
      * @return aux
      */
+
+    //Method to create auxiliar team.
     public Teams createTeam( int team_id, String team_name, String team_creation_date ,String team_description,int teams_points_req,
      int game_id, int region_id){
         Teams aux = new Teams( team_id,team_name, team_creation_date ,team_description,teams_points_req,
@@ -137,6 +148,7 @@ public class Model {
      * @return aux
      */
 
+    //Method to create auxiliar tournament.
     public Tournaments createTournament(int tournament_id, String tournament_name, String tournament_description,
                                         int tournament_size, boolean group_stage, int group_stage_size, int tournament_points_req, boolean looser_bracket,
                                         String tournament_date,boolean started,int game_id, int region_id){
@@ -155,6 +167,8 @@ public class Model {
      * @param tournament_points
      * @param region_id
      */
+
+    //Method to create and insert on database a player.
     public void createAndInsertPlayer(int player_id, String player_name, String player_password, String player_description, int tournament_points, int region_id) {
         Players player = createPlayer(player_id, player_name, player_password, player_description, tournament_points, region_id);
         myInserts.createPlayer(player);
@@ -176,6 +190,8 @@ public class Model {
      * @param game_id
      * @param region_id
      */
+
+    //Method to create and insert on database a tournament.
     public void createAndInsertTournament(int tournament_id, String tournament_name, String tournament_description, int tournament_size, boolean group_stage, int group_stage_size, int tournament_points_req, boolean looser_bracket, String tournament_date, boolean started, int game_id, int region_id) {
         Tournaments tournament = createTournament(tournament_id, tournament_name, tournament_description,
                 tournament_size, group_stage, group_stage_size, tournament_points_req, looser_bracket,
@@ -190,6 +206,8 @@ public class Model {
      * @param region_id
      * @param region_name
      */
+
+    //Method to create and insert on database a region.
     public void createAndInsertRegion(int region_id, String region_name) {
         Regions region =createRegion(region_id, region_name);
         myInserts.createRegion(region);
@@ -204,6 +222,8 @@ public class Model {
      * @param team_size
      * @param team_max_size
      */
+
+    //Method to create and insert on database a game.
     public void createAndInsertGame(int game_id, String game_name, String game_description, int team_size, int team_max_size) {
         Games game = createGame(game_id, game_name, game_description, team_size, team_max_size);
         myInserts.createGame(game);
@@ -216,6 +236,8 @@ public class Model {
      * @param tournament
      * @param team
      */
+
+    ////Method to create and insert on database a inscription.
     public void createAndInsertInscription(int inscription_id, String inscription_date, Tournaments tournament,Teams team){
         int tournament_id=tournament.getTournament_id();
         int team_id=team.getTeam_id();
@@ -231,6 +253,8 @@ public class Model {
      * @param result
      * @param winner
      */
+
+    ////Method to create and insert on database a match.
     public void createAndInsertMatch(int match_id,Teams team1,Teams team2, String result, int winner){
         int team1_id=team1.getTeam_id();
         int team2_id=team2.getTeam_id();
@@ -244,6 +268,8 @@ public class Model {
      * @param join_date
      * @param left_date
      */
+
+    //Method to create and insert on database a roster.
     public void createAndInsertRoster(int roster_id, String join_date, String left_date, Teams team,Players player){
         int player_id=player.getPlayer_id();
         int team_id=team.getTeam_id();
@@ -252,7 +278,7 @@ public class Model {
     }
 
     /**
-     * Create And Insert Team
+     * Create And Insert Teams
      *
      * @param team_id
      * @param team_name
@@ -262,6 +288,8 @@ public class Model {
      * @param game_id
      * @param region_id
      */
+
+    //Method to create and insert on database a team.
     public void createAndInsertTeam(int team_id, String team_name, String team_creation_date, String team_description, int teams_points_req, int game_id, int region_id) {
         Teams team = createTeam(team_id, team_name, team_creation_date, team_description, teams_points_req, game_id, region_id);
         myInserts.createTeam(team);
@@ -271,6 +299,8 @@ public class Model {
      * @param game_id
      * @return game
      */
+
+    //Method to query games.
     public  Games queryGames(int game_id) {
         ArrayList<Games> games = myQuery.getGames();
         for ( Games game : games) {
@@ -282,11 +312,13 @@ public class Model {
     }
 
     /**
-     * Query Inscription
+     * Query Inscriptions
      * @param inscription_id
      * @return inscription
      */
-    public  Inscription queryInscription(int inscription_id) {
+
+    //Method to query inscriptions.
+    public  Inscription queryInscriptions(int inscription_id) {
         ArrayList<Inscription> inscriptions = myQuery.getInscription();
         for ( Inscription inscription : inscriptions) {
             if (inscription_id == inscription.getInscription_id()) {
@@ -296,11 +328,13 @@ public class Model {
         return null;
     }
     /**
-     * Query Match
+     * Query Matches
      * @param match_id
      * @return match
      */
-    public  Match queryMatch(int match_id) {
+
+    //Method to query matches.
+    public  Match queryMatches(int match_id) {
         ArrayList<Match> matches = myQuery.getMatch();
         for ( Match match : matches) {
             if (match_id == match.getMatch_id()) {
@@ -310,11 +344,13 @@ public class Model {
         return null;
     }
     /**
-     * Query Roster
+     * Query Rosters
      * @param roster_id
      * @return roster
      */
-    public Roster queryRoster(int roster_id) {
+
+    //Method to query rosters.
+    public Roster queryRosters(int roster_id) {
         ArrayList<Roster> rosters = myQuery.getRoster();
         for ( Roster roster : rosters) {
             if (roster_id == roster.getRoster_id()) {
@@ -330,6 +366,8 @@ public class Model {
      * @param player_id
      * @return player
      */
+
+    //Method to query players.
     public Players queryPlayer(int player_id) {
         ArrayList<Players> players = myQuery.getPlayers();
         for (Players player : players) {
@@ -344,7 +382,9 @@ public class Model {
      * @param region_id
      * @return region
      */
-    public Regions queryRegion(int region_id) {
+
+    //Method to query regions.
+    public Regions queryRegions(int region_id) {
         ArrayList<Regions> regions = myQuery.getRegions();
         for ( Regions region : regions) {
             if (region_id == region.getRegion_id()) {
@@ -358,6 +398,8 @@ public class Model {
      * @param team_id
      * @return team
      */
+
+    //Method to query teams.
     public  Teams queryTeams(int team_id) {
         ArrayList<Teams> teams = myQuery.getTeams();
         for ( Teams team : teams) {
@@ -368,11 +410,13 @@ public class Model {
         return null;
     }
     /**
-     * Query Tournament
+     * Query Tournaments
      * @param tournament_id
      * @return tournament
      */
-    public Tournaments queryTournament(int tournament_id) {
+
+    //Method to query tournaments.
+    public Tournaments queryTournaments(int tournament_id) {
         ArrayList<Tournaments> tournaments = myQuery.getTournaments();
         for (Tournaments tournament : tournaments) {
             if (tournament_id == tournament.getTournament_id()) {
@@ -386,6 +430,8 @@ public class Model {
      * Delete Games
      * @param game
      */
+
+    //Method to delete a game.
     public void deleteGame(Games game) {
         myDeletes.deleteGame(game);
     }
@@ -394,6 +440,8 @@ public class Model {
      * Delete Players
      * @param player
      */
+
+    //Method to delete a player.
     public void deletePlayer(Players player) {
         myDeletes.deletePlayer(player);
     }
@@ -402,6 +450,8 @@ public class Model {
      * Delete Inscription
      * @param inscription
      */
+
+    //Method to delete a inscription.
     public void deleteInscription(Inscription inscription) {
         myDeletes.deleteInscription(inscription);
     }
@@ -410,6 +460,8 @@ public class Model {
      * Delete Match
      * @param match
      */
+
+    //Method to delete a match.
     public void deleteMatch(Match match) {
         myDeletes.deleteMatch(match);
     }
@@ -418,39 +470,49 @@ public class Model {
      * Delete Roster
      * @param roster
      */
+
+    // //Method to delete a roster.
     public void deleteRoster(Roster roster) {
         myDeletes.deleteRoster(roster);
     }
 
     /**
-     * Delete Regions
+     * Delete Region
      * @param region
      */
+
+    //Method to delete a region.
     public void deleteRegion(Regions region) {
         myDeletes.deleteRegion(region);
     }
 
     /**
-     * Delete Teams
+     * Delete Team
      * @param team
      */
+
+    //Method to delete a team.
     public void deleteTeam(Teams team) {
         myDeletes.deleteTeam(team);
     }
 
     /**
-     * Delete Tournaments
+     * Delete Tournament
      * @param tournament
      */
-    public void deleteTournaments(Tournaments tournament) {
+
+    //Method to delete a tournament.
+    public void deleteTournament(Tournaments tournament) {
         myDeletes.deleteTournament(tournament);
     }
 
     /**
-     * Update Games
+     * Update Game
      * @param game
      */
-    public void updateGames(Games game){
+
+    //Method to update a game.
+    public void updateGame(Games game){
         myUpdates.updateGame(game);
     }
 
@@ -459,27 +521,34 @@ public class Model {
      * @param inscription
      */
 
+    //Method to update a inscription.
     public void updateInscription(Inscription inscription){ myUpdates.updateInscription(inscription);}
 
     /**
      * Update Match
      * @param match
      */
+
+    //Method to update a match.
     public void updateMatch(Match match){myUpdates.updateMatch(match);}
 
     /**
-     * Update Players
+     * Update Player
      * @param player
      */
-    public void updatePlayers(Players player){
+
+    //Method to update a player.
+    public void updatePlayer(Players player){
         myUpdates.updatePlayer(player);
     }
 
     /**
-     * Update Regions
+     * Update Region
      * @param region
      */
-    public void updateRegions(Regions region){
+
+    //Method to update a region.
+    public void updateRegion(Regions region){
         myUpdates.updateRegion(region);
     }
 
@@ -488,21 +557,26 @@ public class Model {
      * @param roster
      */
 
+    //Method to update a roster.
     public void updateRoster(Roster roster){myUpdates.updateRoster(roster);}
 
     /**
-     * Update Teams
+     * Update Team
      * @param team
      */
-    public void updateTeams(Teams team){
+
+    //Method to update a team.
+    public void updateTeam(Teams team){
         myUpdates.updateTeam(team);
     }
 
     /**
-     * Update Tournaments
+     * Update Tournament
      * @param tournament
      */
-    public void updateTournaments(Tournaments tournament){
+
+    //Method to update a tournament.
+    public void updateTournament(Tournaments tournament){
         myUpdates.updateTournament(tournament);
     }
 
