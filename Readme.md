@@ -77,4 +77,22 @@ classDiagram
     Regions "1" --> "n" Teams
     Regions "1" --> "n" Tournaments
 ```
+```mermaid
+sequenceDiagram
+    actor usuario
+        participant View 
+    participant Controller
+    participant Model
+
+    usuario->>IU: click! CreateTournament
+    IU->>Controller: createAndInsertTournament()
+    activate Controller
+    Controller->>Model: createAndInsertTournament
+    activate Model
+    Model-->>Controller: Tournament
+    deactivate Model
+    deactivate Controller
+
+
+
 
