@@ -4,17 +4,37 @@
  */
 package org.example.ui;
 
+import org.example.files.ActiveSession;
+import org.example.mvc.Controller;
+
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 /**
  *
  * @author PC-LORENZO
  */
 public class TeamCreationUI extends javax.swing.JInternalFrame {
 
+    MainFrame frame;
     /**
      * Creates new form TeamCreationUI
      */
-    public TeamCreationUI() {
+    public TeamCreationUI(MainFrame frame) {
+        this.frame = frame;
         initComponents();
+        jComboBox1.removeAllItems();
+        jComboBox1= Controller.gameCbox(jComboBox1);
+        // Eliminar el borde decorativo
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
+        ui.setNorthPane(null);
+        ui.setEastPane(null);
+        ui.setWestPane(null);
+        ui.setSouthPane(null);
+        this.setBorder(null);
     }
 
     /**
@@ -36,6 +56,8 @@ public class TeamCreationUI extends javax.swing.JInternalFrame {
         descriptionTField = new javax.swing.JTextArea();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        tpointCbox = new javax.swing.JComboBox<>();
         logBg = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
 
@@ -49,16 +71,16 @@ public class TeamCreationUI extends javax.swing.JInternalFrame {
         logPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         descriptionLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\description.png")); // NOI18N
-        logPanel.add(descriptionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 400, 80));
+        logPanel.add(descriptionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 90, 400, 80));
 
         userField.setBackground(new java.awt.Color(0, 0, 0));
         userField.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
         userField.setForeground(new java.awt.Color(255, 157, 0));
         userField.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0)));
-        logPanel.add(userField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 250, 40));
+        logPanel.add(userField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 250, 40));
 
         userLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\name.png")); // NOI18N
-        logPanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, -1, 80));
+        logPanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, 80));
 
         signButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\button_create.png")); // NOI18N
         signButton.setBorderPainted(false);
@@ -79,16 +101,25 @@ public class TeamCreationUI extends javax.swing.JInternalFrame {
         descriptionTField.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0)));
         jScrollPane1.setViewportView(descriptionTField);
 
-        logPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, 410, 320));
+        logPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 180, 410, 320));
 
         jComboBox1.setBackground(new java.awt.Color(0, 0, 0));
         jComboBox1.setForeground(new java.awt.Color(255, 157, 0));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0)));
-        logPanel.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 330, 50));
+        logPanel.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 330, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\game.png")); // NOI18N
-        logPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 250, 100));
+        logPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 250, 100));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\tpointsRequired.png")); // NOI18N
+        logPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 570, 60));
+
+        tpointCbox.setBackground(new java.awt.Color(0, 0, 0));
+        tpointCbox.setForeground(new java.awt.Color(255, 157, 0));
+        tpointCbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1000", "2500", "5000" }));
+        tpointCbox.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0)));
+        logPanel.add(tpointCbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 330, 50));
 
         logBg.setBackground(new java.awt.Color(0, 0, 0));
         logBg.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\logPanel.jpg")); // NOI18N
@@ -116,6 +147,11 @@ public class TeamCreationUI extends javax.swing.JInternalFrame {
 
     private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signButtonActionPerformed
         // TODO add your handling code here:
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy");
+        String formattedDate = currentDate.format(formatter);
+        Controller.createAndInsertTeam(0,userField.getText(), formattedDate,descriptionTField.getText(),Integer.parseInt((String) tpointCbox.getSelectedItem()),Controller.getGameId((String) jComboBox1.getSelectedItem()),Controller.queryPlayer(Integer.parseInt(ActiveSession.leerArchivo())).getRegion_id());
+        this.dispose();
     }//GEN-LAST:event_signButtonActionPerformed
 
 
@@ -125,11 +161,13 @@ public class TeamCreationUI extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea descriptionTField;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel logBg;
     private javax.swing.JPanel logPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JButton signButton;
+    private javax.swing.JComboBox<String> tpointCbox;
     private javax.swing.JTextField userField;
     private javax.swing.JLabel userLabel;
     // End of variables declaration//GEN-END:variables

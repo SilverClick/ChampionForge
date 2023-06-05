@@ -4,17 +4,39 @@
  */
 package org.example.ui;
 
+import org.example.data.Tournaments;
+import org.example.mvc.Controller;
+
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+import java.util.ArrayList;
+
 /**
  *
  * @author PC-LORENZO
  */
 public class TournamentViewUI extends javax.swing.JInternalFrame {
 
+    ArrayList<Tournaments> tournaments;
+    MainFrame frame;
+    String[] titles= new String[]{"NAME", "DESCRIPTION", "TOURNAMENT SIZE", "GROUP STAGE", "GROUP STAGE SIZE", "LOOSER BRACKET", "GAME NAME"};
+
     /**
      * Creates new form TournamentViewUI
      */
-    public TournamentViewUI() {
+    public TournamentViewUI(MainFrame frame,ArrayList<Tournaments> tournaments) {
+        this.frame=frame;
+        this.tournaments=tournaments;
         initComponents();
+        gameCbox.removeAllItems();
+        gameCbox=Controller.gameCbox(gameCbox);
+        jTable2=Controller.seeDataTournaments(jTable2,titles,tournaments);
+        // Eliminar el borde decorativo
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
+        ui.setNorthPane(null);
+        ui.setEastPane(null);
+        ui.setWestPane(null);
+        ui.setSouthPane(null);
+        this.setBorder(null);
     }
 
     /**
@@ -27,1389 +49,158 @@ public class TournamentViewUI extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
-        gstage16 = new javax.swing.JPanel();
-        gstage16_t15_1 = new javax.swing.JLabel();
-        gstage16_t15_2 = new javax.swing.JLabel();
-        gstage16_t15_3 = new javax.swing.JLabel();
-        gstage16_t16_1 = new javax.swing.JLabel();
-        gstage16_t16_2 = new javax.swing.JLabel();
-        gstage16_t16_3 = new javax.swing.JLabel();
-        gstage16_t14_1 = new javax.swing.JLabel();
-        gstage16_t14_2 = new javax.swing.JLabel();
-        gstage16_t14_3 = new javax.swing.JLabel();
-        gstage16_t13_2 = new javax.swing.JLabel();
-        gstage16_t13_3 = new javax.swing.JLabel();
-        gstage16_t13_1 = new javax.swing.JLabel();
-        gstage16_t11_1 = new javax.swing.JLabel();
-        gstage16_t11_2 = new javax.swing.JLabel();
-        gstage16_t11_3 = new javax.swing.JLabel();
-        gstage16_t12_1 = new javax.swing.JLabel();
-        gstage16_t12_2 = new javax.swing.JLabel();
-        gstage16_t12_3 = new javax.swing.JLabel();
-        gstage16_t10_1 = new javax.swing.JLabel();
-        gstage16_t10_2 = new javax.swing.JLabel();
-        gstage16_t10_3 = new javax.swing.JLabel();
-        gstage16_t9_2 = new javax.swing.JLabel();
-        gstage16_t9_3 = new javax.swing.JLabel();
-        gstage16_t9_1 = new javax.swing.JLabel();
-        gstage16_t7_1 = new javax.swing.JLabel();
-        gstage16_t7_2 = new javax.swing.JLabel();
-        gstage16_t7_3 = new javax.swing.JLabel();
-        gstage16_t8_1 = new javax.swing.JLabel();
-        gstage16_t8_2 = new javax.swing.JLabel();
-        gstage16_t8_3 = new javax.swing.JLabel();
-        gstage16_t6_1 = new javax.swing.JLabel();
-        gstage16_t6_2 = new javax.swing.JLabel();
-        gstage16_t6_3 = new javax.swing.JLabel();
-        gstage16_t5_2 = new javax.swing.JLabel();
-        gstage16_t5_3 = new javax.swing.JLabel();
-        gstage16_t5_1 = new javax.swing.JLabel();
-        gstage16_t3_1 = new javax.swing.JLabel();
-        gstage16_t3_2 = new javax.swing.JLabel();
-        gstage16_t3_3 = new javax.swing.JLabel();
-        gstage16_t4_1 = new javax.swing.JLabel();
-        gstage16_t4_2 = new javax.swing.JLabel();
-        gstage16_t4_3 = new javax.swing.JLabel();
-        gstage16_t2_1 = new javax.swing.JLabel();
-        gstage16_t2_2 = new javax.swing.JLabel();
-        gstage16_t2_3 = new javax.swing.JLabel();
-        gstage16_t1_2 = new javax.swing.JLabel();
-        gstage16_t1_3 = new javax.swing.JLabel();
-        gstage16_t1_1 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        teams16L = new javax.swing.JPanel();
-        teams16L_2 = new javax.swing.JLabel();
-        teams16L_3 = new javax.swing.JLabel();
-        teams16L_4 = new javax.swing.JLabel();
-        teams16L_5 = new javax.swing.JLabel();
-        teams16L_6 = new javax.swing.JLabel();
-        teams16L_7 = new javax.swing.JLabel();
-        teams16L_8 = new javax.swing.JLabel();
-        teams16L_9 = new javax.swing.JLabel();
-        teams16L_10 = new javax.swing.JLabel();
-        teams16L_11 = new javax.swing.JLabel();
-        teams16L_12 = new javax.swing.JLabel();
-        teams16L_13 = new javax.swing.JLabel();
-        teams16L_14 = new javax.swing.JLabel();
-        teams16L_15 = new javax.swing.JLabel();
-        teams16L_16 = new javax.swing.JLabel();
-        teams16L_17 = new javax.swing.JLabel();
-        teams16L_18 = new javax.swing.JLabel();
-        teams16L_19 = new javax.swing.JLabel();
-        teams16L_20 = new javax.swing.JLabel();
-        teams16L_21 = new javax.swing.JLabel();
-        teams16L_22 = new javax.swing.JLabel();
-        teams16L_23 = new javax.swing.JLabel();
-        teams16L_24 = new javax.swing.JLabel();
-        teams16L_25 = new javax.swing.JLabel();
-        teams16L_26 = new javax.swing.JLabel();
-        teams16L_27 = new javax.swing.JLabel();
-        teams16L_28 = new javax.swing.JLabel();
-        teams16L_29 = new javax.swing.JLabel();
-        teams16L_30 = new javax.swing.JLabel();
-        teams16L_31 = new javax.swing.JLabel();
-        teams16L_32 = new javax.swing.JLabel();
-        teams16L_33 = new javax.swing.JLabel();
-        teams16L_34 = new javax.swing.JLabel();
-        teams16L_35 = new javax.swing.JLabel();
-        teams16L_36 = new javax.swing.JLabel();
-        teams16L_37 = new javax.swing.JLabel();
-        teams16L_38 = new javax.swing.JLabel();
-        teams16L_39 = new javax.swing.JLabel();
-        teams16L_40 = new javax.swing.JLabel();
-        teams16L_41 = new javax.swing.JLabel();
-        teams16L_42 = new javax.swing.JLabel();
-        teams16L_43 = new javax.swing.JLabel();
-        teams16L_44 = new javax.swing.JLabel();
-        teams16L_45 = new javax.swing.JLabel();
-        teams16L_46 = new javax.swing.JLabel();
-        teams16L_47 = new javax.swing.JLabel();
-        teams16L_48 = new javax.swing.JLabel();
-        teams16L_49 = new javax.swing.JLabel();
-        teams16L_50 = new javax.swing.JLabel();
-        teams16L_51 = new javax.swing.JLabel();
-        teams16L_52 = new javax.swing.JLabel();
-        teams16L_53 = new javax.swing.JLabel();
-        teams16L_54 = new javax.swing.JLabel();
-        teams16L_55 = new javax.swing.JLabel();
-        teams16L_56 = new javax.swing.JLabel();
-        teams16L_57 = new javax.swing.JLabel();
-        teams16L_58 = new javax.swing.JLabel();
-        teams16L_59 = new javax.swing.JLabel();
-        teams16L_60 = new javax.swing.JLabel();
-        teams16L_1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        teams16 = new javax.swing.JPanel();
-        team16_2 = new javax.swing.JLabel();
-        team16_3 = new javax.swing.JLabel();
-        team16_4 = new javax.swing.JLabel();
-        team16_5 = new javax.swing.JLabel();
-        team16_6 = new javax.swing.JLabel();
-        team16_7 = new javax.swing.JLabel();
-        team16_8 = new javax.swing.JLabel();
-        team16_9 = new javax.swing.JLabel();
-        team16_10 = new javax.swing.JLabel();
-        team16_11 = new javax.swing.JLabel();
-        team16_12 = new javax.swing.JLabel();
-        team16_13 = new javax.swing.JLabel();
-        team16_14 = new javax.swing.JLabel();
-        team16_15 = new javax.swing.JLabel();
-        team16_16 = new javax.swing.JLabel();
-        team16_17 = new javax.swing.JLabel();
-        team16_18 = new javax.swing.JLabel();
-        team16_19 = new javax.swing.JLabel();
-        team16_20 = new javax.swing.JLabel();
-        team16_21 = new javax.swing.JLabel();
-        team16_22 = new javax.swing.JLabel();
-        team16_23 = new javax.swing.JLabel();
-        team16_24 = new javax.swing.JLabel();
-        team16_25 = new javax.swing.JLabel();
-        team16_26 = new javax.swing.JLabel();
-        team16_27 = new javax.swing.JLabel();
-        team16_28 = new javax.swing.JLabel();
-        team16_29 = new javax.swing.JLabel();
-        team16_30 = new javax.swing.JLabel();
-        team16_1 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        teams8L = new javax.swing.JPanel();
-        teams8L_1 = new javax.swing.JLabel();
-        teams8L_3 = new javax.swing.JLabel();
-        teams8L_4 = new javax.swing.JLabel();
-        teams8L_5 = new javax.swing.JLabel();
-        teams8L_6 = new javax.swing.JLabel();
-        teams8L_7 = new javax.swing.JLabel();
-        teams8L_8 = new javax.swing.JLabel();
-        teams8L_9 = new javax.swing.JLabel();
-        teams8L_10 = new javax.swing.JLabel();
-        teams8L_11 = new javax.swing.JLabel();
-        teams8L_12 = new javax.swing.JLabel();
-        teams8L_13 = new javax.swing.JLabel();
-        teams8L_14 = new javax.swing.JLabel();
-        teams8L_15 = new javax.swing.JLabel();
-        teams8L_16 = new javax.swing.JLabel();
-        teams8L_17 = new javax.swing.JLabel();
-        teams8L_18 = new javax.swing.JLabel();
-        teams8L_19 = new javax.swing.JLabel();
-        teams8L_20 = new javax.swing.JLabel();
-        teams8L_21 = new javax.swing.JLabel();
-        teams8L_22 = new javax.swing.JLabel();
-        teams8L_23 = new javax.swing.JLabel();
-        teams8L_24 = new javax.swing.JLabel();
-        teams8L_25 = new javax.swing.JLabel();
-        teams8L_26 = new javax.swing.JLabel();
-        teams8L_27 = new javax.swing.JLabel();
-        teams8L_28 = new javax.swing.JLabel();
-        teams8L_2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        teams8 = new javax.swing.JPanel();
-        team8_1 = new javax.swing.JLabel();
-        team8_2 = new javax.swing.JLabel();
-        team8_3 = new javax.swing.JLabel();
-        team8_4 = new javax.swing.JLabel();
-        team8_5 = new javax.swing.JLabel();
-        team8_6 = new javax.swing.JLabel();
-        team8_7 = new javax.swing.JLabel();
-        team8_8 = new javax.swing.JLabel();
-        team8_9 = new javax.swing.JLabel();
-        team8_10 = new javax.swing.JLabel();
-        team8_11 = new javax.swing.JLabel();
-        team8_12 = new javax.swing.JLabel();
-        team8_13 = new javax.swing.JLabel();
-        team8_14 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        teams4L = new javax.swing.JPanel();
-        teams4L_2 = new javax.swing.JLabel();
-        teams4L_3 = new javax.swing.JLabel();
-        teams4L_4 = new javax.swing.JLabel();
-        teams4L_5 = new javax.swing.JLabel();
-        teams4L_6 = new javax.swing.JLabel();
-        teams4L_7 = new javax.swing.JLabel();
-        teams4L_8 = new javax.swing.JLabel();
-        teams4L_9 = new javax.swing.JLabel();
-        teams4L_10 = new javax.swing.JLabel();
-        teams4L_11 = new javax.swing.JLabel();
-        teams4L_12 = new javax.swing.JLabel();
-        teams4L_1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        teams4 = new javax.swing.JPanel();
-        team4_2 = new javax.swing.JLabel();
-        team4_3 = new javax.swing.JLabel();
-        team4_4 = new javax.swing.JLabel();
-        team4_5 = new javax.swing.JLabel();
-        team4_6 = new javax.swing.JLabel();
-        team4_1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        teams2L = new javax.swing.JPanel();
-        teams2L_2 = new javax.swing.JLabel();
-        teams2L_3 = new javax.swing.JLabel();
-        teams2L_4 = new javax.swing.JLabel();
-        teams2L_1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        teams2 = new javax.swing.JPanel();
-        team2_2 = new javax.swing.JLabel();
-        team2_1 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        logPanel = new javax.swing.JPanel();
+        nameField = new javax.swing.JTextField();
+        gameLabel = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        gameCbox = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        searchB = new javax.swing.JButton();
+        logBg = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
-        gstage8 = new javax.swing.JPanel();
-        gstage8_t7_1 = new javax.swing.JLabel();
-        gstage8_t7_2 = new javax.swing.JLabel();
-        gstage8_t7_3 = new javax.swing.JLabel();
-        gstage8_t8_1 = new javax.swing.JLabel();
-        gstage8_t8_2 = new javax.swing.JLabel();
-        gstage8_t8_3 = new javax.swing.JLabel();
-        gstage8_t6_1 = new javax.swing.JLabel();
-        gstage8_t6_2 = new javax.swing.JLabel();
-        gstage8_t6_3 = new javax.swing.JLabel();
-        gstage8_t5_2 = new javax.swing.JLabel();
-        gstage8_t5_3 = new javax.swing.JLabel();
-        gstage8_t5_1 = new javax.swing.JLabel();
-        gstage8_t3_1 = new javax.swing.JLabel();
-        gstage8_t3_2 = new javax.swing.JLabel();
-        gstage8_t3_3 = new javax.swing.JLabel();
-        gstage8_t4_1 = new javax.swing.JLabel();
-        gstage8_t4_2 = new javax.swing.JLabel();
-        gstage8_t4_3 = new javax.swing.JLabel();
-        gstage8_t2_1 = new javax.swing.JLabel();
-        gstage8_t2_2 = new javax.swing.JLabel();
-        gstage8_t2_3 = new javax.swing.JLabel();
-        gstage8_t1_2 = new javax.swing.JLabel();
-        gstage8_t1_3 = new javax.swing.JLabel();
-        gstage8_t1_1 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
 
         mainPanel.setBackground(new java.awt.Color(51, 51, 51));
         mainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        gstage16.setBackground(new java.awt.Color(30, 31, 36));
-        gstage16.setEnabled(false);
-        gstage16.setPreferredSize(new java.awt.Dimension(550, 400));
-        gstage16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        gstage16_t15_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t15_1.setText("jLabel2");
-        gstage16.add(gstage16_t15_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1590, 210, 210, 50));
-
-        gstage16_t15_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t15_2.setText("jLabel2");
-        gstage16.add(gstage16_t15_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1590, 390, 210, 50));
-
-        gstage16_t15_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t15_3.setText("fsdfsad");
-        gstage16.add(gstage16_t15_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1590, 780, 210, 50));
-
-        gstage16_t16_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t16_1.setText("jLabel2");
-        gstage16.add(gstage16_t16_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1590, 260, 210, 50));
-
-        gstage16_t16_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t16_2.setText("jLabel2");
-        gstage16.add(gstage16_t16_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1590, 520, 210, 50));
-
-        gstage16_t16_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t16_3.setText("fsdfsad");
-        gstage16.add(gstage16_t16_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1590, 650, 210, 50));
-
-        gstage16_t14_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t14_1.setText("jLabel2");
-        gstage16.add(gstage16_t14_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1590, 130, 210, 50));
-
-        gstage16_t14_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t14_2.setText("jLabel2");
-        gstage16.add(gstage16_t14_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1590, 470, 210, 50));
-
-        gstage16_t14_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t14_3.setText("fsdfsad");
-        gstage16.add(gstage16_t14_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1590, 730, 210, 40));
-
-        gstage16_t13_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t13_2.setText("jLabel2");
-        gstage16.add(gstage16_t13_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1590, 340, 210, 40));
-
-        gstage16_t13_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t13_3.setText("jLabel2");
-        gstage16.add(gstage16_t13_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1590, 600, 210, 40));
-
-        gstage16_t13_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t13_1.setText("fsdfsad");
-        gstage16.add(gstage16_t13_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1590, 80, 210, 50));
-
-        gstage16_t11_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t11_1.setText("jLabel2");
-        gstage16.add(gstage16_t11_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 210, 210, 50));
-
-        gstage16_t11_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t11_2.setText("jLabel2");
-        gstage16.add(gstage16_t11_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 390, 210, 40));
-
-        gstage16_t11_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t11_3.setText("fsdfsad");
-        gstage16.add(gstage16_t11_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 780, 210, 50));
-
-        gstage16_t12_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t12_1.setText("jLabel2");
-        gstage16.add(gstage16_t12_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 260, 210, 50));
-
-        gstage16_t12_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t12_2.setText("jLabel2");
-        gstage16.add(gstage16_t12_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 520, 210, 50));
-
-        gstage16_t12_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t12_3.setText("fsdfsad");
-        gstage16.add(gstage16_t12_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 650, 210, 50));
-
-        gstage16_t10_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t10_1.setText("jLabel2");
-        gstage16.add(gstage16_t10_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 130, 210, 50));
-
-        gstage16_t10_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t10_2.setText("jLabel2");
-        gstage16.add(gstage16_t10_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 470, 210, 40));
-
-        gstage16_t10_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t10_3.setText("fsdfsad");
-        gstage16.add(gstage16_t10_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 730, 210, 40));
-
-        gstage16_t9_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t9_2.setText("jLabel2");
-        gstage16.add(gstage16_t9_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 340, 210, 40));
-
-        gstage16_t9_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t9_3.setText("jLabel2");
-        gstage16.add(gstage16_t9_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 600, 210, 40));
-
-        gstage16_t9_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t9_1.setText("fsdfsad");
-        gstage16.add(gstage16_t9_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 70, 210, 60));
-
-        gstage16_t7_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t7_1.setText("jLabel2");
-        gstage16.add(gstage16_t7_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 210, 210, 50));
-
-        gstage16_t7_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t7_2.setText("jLabel2");
-        gstage16.add(gstage16_t7_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, 210, 50));
-
-        gstage16_t7_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t7_3.setText("fsdfsad");
-        gstage16.add(gstage16_t7_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 780, 210, 50));
-
-        gstage16_t8_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t8_1.setText("jLabel2");
-        gstage16.add(gstage16_t8_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, 210, 50));
-
-        gstage16_t8_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t8_2.setText("jLabel2");
-        gstage16.add(gstage16_t8_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, 210, 50));
-
-        gstage16_t8_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t8_3.setText("fsdfsad");
-        gstage16.add(gstage16_t8_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 650, 210, 50));
-
-        gstage16_t6_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t6_1.setText("jLabel2");
-        gstage16.add(gstage16_t6_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 130, 210, 50));
-
-        gstage16_t6_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t6_2.setText("jLabel2");
-        gstage16.add(gstage16_t6_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 470, 210, 50));
-
-        gstage16_t6_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t6_3.setText("fsdfsad");
-        gstage16.add(gstage16_t6_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 730, 210, 40));
-
-        gstage16_t5_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t5_2.setText("jLabel2");
-        gstage16.add(gstage16_t5_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 340, 210, 40));
-
-        gstage16_t5_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t5_3.setText("jLabel2");
-        gstage16.add(gstage16_t5_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 600, 210, 40));
-
-        gstage16_t5_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t5_1.setText("fsdfsad");
-        gstage16.add(gstage16_t5_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, 210, 50));
-
-        gstage16_t3_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t3_1.setText("jLabel2");
-        gstage16.add(gstage16_t3_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 210, 50));
-
-        gstage16_t3_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t3_2.setText("jLabel2");
-        gstage16.add(gstage16_t3_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 210, 40));
-
-        gstage16_t3_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t3_3.setText("fsdfsad");
-        gstage16.add(gstage16_t3_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 780, 210, 50));
-
-        gstage16_t4_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t4_1.setText("jLabel2");
-        gstage16.add(gstage16_t4_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 210, 50));
-
-        gstage16_t4_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t4_2.setText("jLabel2");
-        gstage16.add(gstage16_t4_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 520, 210, 50));
-
-        gstage16_t4_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t4_3.setText("fsdfsad");
-        gstage16.add(gstage16_t4_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 650, 210, 50));
-
-        gstage16_t2_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t2_1.setText("jLabel2");
-        gstage16.add(gstage16_t2_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 210, 50));
-
-        gstage16_t2_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t2_2.setText("jLabel2");
-        gstage16.add(gstage16_t2_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 470, 210, 40));
-
-        gstage16_t2_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t2_3.setText("fsdfsad");
-        gstage16.add(gstage16_t2_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 730, 210, 40));
-
-        gstage16_t1_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t1_2.setText("jLabel2");
-        gstage16.add(gstage16_t1_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 210, 40));
-
-        gstage16_t1_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t1_3.setText("jLabel2");
-        gstage16.add(gstage16_t1_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 600, 210, 40));
-
-        gstage16_t1_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage16_t1_1.setText("fsdfsad");
-        gstage16.add(gstage16_t1_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 210, 60));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\brackets\\GSTAGE 16.png")); // NOI18N
-        gstage16.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, 940, -1));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\brackets\\GSTAGE 16_1.png")); // NOI18N
-        gstage16.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 990, 870));
-
-        mainPanel.add(gstage16, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 50, 1880, 870));
-
-        teams16L.setBackground(new java.awt.Color(30, 31, 36));
-        teams16L.setPreferredSize(new java.awt.Dimension(550, 400));
-        teams16L.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        teams16L_2.setText("jLabel2");
-        teams16L.add(teams16L_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 120, 10));
-
-        teams16L_3.setText("jLabel2");
-        teams16L.add(teams16L_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 120, 10));
-
-        teams16L_4.setText("jLabel2");
-        teams16L.add(teams16L_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 120, 10));
-
-        teams16L_5.setText("jLabel2");
-        teams16L.add(teams16L_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 120, 10));
-
-        teams16L_6.setText("jLabel2");
-        teams16L.add(teams16L_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 120, 10));
-
-        teams16L_7.setText("jLabel2");
-        teams16L.add(teams16L_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 120, -1));
-
-        teams16L_8.setText("jLabel2");
-        teams16L.add(teams16L_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 120, 20));
-
-        teams16L_9.setText("jLabel2");
-        teams16L.add(teams16L_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 120, 20));
-
-        teams16L_10.setText("jLabel2");
-        teams16L.add(teams16L_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 120, 20));
-
-        teams16L_11.setText("jLabel2");
-        teams16L.add(teams16L_11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 120, 20));
-
-        teams16L_12.setText("jLabel2");
-        teams16L.add(teams16L_12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 120, 20));
-
-        teams16L_13.setText("jLabel2");
-        teams16L.add(teams16L_13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 120, 20));
-
-        teams16L_14.setText("jLabel2");
-        teams16L.add(teams16L_14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 120, -1));
-
-        teams16L_15.setText("jLabel2");
-        teams16L.add(teams16L_15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 120, -1));
-
-        teams16L_16.setText("jLabel2");
-        teams16L.add(teams16L_16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 120, 10));
-
-        teams16L_17.setText("jLabel2");
-        teams16L.add(teams16L_17, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, 70, 20));
-
-        teams16L_18.setText("jLabel2");
-        teams16L.add(teams16L_18, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, 70, -1));
-
-        teams16L_19.setText("jLabel2");
-        teams16L.add(teams16L_19, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 600, 70, 10));
-
-        teams16L_20.setText("jLabel2");
-        teams16L.add(teams16L_20, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 620, 70, 10));
-
-        teams16L_21.setText("jLabel2");
-        teams16L.add(teams16L_21, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 700, 70, 10));
-
-        teams16L_22.setText("jLabel2");
-        teams16L.add(teams16L_22, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 720, 70, 10));
-
-        teams16L_23.setText("jLabel2");
-        teams16L.add(teams16L_23, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 794, 80, -1));
-
-        teams16L_24.setText("jLabel2");
-        teams16L.add(teams16L_24, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 814, 80, -1));
-
-        teams16L_25.setText("jLabel2");
-        teams16L.add(teams16L_25, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 120, -1));
-
-        teams16L_26.setText("jLabel2");
-        teams16L.add(teams16L_26, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 94, 120, 10));
-
-        teams16L_27.setText("jLabel2");
-        teams16L.add(teams16L_27, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 120, 10));
-
-        teams16L_28.setText("jLabel2");
-        teams16L.add(teams16L_28, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 120, 10));
-
-        teams16L_29.setText("jLabel2");
-        teams16L.add(teams16L_29, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 120, 10));
-
-        teams16L_30.setText("jLabel2");
-        teams16L.add(teams16L_30, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 120, 10));
-
-        teams16L_31.setText("jLabel2");
-        teams16L.add(teams16L_31, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 364, 120, -1));
-
-        teams16L_32.setText("jLabel2");
-        teams16L.add(teams16L_32, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 120, 20));
-
-        teams16L_33.setText("jLabel2");
-        teams16L.add(teams16L_33, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 480, 70, 10));
-
-        teams16L_34.setText("jLabel2");
-        teams16L.add(teams16L_34, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, 120, 10));
-
-        teams16L_35.setText("jLabel2");
-        teams16L.add(teams16L_35, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 574, 70, -1));
-
-        teams16L_36.setText("jLabel2");
-        teams16L.add(teams16L_36, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 590, 120, 20));
-
-        teams16L_37.setText("jLabel2");
-        teams16L.add(teams16L_37, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 670, 70, 20));
-
-        teams16L_38.setText("jLabel2");
-        teams16L.add(teams16L_38, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 690, 120, 20));
-
-        teams16L_39.setText("jLabel2");
-        teams16L.add(teams16L_39, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 770, 70, -1));
-
-        teams16L_40.setText("jLabel2");
-        teams16L.add(teams16L_40, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 790, 120, -1));
-
-        teams16L_41.setText("jLabel2");
-        teams16L.add(teams16L_41, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, 130, -1));
-
-        teams16L_42.setText("jLabel2");
-        teams16L.add(teams16L_42, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 130, -1));
-
-        teams16L_43.setText("jLabel2");
-        teams16L.add(teams16L_43, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 130, 10));
-
-        teams16L_44.setText("jLabel2");
-        teams16L.add(teams16L_44, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 130, 10));
-
-        teams16L_45.setText("jLabel2");
-        teams16L.add(teams16L_45, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, 130, 10));
-
-        teams16L_46.setText("jLabel2");
-        teams16L.add(teams16L_46, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 550, 130, 10));
-
-        teams16L_47.setText("jLabel2");
-        teams16L.add(teams16L_47, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 720, 130, 20));
-
-        teams16L_48.setText("jLabel2");
-        teams16L.add(teams16L_48, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 740, 130, -1));
-
-        teams16L_49.setText("jLabel2");
-        teams16L.add(teams16L_49, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 130, 10));
-
-        teams16L_50.setText("jLabel2");
-        teams16L.add(teams16L_50, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 130, 10));
-
-        teams16L_51.setText("jLabel2");
-        teams16L.add(teams16L_51, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 530, 80, 10));
-
-        teams16L_52.setText("jLabel2");
-        teams16L.add(teams16L_52, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 550, 130, 10));
-
-        teams16L_53.setText("jLabel2");
-        teams16L.add(teams16L_53, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 720, 80, 20));
-
-        teams16L_54.setText("jLabel2");
-        teams16L.add(teams16L_54, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 740, 130, -1));
-
-        teams16L_55.setText("jLabel2");
-        teams16L.add(teams16L_55, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 220, 130, 10));
-
-        teams16L_56.setText("jLabel2");
-        teams16L.add(teams16L_56, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 240, 70, 10));
-
-        teams16L_57.setText("jLabel2");
-        teams16L.add(teams16L_57, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 620, 130, 20));
-
-        teams16L_58.setText("jLabel2");
-        teams16L.add(teams16L_58, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 640, 130, 20));
-
-        teams16L_59.setText("jLabel2");
-        teams16L.add(teams16L_59, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 620, 70, -1));
-
-        teams16L_60.setText("jLabel2");
-        teams16L.add(teams16L_60, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 640, 130, 20));
-
-        teams16L_1.setText("jLabel2");
-        teams16L.add(teams16L_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 120, 10));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\brackets\\16 TEAMSr.png")); // NOI18N
-        teams16L.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1800, 870));
-
-        mainPanel.add(teams16L, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 50, 1800, 870));
-
-        teams16.setBackground(new java.awt.Color(30, 31, 36));
-        teams16.setEnabled(false);
-        teams16.setPreferredSize(new java.awt.Dimension(550, 400));
-        teams16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        team16_2.setText("jLabel2");
-        teams16.add(team16_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 260, 30));
-
-        team16_3.setText("jLabel2");
-        teams16.add(team16_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 260, 30));
-
-        team16_4.setText("jLabel2");
-        teams16.add(team16_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 260, 30));
-
-        team16_5.setText("jLabel2");
-        teams16.add(team16_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 260, 30));
-
-        team16_6.setText("jLabel2");
-        teams16.add(team16_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 260, 30));
-
-        team16_7.setText("jLabel2");
-        teams16.add(team16_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 260, 30));
-
-        team16_8.setText("jLabel2");
-        teams16.add(team16_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 260, 30));
-
-        team16_9.setText("jLabel2");
-        teams16.add(team16_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 470, 260, 30));
-
-        team16_10.setText("jLabel2");
-        teams16.add(team16_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, 260, 30));
-
-        team16_11.setText("jLabel2");
-        teams16.add(team16_11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 560, 260, 30));
-
-        team16_12.setText("jLabel2");
-        teams16.add(team16_12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 600, 260, 30));
-
-        team16_13.setText("jLabel2");
-        teams16.add(team16_13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 650, 260, 30));
-
-        team16_14.setText("jLabel2");
-        teams16.add(team16_14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 690, 260, 30));
-
-        team16_15.setText("jLabel2");
-        teams16.add(team16_15, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 750, 260, 30));
-
-        team16_16.setText("jLabel2");
-        teams16.add(team16_16, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 790, 260, 30));
-
-        team16_17.setText("jLabel2");
-        teams16.add(team16_17, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 260, 30));
-
-        team16_18.setText("jLabel2");
-        teams16.add(team16_18, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 260, 30));
-
-        team16_19.setText("jLabel2");
-        teams16.add(team16_19, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, 260, 30));
-
-        team16_20.setText("jLabel2");
-        teams16.add(team16_20, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, 260, 30));
-
-        team16_21.setText("jLabel2");
-        teams16.add(team16_21, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 510, 260, 30));
-
-        team16_22.setText("jLabel2");
-        teams16.add(team16_22, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 550, 260, 30));
-
-        team16_23.setText("jLabel2");
-        teams16.add(team16_23, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 700, 260, 30));
-
-        team16_24.setText("jLabel2");
-        teams16.add(team16_24, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 740, 260, 30));
-
-        team16_25.setText("jLabel2");
-        teams16.add(team16_25, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 230, 260, 30));
-
-        team16_26.setText("jLabel2");
-        teams16.add(team16_26, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 270, 260, 30));
-
-        team16_27.setText("jLabel2");
-        teams16.add(team16_27, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 610, 260, 30));
-
-        team16_28.setText("jLabel2");
-        teams16.add(team16_28, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 640, 260, 30));
-
-        team16_29.setText("jLabel2");
-        teams16.add(team16_29, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 420, 260, 30));
-
-        team16_30.setText("jLabel2");
-        teams16.add(team16_30, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 460, 260, 30));
-
-        team16_1.setText("jLabel2");
-        teams16.add(team16_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 260, 30));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\brackets\\16 TEAMS no lr.png")); // NOI18N
-        teams16.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1800, 870));
-
-        mainPanel.add(teams16, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 50, 1800, 870));
-
-        teams8L.setBackground(new java.awt.Color(30, 31, 36));
-        teams8L.setPreferredSize(new java.awt.Dimension(550, 400));
-        teams8L.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        teams8L_1.setText("jLabel2");
-        teams8L.add(teams8L_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 230, 30));
-
-        teams8L_3.setText("jLabel2");
-        teams8L.add(teams8L_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 230, 30));
-
-        teams8L_4.setText("jLabel2");
-        teams8L.add(teams8L_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 230, 30));
-
-        teams8L_5.setText("jLabel2");
-        teams8L.add(teams8L_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 230, 30));
-
-        teams8L_6.setText("jLabel2");
-        teams8L.add(teams8L_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 230, 30));
-
-        teams8L_7.setText("jLabel2");
-        teams8L.add(teams8L_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 230, 30));
-
-        teams8L_8.setText("jLabel2");
-        teams8L.add(teams8L_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 230, 30));
-
-        teams8L_9.setText("jLabel2");
-        teams8L.add(teams8L_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 550, 140, 30));
-
-        teams8L_10.setText("jLabel2");
-        teams8L.add(teams8L_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 590, 140, 30));
-
-        teams8L_11.setText("jLabel2");
-        teams8L.add(teams8L_11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 730, 140, 30));
-
-        teams8L_12.setText("jLabel2");
-        teams8L.add(teams8L_12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 760, 140, 30));
-
-        teams8L_13.setText("jLabel2");
-        teams8L.add(teams8L_13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 230, 30));
-
-        teams8L_14.setText("jLabel2");
-        teams8L.add(teams8L_14, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 230, 30));
-
-        teams8L_15.setText("jLabel2");
-        teams8L.add(teams8L_15, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 230, 30));
-
-        teams8L_16.setText("jLabel2");
-        teams8L.add(teams8L_16, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 230, 30));
-
-        teams8L_17.setText("jLabel2");
-        teams8L.add(teams8L_17, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 510, 150, 30));
-
-        teams8L_18.setText("jLabel2");
-        teams8L.add(teams8L_18, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 540, 230, 30));
-
-        teams8L_19.setText("jLabel2");
-        teams8L.add(teams8L_19, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 680, 150, 30));
-
-        teams8L_20.setText("jLabel2");
-        teams8L.add(teams8L_20, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 720, 230, 30));
-
-        teams8L_21.setText("jLabel2");
-        teams8L.add(teams8L_21, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 220, 230, 30));
-
-        teams8L_22.setText("jLabel2");
-        teams8L.add(teams8L_22, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, 230, 30));
-
-        teams8L_23.setText("jLabel2");
-        teams8L.add(teams8L_23, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 590, 230, 30));
-
-        teams8L_24.setText("jLabel2");
-        teams8L.add(teams8L_24, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 630, 230, 30));
-
-        teams8L_25.setText("jLabel2");
-        teams8L.add(teams8L_25, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 220, 230, 30));
-
-        teams8L_26.setText("jLabel2");
-        teams8L.add(teams8L_26, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 250, 130, 30));
-
-        teams8L_27.setText("jLabel2");
-        teams8L.add(teams8L_27, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 590, 140, 40));
-
-        teams8L_28.setText("jLabel2");
-        teams8L.add(teams8L_28, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 630, 230, 30));
-
-        teams8L_2.setText("jLabel2");
-        teams8L.add(teams8L_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 230, 30));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\brackets\\8 TEAMSr.png")); // NOI18N
-        teams8L.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1800, 870));
-
-        mainPanel.add(teams8L, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 50, 1800, 870));
-
-        teams8.setBackground(new java.awt.Color(30, 31, 36));
-        teams8.setEnabled(false);
-        teams8.setPreferredSize(new java.awt.Dimension(550, 400));
-        teams8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        team8_1.setText("jLabel2");
-        teams8.add(team8_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 380, 50));
-
-        team8_2.setText("jLabel2");
-        teams8.add(team8_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 380, 50));
-
-        team8_3.setText("jLabel2");
-        teams8.add(team8_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 380, 50));
-
-        team8_4.setText("jLabel2");
-        teams8.add(team8_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 490, 380, 50));
-
-        team8_5.setText("jLabel2");
-        teams8.add(team8_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 550, 380, 50));
-
-        team8_6.setText("jLabel2");
-        teams8.add(team8_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 630, 380, 50));
-
-        team8_7.setText("jLabel2");
-        teams8.add(team8_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 690, 380, 50));
-
-        team8_8.setText("jLabel2");
-        teams8.add(team8_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, 380, 50));
-
-        team8_9.setText("jLabel2");
-        teams8.add(team8_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 340, 380, 50));
-
-        team8_10.setText("jLabel2");
-        teams8.add(team8_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 560, 380, 50));
-
-        team8_11.setText("jLabel2");
-        teams8.add(team8_11, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 620, 380, 50));
-
-        team8_12.setText("jLabel2");
-        teams8.add(team8_12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 420, 380, 50));
-
-        team8_13.setText("jLabel2");
-        teams8.add(team8_13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 480, 380, 50));
-
-        team8_14.setText("jLabel2");
-        teams8.add(team8_14, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 380, 50));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\brackets\\8 TEAMS no lr.png")); // NOI18N
-        teams8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1800, 870));
-
-        mainPanel.add(teams8, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 50, 1800, 870));
-
-        teams4L.setBackground(new java.awt.Color(30, 31, 36));
-        teams4L.setPreferredSize(new java.awt.Dimension(550, 400));
-        teams4L.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        teams4L_2.setText("jLabel2");
-        teams4L.add(teams4L_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 370, 50));
-
-        teams4L_3.setText("jLabel2");
-        teams4L.add(teams4L_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 370, 50));
-
-        teams4L_4.setText("jLabel2");
-        teams4L.add(teams4L_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 370, 50));
-
-        teams4L_5.setText("jLabel2");
-        teams4L.add(teams4L_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 650, 240, 50));
-
-        teams4L_6.setText("jLabel2");
-        teams4L.add(teams4L_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 710, 240, 50));
-
-        teams4L_7.setText("jLabel2");
-        teams4L.add(teams4L_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, 370, 50));
-
-        teams4L_8.setText("jLabel2");
-        teams4L.add(teams4L_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 250, 370, 50));
-
-        teams4L_9.setText("jLabel2");
-        teams4L.add(teams4L_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 580, 240, 50));
-
-        teams4L_10.setText("jLabel2");
-        teams4L.add(teams4L_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 640, 370, 50));
-
-        teams4L_11.setText("jLabel2");
-        teams4L.add(teams4L_11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 200, 370, 50));
-
-        teams4L_12.setText("jLabel2");
-        teams4L.add(teams4L_12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 250, 220, 50));
-
-        teams4L_1.setText("dsds");
-        teams4L.add(teams4L_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 370, 50));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\brackets\\4 TEAMSr.png")); // NOI18N
-        teams4L.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1800, 870));
-
-        mainPanel.add(teams4L, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 50, 1800, 870));
-
-        teams4.setBackground(new java.awt.Color(30, 31, 36));
-        teams4.setEnabled(false);
-        teams4.setPreferredSize(new java.awt.Dimension(550, 400));
-        teams4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        team4_2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        team4_2.setText("jLabel2");
-        teams4.add(team4_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 650, 90));
-
-        team4_3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        team4_3.setText("jLabel2");
-        teams4.add(team4_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, 650, 90));
-
-        team4_4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        team4_4.setText("jLabel2");
-        teams4.add(team4_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 640, 650, 90));
-
-        team4_5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        team4_5.setText("jLabel2");
-        teams4.add(team4_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 420, 650, 90));
-
-        team4_6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        team4_6.setText("jLabel2");
-        teams4.add(team4_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 520, 650, 90));
-
-        team4_1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        team4_1.setText("jLabel2");
-        teams4.add(team4_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 650, 90));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\brackets\\4 TEAMS no lr.png")); // NOI18N
-        teams4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1800, 870));
-
-        mainPanel.add(teams4, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 50, 1800, 870));
-
-        teams2L.setBackground(new java.awt.Color(30, 31, 36));
-        teams2L.setPreferredSize(new java.awt.Dimension(550, 400));
-        teams2L.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        teams2L_2.setText("jLabel2");
-        teams2L.add(teams2L_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 680, 90));
-
-        teams2L_3.setText("jLabel2");
-        teams2L.add(teams2L_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, 680, 90));
-
-        teams2L_4.setText("jLabel2");
-        teams2L.add(teams2L_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 600, 680, 90));
-
-        teams2L_1.setText("jLabel2");
-        teams2L.add(teams2L_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 680, 90));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\brackets\\2 TEAMSr.png")); // NOI18N
-        teams2L.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1800, 870));
-
-        mainPanel.add(teams2L, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 50, 1800, 870));
-
-        teams2.setBackground(new java.awt.Color(30, 31, 36));
-        teams2.setEnabled(false);
-        teams2.setPreferredSize(new java.awt.Dimension(550, 400));
-        teams2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        team2_2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        teams2.add(team2_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 450, 1210, 170));
-
-        team2_1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        teams2.add(team2_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 1210, 170));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\brackets\\2 TEAMS no lr.png")); // NOI18N
-        teams2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1800, 870));
-
-        mainPanel.add(teams2, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 50, 1800, 870));
+        logPanel.setBackground(new java.awt.Color(27, 27, 27));
+        logPanel.setPreferredSize(new java.awt.Dimension(550, 400));
+        logPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        nameField.setBackground(new java.awt.Color(0, 0, 0));
+        nameField.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
+        nameField.setForeground(new java.awt.Color(255, 157, 0));
+        nameField.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0)));
+        logPanel.add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 260, 50));
+
+        gameLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\game.png")); // NOI18N
+        logPanel.add(gameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 260, 80));
+
+        nameLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\name.png")); // NOI18N
+        logPanel.add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 240, 80));
+
+        gameCbox.setBackground(new java.awt.Color(0, 0, 0));
+        gameCbox.setForeground(new java.awt.Color(255, 157, 0));
+        gameCbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        gameCbox.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0)));
+        logPanel.add(gameCbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, 290, 50));
+
+        jTable2.setBackground(new java.awt.Color(0, 0, 0));
+        jTable2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0)));
+        jTable2.setForeground(new java.awt.Color(255, 157, 0));
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "NAME", "DESCRIPTION", "TOURNAMENT SIZE", "GROUP STAGE", "GROUP STAGE SIZE", "LOOSER BRACKET", "GAME NAME"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable2.setFillsViewportHeight(true);
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+            jTable2.getColumnModel().getColumn(2).setResizable(false);
+            jTable2.getColumnModel().getColumn(3).setResizable(false);
+            jTable2.getColumnModel().getColumn(4).setResizable(false);
+            jTable2.getColumnModel().getColumn(5).setResizable(false);
+            jTable2.getColumnModel().getColumn(6).setResizable(false);
+        }
+
+        logPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 277, 1120, 390));
+
+        searchB.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\creationUI\\search.png")); // NOI18N
+        searchB.setContentAreaFilled(false);
+        searchB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBActionPerformed(evt);
+            }
+        });
+        logPanel.add(searchB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 210, 80, 70));
+
+        logBg.setBackground(new java.awt.Color(0, 0, 0));
+        logBg.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\logPanel.jpg")); // NOI18N
+        logBg.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(6, 27, 42), new java.awt.Color(6, 27, 42), new java.awt.Color(0, 0, 51), new java.awt.Color(0, 0, 51)));
+        logPanel.add(logBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 700));
+
+        mainPanel.add(logPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 100, 1250, 700));
 
         bg.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\bg.jpg")); // NOI18N
         mainPanel.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 960));
-
-        gstage8.setBackground(new java.awt.Color(30, 31, 36));
-        gstage8.setPreferredSize(new java.awt.Dimension(550, 400));
-        gstage8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        gstage8_t7_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t7_1.setText("jLabel2");
-        gstage8.add(gstage8_t7_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 230, 210, 50));
-
-        gstage8_t7_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t7_2.setText("jLabel2");
-        gstage8.add(gstage8_t7_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 400, 210, 50));
-
-        gstage8_t7_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t7_3.setText("fsdfsad");
-        gstage8.add(gstage8_t7_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 760, 210, 50));
-
-        gstage8_t8_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t8_1.setText("jLabel2");
-        gstage8.add(gstage8_t8_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 280, 210, 50));
-
-        gstage8_t8_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t8_2.setText("jLabel2");
-        gstage8.add(gstage8_t8_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 520, 210, 50));
-
-        gstage8_t8_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t8_3.setText("fsdfsad");
-        gstage8.add(gstage8_t8_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 640, 210, 50));
-
-        gstage8_t6_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t6_1.setText("jLabel2");
-        gstage8.add(gstage8_t6_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 160, 210, 40));
-
-        gstage8_t6_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t6_2.setText("jLabel2");
-        gstage8.add(gstage8_t6_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 470, 210, 50));
-
-        gstage8_t6_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t6_3.setText("fsdfsad");
-        gstage8.add(gstage8_t6_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 710, 210, 50));
-
-        gstage8_t5_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t5_2.setText("jLabel2");
-        gstage8.add(gstage8_t5_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 350, 210, 50));
-
-        gstage8_t5_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t5_3.setText("jLabel2");
-        gstage8.add(gstage8_t5_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 590, 210, 50));
-
-        gstage8_t5_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t5_1.setText("fsdfsad");
-        gstage8.add(gstage8_t5_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 110, 210, 40));
-
-        gstage8_t3_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t3_1.setText("jLabel2");
-        gstage8.add(gstage8_t3_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, 210, 50));
-
-        gstage8_t3_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t3_2.setText("jLabel2");
-        gstage8.add(gstage8_t3_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 400, 210, 50));
-
-        gstage8_t3_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t3_3.setText("fsdfsad");
-        gstage8.add(gstage8_t3_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 760, 210, 50));
-
-        gstage8_t4_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t4_1.setText("jLabel2");
-        gstage8.add(gstage8_t4_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, 210, 50));
-
-        gstage8_t4_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t4_2.setText("jLabel2");
-        gstage8.add(gstage8_t4_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, 210, 50));
-
-        gstage8_t4_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t4_3.setText("fsdfsad");
-        gstage8.add(gstage8_t4_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 640, 210, 50));
-
-        gstage8_t2_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t2_1.setText("jLabel2");
-        gstage8.add(gstage8_t2_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 160, 210, 40));
-
-        gstage8_t2_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t2_2.setText("jLabel2");
-        gstage8.add(gstage8_t2_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 470, 210, 50));
-
-        gstage8_t2_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t2_3.setText("fsdfsad");
-        gstage8.add(gstage8_t2_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 710, 210, 50));
-
-        gstage8_t1_2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t1_2.setText("jLabel2");
-        gstage8.add(gstage8_t1_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, 210, 50));
-
-        gstage8_t1_3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t1_3.setText("jLabel2");
-        gstage8.add(gstage8_t1_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 590, 210, 50));
-
-        gstage8_t1_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gstage8_t1_1.setText("fsdfsad");
-        gstage8.add(gstage8_t1_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, 210, 40));
-
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\brackets\\GSTAGE 16_1.png")); // NOI18N
-        gstage8.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 910, 870));
-
-        mainPanel.add(gstage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 50, 1800, 870));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 1920, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 960, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        // TODO add your handling code here:
+        try
+        {
+            int fila = jTable2.getSelectedRow();
+            String name = (String) jTable2.getValueAt(fila, 0);
+            Controller.tournamentProfile(frame,Controller.queryTournament(Controller.getTournamentId(name)));
+        } catch (Exception ex)
+        {
+            System.out.println("ERROR AL SELECCIONAR UN JUGADOR : " + ex.getMessage());
+        }
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void searchBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBActionPerformed
+        // TODO add your handling code here:
+        Controller.emptyTable(jTable2,titles);
+        if (nameField.getText().equals("")){
+            Controller.searchTournamentsGame(jTable2,titles,Controller.getGameId((String) gameCbox.getSelectedItem()),tournaments);
+        }else {
+            Controller.searchTournamentsName(jTable2,titles,Controller.getGameId((String) gameCbox.getSelectedItem()),nameField.getText(),tournaments);
+        }
+    }//GEN-LAST:event_searchBActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg;
-    private javax.swing.JPanel gstage16;
-    private javax.swing.JLabel gstage16_t10_1;
-    private javax.swing.JLabel gstage16_t10_2;
-    private javax.swing.JLabel gstage16_t10_3;
-    private javax.swing.JLabel gstage16_t11_1;
-    private javax.swing.JLabel gstage16_t11_2;
-    private javax.swing.JLabel gstage16_t11_3;
-    private javax.swing.JLabel gstage16_t12_1;
-    private javax.swing.JLabel gstage16_t12_2;
-    private javax.swing.JLabel gstage16_t12_3;
-    private javax.swing.JLabel gstage16_t13_1;
-    private javax.swing.JLabel gstage16_t13_2;
-    private javax.swing.JLabel gstage16_t13_3;
-    private javax.swing.JLabel gstage16_t14_1;
-    private javax.swing.JLabel gstage16_t14_2;
-    private javax.swing.JLabel gstage16_t14_3;
-    private javax.swing.JLabel gstage16_t15_1;
-    private javax.swing.JLabel gstage16_t15_2;
-    private javax.swing.JLabel gstage16_t15_3;
-    private javax.swing.JLabel gstage16_t16_1;
-    private javax.swing.JLabel gstage16_t16_2;
-    private javax.swing.JLabel gstage16_t16_3;
-    private javax.swing.JLabel gstage16_t1_1;
-    private javax.swing.JLabel gstage16_t1_2;
-    private javax.swing.JLabel gstage16_t1_3;
-    private javax.swing.JLabel gstage16_t2_1;
-    private javax.swing.JLabel gstage16_t2_2;
-    private javax.swing.JLabel gstage16_t2_3;
-    private javax.swing.JLabel gstage16_t3_1;
-    private javax.swing.JLabel gstage16_t3_2;
-    private javax.swing.JLabel gstage16_t3_3;
-    private javax.swing.JLabel gstage16_t4_1;
-    private javax.swing.JLabel gstage16_t4_2;
-    private javax.swing.JLabel gstage16_t4_3;
-    private javax.swing.JLabel gstage16_t5_1;
-    private javax.swing.JLabel gstage16_t5_2;
-    private javax.swing.JLabel gstage16_t5_3;
-    private javax.swing.JLabel gstage16_t6_1;
-    private javax.swing.JLabel gstage16_t6_2;
-    private javax.swing.JLabel gstage16_t6_3;
-    private javax.swing.JLabel gstage16_t7_1;
-    private javax.swing.JLabel gstage16_t7_2;
-    private javax.swing.JLabel gstage16_t7_3;
-    private javax.swing.JLabel gstage16_t8_1;
-    private javax.swing.JLabel gstage16_t8_2;
-    private javax.swing.JLabel gstage16_t8_3;
-    private javax.swing.JLabel gstage16_t9_1;
-    private javax.swing.JLabel gstage16_t9_2;
-    private javax.swing.JLabel gstage16_t9_3;
-    private javax.swing.JPanel gstage8;
-    private javax.swing.JLabel gstage8_t1_1;
-    private javax.swing.JLabel gstage8_t1_2;
-    private javax.swing.JLabel gstage8_t1_3;
-    private javax.swing.JLabel gstage8_t2_1;
-    private javax.swing.JLabel gstage8_t2_2;
-    private javax.swing.JLabel gstage8_t2_3;
-    private javax.swing.JLabel gstage8_t3_1;
-    private javax.swing.JLabel gstage8_t3_2;
-    private javax.swing.JLabel gstage8_t3_3;
-    private javax.swing.JLabel gstage8_t4_1;
-    private javax.swing.JLabel gstage8_t4_2;
-    private javax.swing.JLabel gstage8_t4_3;
-    private javax.swing.JLabel gstage8_t5_1;
-    private javax.swing.JLabel gstage8_t5_2;
-    private javax.swing.JLabel gstage8_t5_3;
-    private javax.swing.JLabel gstage8_t6_1;
-    private javax.swing.JLabel gstage8_t6_2;
-    private javax.swing.JLabel gstage8_t6_3;
-    private javax.swing.JLabel gstage8_t7_1;
-    private javax.swing.JLabel gstage8_t7_2;
-    private javax.swing.JLabel gstage8_t7_3;
-    private javax.swing.JLabel gstage8_t8_1;
-    private javax.swing.JLabel gstage8_t8_2;
-    private javax.swing.JLabel gstage8_t8_3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JComboBox<String> gameCbox;
+    private javax.swing.JLabel gameLabel;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JLabel logBg;
+    private javax.swing.JPanel logPanel;
     private javax.swing.JPanel mainPanel;
-    private javax.swing.JLabel team16_1;
-    private javax.swing.JLabel team16_10;
-    private javax.swing.JLabel team16_11;
-    private javax.swing.JLabel team16_12;
-    private javax.swing.JLabel team16_13;
-    private javax.swing.JLabel team16_14;
-    private javax.swing.JLabel team16_15;
-    private javax.swing.JLabel team16_16;
-    private javax.swing.JLabel team16_17;
-    private javax.swing.JLabel team16_18;
-    private javax.swing.JLabel team16_19;
-    private javax.swing.JLabel team16_2;
-    private javax.swing.JLabel team16_20;
-    private javax.swing.JLabel team16_21;
-    private javax.swing.JLabel team16_22;
-    private javax.swing.JLabel team16_23;
-    private javax.swing.JLabel team16_24;
-    private javax.swing.JLabel team16_25;
-    private javax.swing.JLabel team16_26;
-    private javax.swing.JLabel team16_27;
-    private javax.swing.JLabel team16_28;
-    private javax.swing.JLabel team16_29;
-    private javax.swing.JLabel team16_3;
-    private javax.swing.JLabel team16_30;
-    private javax.swing.JLabel team16_4;
-    private javax.swing.JLabel team16_5;
-    private javax.swing.JLabel team16_6;
-    private javax.swing.JLabel team16_7;
-    private javax.swing.JLabel team16_8;
-    private javax.swing.JLabel team16_9;
-    private javax.swing.JLabel team2_1;
-    private javax.swing.JLabel team2_2;
-    private javax.swing.JLabel team4_1;
-    private javax.swing.JLabel team4_2;
-    private javax.swing.JLabel team4_3;
-    private javax.swing.JLabel team4_4;
-    private javax.swing.JLabel team4_5;
-    private javax.swing.JLabel team4_6;
-    private javax.swing.JLabel team8_1;
-    private javax.swing.JLabel team8_10;
-    private javax.swing.JLabel team8_11;
-    private javax.swing.JLabel team8_12;
-    private javax.swing.JLabel team8_13;
-    private javax.swing.JLabel team8_14;
-    private javax.swing.JLabel team8_2;
-    private javax.swing.JLabel team8_3;
-    private javax.swing.JLabel team8_4;
-    private javax.swing.JLabel team8_5;
-    private javax.swing.JLabel team8_6;
-    private javax.swing.JLabel team8_7;
-    private javax.swing.JLabel team8_8;
-    private javax.swing.JLabel team8_9;
-    private javax.swing.JPanel teams16;
-    private javax.swing.JPanel teams16L;
-    private javax.swing.JLabel teams16L_1;
-    private javax.swing.JLabel teams16L_10;
-    private javax.swing.JLabel teams16L_11;
-    private javax.swing.JLabel teams16L_12;
-    private javax.swing.JLabel teams16L_13;
-    private javax.swing.JLabel teams16L_14;
-    private javax.swing.JLabel teams16L_15;
-    private javax.swing.JLabel teams16L_16;
-    private javax.swing.JLabel teams16L_17;
-    private javax.swing.JLabel teams16L_18;
-    private javax.swing.JLabel teams16L_19;
-    private javax.swing.JLabel teams16L_2;
-    private javax.swing.JLabel teams16L_20;
-    private javax.swing.JLabel teams16L_21;
-    private javax.swing.JLabel teams16L_22;
-    private javax.swing.JLabel teams16L_23;
-    private javax.swing.JLabel teams16L_24;
-    private javax.swing.JLabel teams16L_25;
-    private javax.swing.JLabel teams16L_26;
-    private javax.swing.JLabel teams16L_27;
-    private javax.swing.JLabel teams16L_28;
-    private javax.swing.JLabel teams16L_29;
-    private javax.swing.JLabel teams16L_3;
-    private javax.swing.JLabel teams16L_30;
-    private javax.swing.JLabel teams16L_31;
-    private javax.swing.JLabel teams16L_32;
-    private javax.swing.JLabel teams16L_33;
-    private javax.swing.JLabel teams16L_34;
-    private javax.swing.JLabel teams16L_35;
-    private javax.swing.JLabel teams16L_36;
-    private javax.swing.JLabel teams16L_37;
-    private javax.swing.JLabel teams16L_38;
-    private javax.swing.JLabel teams16L_39;
-    private javax.swing.JLabel teams16L_4;
-    private javax.swing.JLabel teams16L_40;
-    private javax.swing.JLabel teams16L_41;
-    private javax.swing.JLabel teams16L_42;
-    private javax.swing.JLabel teams16L_43;
-    private javax.swing.JLabel teams16L_44;
-    private javax.swing.JLabel teams16L_45;
-    private javax.swing.JLabel teams16L_46;
-    private javax.swing.JLabel teams16L_47;
-    private javax.swing.JLabel teams16L_48;
-    private javax.swing.JLabel teams16L_49;
-    private javax.swing.JLabel teams16L_5;
-    private javax.swing.JLabel teams16L_50;
-    private javax.swing.JLabel teams16L_51;
-    private javax.swing.JLabel teams16L_52;
-    private javax.swing.JLabel teams16L_53;
-    private javax.swing.JLabel teams16L_54;
-    private javax.swing.JLabel teams16L_55;
-    private javax.swing.JLabel teams16L_56;
-    private javax.swing.JLabel teams16L_57;
-    private javax.swing.JLabel teams16L_58;
-    private javax.swing.JLabel teams16L_59;
-    private javax.swing.JLabel teams16L_6;
-    private javax.swing.JLabel teams16L_60;
-    private javax.swing.JLabel teams16L_7;
-    private javax.swing.JLabel teams16L_8;
-    private javax.swing.JLabel teams16L_9;
-    private javax.swing.JPanel teams2;
-    private javax.swing.JPanel teams2L;
-    private javax.swing.JLabel teams2L_1;
-    private javax.swing.JLabel teams2L_2;
-    private javax.swing.JLabel teams2L_3;
-    private javax.swing.JLabel teams2L_4;
-    private javax.swing.JPanel teams4;
-    private javax.swing.JPanel teams4L;
-    private javax.swing.JLabel teams4L_1;
-    private javax.swing.JLabel teams4L_10;
-    private javax.swing.JLabel teams4L_11;
-    private javax.swing.JLabel teams4L_12;
-    private javax.swing.JLabel teams4L_2;
-    private javax.swing.JLabel teams4L_3;
-    private javax.swing.JLabel teams4L_4;
-    private javax.swing.JLabel teams4L_5;
-    private javax.swing.JLabel teams4L_6;
-    private javax.swing.JLabel teams4L_7;
-    private javax.swing.JLabel teams4L_8;
-    private javax.swing.JLabel teams4L_9;
-    private javax.swing.JPanel teams8;
-    private javax.swing.JPanel teams8L;
-    private javax.swing.JLabel teams8L_1;
-    private javax.swing.JLabel teams8L_10;
-    private javax.swing.JLabel teams8L_11;
-    private javax.swing.JLabel teams8L_12;
-    private javax.swing.JLabel teams8L_13;
-    private javax.swing.JLabel teams8L_14;
-    private javax.swing.JLabel teams8L_15;
-    private javax.swing.JLabel teams8L_16;
-    private javax.swing.JLabel teams8L_17;
-    private javax.swing.JLabel teams8L_18;
-    private javax.swing.JLabel teams8L_19;
-    private javax.swing.JLabel teams8L_2;
-    private javax.swing.JLabel teams8L_20;
-    private javax.swing.JLabel teams8L_21;
-    private javax.swing.JLabel teams8L_22;
-    private javax.swing.JLabel teams8L_23;
-    private javax.swing.JLabel teams8L_24;
-    private javax.swing.JLabel teams8L_25;
-    private javax.swing.JLabel teams8L_26;
-    private javax.swing.JLabel teams8L_27;
-    private javax.swing.JLabel teams8L_28;
-    private javax.swing.JLabel teams8L_3;
-    private javax.swing.JLabel teams8L_4;
-    private javax.swing.JLabel teams8L_5;
-    private javax.swing.JLabel teams8L_6;
-    private javax.swing.JLabel teams8L_7;
-    private javax.swing.JLabel teams8L_8;
-    private javax.swing.JLabel teams8L_9;
+    private javax.swing.JTextField nameField;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JButton searchB;
     // End of variables declaration//GEN-END:variables
 }

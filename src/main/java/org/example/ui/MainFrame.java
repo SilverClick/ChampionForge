@@ -5,6 +5,7 @@
 package org.example.ui;
 
 import com.sun.tools.javac.Main;
+import org.example.files.ActiveSession;
 import org.example.mvc.Controller;
 
 import javax.swing.*;
@@ -23,6 +24,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        Controller.logIn(this);
        
     }
 
@@ -59,11 +61,6 @@ public class MainFrame extends javax.swing.JFrame {
         setResizable(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\uiMenu\\bg.png")); // NOI18N
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
-            }
-        });
 
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -120,13 +117,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         tournament.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\uiMenu\\tournaments.png")); // NOI18N
         tournament.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tournament.setEnabled(false);
         tournament.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tournament.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        tournament.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tournamentMouseClicked(evt);
-            }
-        });
 
         inspectTournaments.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
         inspectTournaments.setForeground(new java.awt.Color(255, 157, 0));
@@ -141,22 +134,28 @@ public class MainFrame extends javax.swing.JFrame {
         createTournaments.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
         createTournaments.setForeground(new java.awt.Color(255, 157, 0));
         createTournaments.setText("CREATE");
+        createTournaments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createTournamentsActionPerformed(evt);
+            }
+        });
         tournament.add(createTournaments);
 
         myTournaments.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
         myTournaments.setForeground(new java.awt.Color(255, 157, 0));
         myTournaments.setText("MY TOURNAMENTS");
+        myTournaments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                myTournamentsActionPerformed(evt);
+            }
+        });
         tournament.add(myTournaments);
 
         menuBar.add(tournament);
 
         teams.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\uiMenu\\teams.png")); // NOI18N
         teams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        teams.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                teamsMouseClicked(evt);
-            }
-        });
+        teams.setEnabled(false);
 
         inspectTeams.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
         inspectTeams.setForeground(new java.awt.Color(255, 157, 0));
@@ -171,26 +170,47 @@ public class MainFrame extends javax.swing.JFrame {
         createTeams.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
         createTeams.setForeground(new java.awt.Color(255, 157, 0));
         createTeams.setText("CREATE");
+        createTeams.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createTeamsActionPerformed(evt);
+            }
+        });
         teams.add(createTeams);
 
         myTeams.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
         myTeams.setForeground(new java.awt.Color(255, 157, 0));
         myTeams.setText("MY TEAMS");
+        myTeams.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                myTeamsActionPerformed(evt);
+            }
+        });
         teams.add(myTeams);
 
         menuBar.add(teams);
 
         players.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\uiMenu\\players.png")); // NOI18N
         players.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        players.setEnabled(false);
 
         allPlayers.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
         allPlayers.setForeground(new java.awt.Color(255, 157, 0));
         allPlayers.setText("ALL PLAYERS");
+        allPlayers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                allPlayersActionPerformed(evt);
+            }
+        });
         players.add(allPlayers);
 
         myProfile.setFont(new java.awt.Font("Lora", 1, 14)); // NOI18N
         myProfile.setForeground(new java.awt.Color(255, 157, 0));
         myProfile.setText("MY PROFILE");
+        myProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                myProfileActionPerformed(evt);
+            }
+        });
         players.add(myProfile);
 
         menuBar.add(players);
@@ -215,6 +235,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionPerformed
         // TODO add your handling code here:
+        Controller.logout(this);
+        Controller.logIn(this);
     }//GEN-LAST:event_logOutActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
@@ -222,29 +244,45 @@ public class MainFrame extends javax.swing.JFrame {
         Controller.desconection();
     }//GEN-LAST:event_exitActionPerformed
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        // TODO add your handling code here:
-         Controller.logIn(this);
-         
-    }//GEN-LAST:event_jLabel1MouseClicked
-
-    private void tournamentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tournamentMouseClicked
-        // TODO add your handling code here:
-        Controller.createTournament(this);
-    }//GEN-LAST:event_tournamentMouseClicked
-
-    private void teamsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teamsMouseClicked
-        // TODO add your handlinsg code here:
-
-    }//GEN-LAST:event_teamsMouseClicked
-
     private void inspectTournamentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inspectTournamentsActionPerformed
         // TODO add your handling code here:
+        Controller.tournamentView(this,Controller.getTournaments());
     }//GEN-LAST:event_inspectTournamentsActionPerformed
 
     private void inspectTeamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inspectTeamsActionPerformed
         // TODO add your handling code here:
+        Controller.teamView(this,Controller.getTeams(), false,null);
     }//GEN-LAST:event_inspectTeamsActionPerformed
+
+    private void allPlayersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allPlayersActionPerformed
+        // TODO add your handling code here:
+        Controller.playerView(this);
+    }//GEN-LAST:event_allPlayersActionPerformed
+
+    private void myProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myProfileActionPerformed
+        // TODO add your handling code here:
+        Controller.playerProfile(this,Controller.queryPlayer(Integer.parseInt(ActiveSession.leerArchivo())));
+    }//GEN-LAST:event_myProfileActionPerformed
+
+    private void createTeamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTeamsActionPerformed
+        // TODO add your handling code here:
+        Controller.teamCreation(this);
+    }//GEN-LAST:event_createTeamsActionPerformed
+
+    private void myTeamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myTeamsActionPerformed
+        // TODO add your handling code here:
+        Controller.teamView(this,Controller.getTeamsFromPlayer(Controller.queryPlayer(Integer.parseInt(ActiveSession.leerArchivo()))),false,null);
+    }//GEN-LAST:event_myTeamsActionPerformed
+
+    private void createTournamentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTournamentsActionPerformed
+        // TODO add your handling code here:
+        Controller.tournamentCreation(this);
+    }//GEN-LAST:event_createTournamentsActionPerformed
+
+    private void myTournamentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myTournamentsActionPerformed
+        // TODO add your handling code here:
+        Controller.tournamentView(this,Controller.getTournamentsFromPlayer(Controller.queryPlayer(Integer.parseInt(ActiveSession.leerArchivo()))));
+    }//GEN-LAST:event_myTournamentsActionPerformed
 
 
     public static void launch() {
@@ -275,6 +313,7 @@ public class MainFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainFrame().setVisible(true);
+
             }
         });
     }
@@ -293,9 +332,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem myProfile;
     private javax.swing.JMenuItem myTeams;
     private javax.swing.JMenuItem myTournaments;
-    private javax.swing.JMenu players;
+    public javax.swing.JMenu players;
     private javax.swing.JMenu settings;
-    private javax.swing.JMenu teams;
-    private javax.swing.JMenu tournament;
+    public javax.swing.JMenu teams;
+    public javax.swing.JMenu tournament;
     // End of variables declaration//GEN-END:variables
 }

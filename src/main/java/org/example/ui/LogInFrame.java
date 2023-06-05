@@ -6,6 +6,7 @@ package org.example.ui;
 
 import org.example.mvc.Controller;
 
+import javax.swing.*;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import java.awt.*;
 import java.util.Arrays;
@@ -136,12 +137,20 @@ public class LogInFrame extends javax.swing.JInternalFrame {
 
     private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signButtonActionPerformed
         // TODO add your handling code here:
-        Controller.signIn(frame,userField.getText(), Arrays.toString(pwdField.getPassword()));
+        Controller.signIn(frame,userField.getText(), pwdField.getText());
 
     }//GEN-LAST:event_signButtonActionPerformed
 
     private void logButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logButtonActionPerformed
         // TODO add your handling code here:
+        if (Controller.dbLogin(userField.getText(), pwdField.getText())){
+            Controller.logged(frame,userField.getText());
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "LOGIN FAILED");
+            userField.setText("");
+            pwdField.setText("");
+        }
     }//GEN-LAST:event_logButtonActionPerformed
 
     private void pwdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdFieldActionPerformed

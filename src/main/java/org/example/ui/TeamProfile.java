@@ -4,17 +4,45 @@
  */
 package org.example.ui;
 
+import org.example.data.Players;
+import org.example.data.Teams;
+import org.example.mvc.Controller;
+
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
 /**
  *
  * @author PC-LORENZO
  */
 public class TeamProfile extends javax.swing.JInternalFrame {
 
+    String[] titles= new String[]{"USERNAME", "DESCRIPTION", "TOURNAMENT POINTS"};
+    MainFrame frame;
+    Teams team;
+    ArrayList<Players> players;
     /**
      * Creates new form TeamProfile
      */
-    public TeamProfile() {
+    public TeamProfile(MainFrame frame, Teams team, ArrayList<Players> players) {
+        this.players=players;
+        this.frame = frame;
+        this.team = team;
         initComponents();
+        username.setText(team.getTeam_name());
+        tpoints.setText(String.valueOf(team.getTeam_point_req()));
+        jTextArea1.setText(team.getTeam_description());
+        jTable2=Controller.seeDataPlayers(jTable2,titles,players);
+        game.setText(Controller.queryGames(team.getGame_id()).getGame_name());
+        // Eliminar el borde decorativo
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
+        ui.setNorthPane(null);
+        ui.setEastPane(null);
+        ui.setWestPane(null);
+        ui.setSouthPane(null);
+        this.setBorder(null);
     }
 
     /**
@@ -28,6 +56,7 @@ public class TeamProfile extends javax.swing.JInternalFrame {
 
         mainPanel = new javax.swing.JPanel();
         logPanel = new javax.swing.JPanel();
+        tPointsLabel1 = new javax.swing.JLabel();
         game = new javax.swing.JLabel();
         gameLabel = new javax.swing.JLabel();
         tPointsLabel = new javax.swing.JLabel();
@@ -37,6 +66,9 @@ public class TeamProfile extends javax.swing.JInternalFrame {
         username = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        joinButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         logBg = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
 
@@ -47,34 +79,37 @@ public class TeamProfile extends javax.swing.JInternalFrame {
         logPanel.setPreferredSize(new java.awt.Dimension(550, 400));
         logPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tPointsLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\uiMenu\\players.png")); // NOI18N
+        logPanel.add(tPointsLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 220, 180, 80));
+
         game.setFont(new java.awt.Font("Lora", 1, 36)); // NOI18N
         game.setForeground(new java.awt.Color(255, 157, 0));
         game.setText("LONOAL02");
-        logPanel.add(game, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 350, 90));
+        logPanel.add(game, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 350, 90));
 
         gameLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\game.png")); // NOI18N
-        logPanel.add(gameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 240, 80));
+        logPanel.add(gameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 240, 80));
 
         tPointsLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\tpointsRequired.png")); // NOI18N
-        logPanel.add(tPointsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 550, 80));
+        logPanel.add(tPointsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 550, 80));
 
         userLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\name.png")); // NOI18N
-        logPanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 250, 80));
+        logPanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 250, 80));
 
         tpoints.setFont(new java.awt.Font("Lora", 1, 36)); // NOI18N
         tpoints.setForeground(new java.awt.Color(255, 157, 0));
         tpoints.setText("LONOAL02");
-        logPanel.add(tpoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 150, 350, 90));
+        logPanel.add(tpoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 140, 350, 90));
 
         descriptionLabel.setFont(new java.awt.Font("Lora", 1, 36)); // NOI18N
         descriptionLabel.setForeground(new java.awt.Color(255, 157, 0));
         descriptionLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\description.png")); // NOI18N
-        logPanel.add(descriptionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 380, 80));
+        logPanel.add(descriptionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 380, 80));
 
         username.setFont(new java.awt.Font("Lora", 1, 36)); // NOI18N
         username.setForeground(new java.awt.Color(255, 157, 0));
         username.setText("LONOAL02");
-        logPanel.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 350, 70));
+        logPanel.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 350, 70));
 
         jTextArea1.setEditable(false);
         jTextArea1.setBackground(new java.awt.Color(0, 0, 0));
@@ -85,14 +120,54 @@ public class TeamProfile extends javax.swing.JInternalFrame {
         jTextArea1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0)));
         jScrollPane1.setViewportView(jTextArea1);
 
-        logPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 550, 210));
+        logPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 550, 210));
+
+        joinButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\button_join.png")); // NOI18N
+        joinButton.setBorderPainted(false);
+        joinButton.setContentAreaFilled(false);
+        joinButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        joinButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                joinButtonActionPerformed(evt);
+            }
+        });
+        logPanel.add(joinButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 630, 210, 80));
+
+        jTable2.setBackground(new java.awt.Color(0, 0, 0));
+        jTable2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0)));
+        jTable2.setForeground(new java.awt.Color(255, 157, 0));
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "USERNAME", "DESCRIPTION", "TOURNAMENT POINTS"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable2.setFillsViewportHeight(true);
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+
+        logPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 290, 520, 390));
 
         logBg.setBackground(new java.awt.Color(0, 0, 0));
-        logBg.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\logPanel.jpg")); // NOI18N
+        logBg.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\logPanelXl.jpg")); // NOI18N
         logBg.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(6, 27, 42), new java.awt.Color(6, 27, 42), new java.awt.Color(0, 0, 51), new java.awt.Color(0, 0, 51)));
-        logPanel.add(logBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 670));
+        logPanel.add(logBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 750));
 
-        mainPanel.add(logPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 1120, 670));
+        mainPanel.add(logPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 1460, 750));
 
         bg.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\bg.jpg")); // NOI18N
         mainPanel.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 960));
@@ -121,6 +196,25 @@ public class TeamProfile extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void joinButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joinButtonActionPerformed
+        // TODO add your handling code here:
+        Controller.joinTeam(team);
+
+    }//GEN-LAST:event_joinButtonActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        // TODO add your handling code here:
+        try
+        {
+            int fila = jTable2.getSelectedRow();
+            String name = (String) jTable2.getValueAt(fila, 0);
+            Controller.playerProfile(frame,Controller.queryPlayer(Controller.getPlayerId(name)));
+        } catch (Exception ex)
+        {
+            System.out.println("ERROR AL SELECCIONAR UN JUGADOR : " + ex.getMessage());
+        }
+    }//GEN-LAST:event_jTable2MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg;
@@ -128,11 +222,15 @@ public class TeamProfile extends javax.swing.JInternalFrame {
     private javax.swing.JLabel game;
     private javax.swing.JLabel gameLabel;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton joinButton;
     private javax.swing.JLabel logBg;
     private javax.swing.JPanel logPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JLabel tPointsLabel;
+    private javax.swing.JLabel tPointsLabel1;
     private javax.swing.JLabel tpoints;
     private javax.swing.JLabel userLabel;
     private javax.swing.JLabel username;

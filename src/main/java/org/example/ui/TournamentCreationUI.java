@@ -4,7 +4,12 @@
  */
 package org.example.ui;
 
+import org.example.mvc.Controller;
+
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 /**
@@ -13,11 +18,27 @@ import java.util.Objects;
  */
 public class TournamentCreationUI extends javax.swing.JInternalFrame {
 
+    MainFrame frame;
+    boolean gstage=false;
+    boolean lbracket=false;
+
     /**
      * Creates new form TournamentCreationUI
      */
-    public TournamentCreationUI() {
+    public TournamentCreationUI(MainFrame frame) {
+        this.frame = frame;
+
+
         initComponents();
+        gameCbox.removeAllItems();
+        gameCbox= Controller.gameCbox(gameCbox);
+        // Eliminar el borde decorativo
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
+        ui.setNorthPane(null);
+        ui.setEastPane(null);
+        ui.setWestPane(null);
+        ui.setSouthPane(null);
+        this.setBorder(null);
     }
 
     /**
@@ -37,12 +58,10 @@ public class TournamentCreationUI extends javax.swing.JInternalFrame {
         signButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         descriptionTField = new javax.swing.JTextArea();
-        tpointCbox = new javax.swing.JComboBox<>();
         gstagesizeCbox = new javax.swing.JComboBox<>();
         nteamsCbox = new javax.swing.JComboBox<>();
         gameCbox = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -92,21 +111,16 @@ public class TournamentCreationUI extends javax.swing.JInternalFrame {
 
         logPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 200, 570, 410));
 
-        tpointCbox.setBackground(new java.awt.Color(0, 0, 0));
-        tpointCbox.setForeground(new java.awt.Color(255, 157, 0));
-        tpointCbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        tpointCbox.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0)));
-        logPanel.add(tpointCbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 330, 50));
-
         gstagesizeCbox.setBackground(new java.awt.Color(0, 0, 0));
         gstagesizeCbox.setForeground(new java.awt.Color(255, 157, 0));
-        gstagesizeCbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        gstagesizeCbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "4"}));
         gstagesizeCbox.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0)));
+        gstagesizeCbox.setEnabled(false);
         logPanel.add(gstagesizeCbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, 330, 50));
 
         nteamsCbox.setBackground(new java.awt.Color(0, 0, 0));
         nteamsCbox.setForeground(new java.awt.Color(255, 157, 0));
-        nteamsCbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        nteamsCbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "4", "8", "16" }));
         nteamsCbox.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0)));
         logPanel.add(nteamsCbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 550, 330, 50));
 
@@ -117,10 +131,7 @@ public class TournamentCreationUI extends javax.swing.JInternalFrame {
         logPanel.add(gameCbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 330, 50));
 
         jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\looserBracket.png")); // NOI18N
-        logPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 560, 460, 60));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\tpointsRequired.png")); // NOI18N
-        logPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, 570, 60));
+        logPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, 460, 60));
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\login\\gStageSize.png")); // NOI18N
         logPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 480, 60));
@@ -142,7 +153,7 @@ public class TournamentCreationUI extends javax.swing.JInternalFrame {
                 looserbBActionPerformed(evt);
             }
         });
-        logPanel.add(looserbB, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 550, 70, 70));
+        logPanel.add(looserbB, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 430, 70, 70));
 
         gstageB.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\creationUI\\emptyCbox.png")); // NOI18N
         gstageB.setBorderPainted(false);
@@ -184,8 +195,12 @@ public class TournamentCreationUI extends javax.swing.JInternalFrame {
         String empty = "src/icons/creationUI/emptyCbox.png";
         if (gstageB.getIcon().toString().equals(checked)) {
             gstageB.setIcon(new ImageIcon(empty));
+            gstage=false;
+            gstagesizeCbox.setEnabled(false);
         }else {
             gstageB.setIcon(new ImageIcon(checked));
+            gstage=true;
+            gstagesizeCbox.setEnabled(true);
         }
     }//GEN-LAST:event_gstageBActionPerformed
 
@@ -195,13 +210,19 @@ public class TournamentCreationUI extends javax.swing.JInternalFrame {
         String empty = "src/icons/creationUI/emptyCbox.png";
         if (looserbB.getIcon().toString().equals(checked)) {
             looserbB.setIcon(new ImageIcon(empty));
+            lbracket=false;
         }else {
             looserbB.setIcon(new ImageIcon(checked));
+            lbracket=true;
         }
     }//GEN-LAST:event_looserbBActionPerformed
 
     private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signButtonActionPerformed
         // TODO add your handling code here:
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy");
+        String formattedDate = currentDate.format(formatter);
+        Controller.createAndInsertTournament(0,userField.getText(),descriptionTField.getText(),Integer.parseInt((String) nteamsCbox.getSelectedItem()),gstage,Integer.parseInt((String) gstagesizeCbox.getSelectedItem()),lbracket,formattedDate,false,Controller.getGameId((String) gameCbox.getSelectedItem()),Controller.getGameId((String) gameCbox.getSelectedItem()));
     }//GEN-LAST:event_signButtonActionPerformed
 
 
@@ -216,7 +237,6 @@ public class TournamentCreationUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel logBg;
@@ -225,7 +245,6 @@ public class TournamentCreationUI extends javax.swing.JInternalFrame {
     private javax.swing.JPanel mainPanel;
     private javax.swing.JComboBox<String> nteamsCbox;
     private javax.swing.JButton signButton;
-    private javax.swing.JComboBox<String> tpointCbox;
     private javax.swing.JTextField userField;
     private javax.swing.JLabel userLabel;
     // End of variables declaration//GEN-END:variables

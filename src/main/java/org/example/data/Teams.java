@@ -8,7 +8,7 @@ public class Teams {
 
     private int team_id;
     private String team_name;
-    private Date team_creation_date;
+    private String team_creation_date;
     private String team_description;
     private int team_point_req;
     private int game_id;
@@ -17,7 +17,7 @@ public class Teams {
     public Teams() {
     }
 
-    public Teams(int team_id, String team_name, Date team_creation_date, String team_description,int team_point_req, int game_id, int region_id) {
+    public Teams(int team_id, String team_name, String team_creation_date, String team_description,int team_point_req, int game_id, int region_id) {
         this.team_id = team_id;
         this.team_name = team_name;
         this.team_creation_date = team_creation_date;
@@ -43,11 +43,11 @@ public class Teams {
         this.team_name = team_name;
     }
 
-    public Date getTeam_creation_date() {
+    public String getTeam_creation_date() {
         return team_creation_date;
     }
 
-    public void setTeam_creation_date(Date team_creation_date) {
+    public void setTeam_creation_date(String team_creation_date) {
         this.team_creation_date = team_creation_date;
     }
 
