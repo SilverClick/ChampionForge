@@ -9,7 +9,6 @@ public class Tournaments {
     private int tournament_size;
     private boolean group_stage;
     private int group_stage_size;
-    private int tournament_points_req;
     private boolean looser_bracket;
     private String tournament_date;
     private boolean started;
@@ -19,7 +18,7 @@ public class Tournaments {
     public Tournaments() {
     }
 
-    public Tournaments(int tournament_id, String tournament_name, String tournament_description, int tournament_size, boolean group_stage, int group_stage_size, int tournament_points_req, boolean looser_bracket, String tournament_date,boolean started, int game_id, int region_id) {
+    public Tournaments(int tournament_id, String tournament_name, String tournament_description, int tournament_size, boolean group_stage, int group_stage_size, boolean looser_bracket, String tournament_date,boolean started, int game_id, int region_id) {
         this.tournament_id = tournament_id;
         this.started=started;
         this.tournament_name = tournament_name;
@@ -27,7 +26,6 @@ public class Tournaments {
         this.tournament_size = tournament_size;
         this.group_stage = group_stage;
         this.group_stage_size = group_stage_size;
-        this.tournament_points_req = tournament_points_req;
         this.looser_bracket = looser_bracket;
         this.tournament_date = tournament_date;
         this.started = started;
@@ -81,14 +79,6 @@ public class Tournaments {
 
     public void setGroup_stage_size(int group_stage_size) {
         this.group_stage_size = group_stage_size;
-    }
-
-    public int getTournament_points_req() {
-        return tournament_points_req;
-    }
-
-    public void setTournament_points_req(int tournament_points_req) {
-        this.tournament_points_req = tournament_points_req;
     }
 
     public boolean isLooser_bracket() {

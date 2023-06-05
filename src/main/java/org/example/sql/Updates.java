@@ -61,20 +61,19 @@ public class Updates {
             Connection con = null;
             con = c.getConnection();
             Statement st = con.createStatement();
-            String sql = "update tournaments set tournament_name=?,tournament_description=?,tournament_size=?,group_stage=?,group_stage_size=?,tournamnt_points_req=?,looser_bracket=?,tournament_date=?,started=?,game_id=?,region_id=? where tournament_id=?";
+            String sql = "update tournaments set tournament_name=?,tournament_description=?,tournament_size=?,group_stage=?,group_stage_size=?,looser_bracket=?,tournament_date=?,started=?,game_id=?,region_id=? where tournament_id=?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, tournament.getTournament_name());
             pst.setString(2,tournament.getTournament_description());
             pst.setInt(3,tournament.getTournament_size());
             pst.setBoolean(4,tournament.isGroup_stage());
             pst.setInt(5,tournament.getGroup_stage_size());
-            pst.setInt(6, tournament.getTournament_points_req());
-            pst.setBoolean(7,tournament.isLooser_bracket());
-            pst.setString(8, tournament.getTournament_date());
-            pst.setBoolean(9,tournament.isStarted());
-            pst.setInt(10,tournament.getGame_id());
-            pst.setInt(11,tournament.getRegion_id());
-            pst.setInt(12,tournament.getTournament_id());
+            pst.setBoolean(6,tournament.isLooser_bracket());
+            pst.setString(7, tournament.getTournament_date());
+            pst.setBoolean(8,tournament.isStarted());
+            pst.setInt(9,tournament.getGame_id());
+            pst.setInt(10,tournament.getRegion_id());
+            pst.setInt(11,tournament.getTournament_id());
             int n = pst.executeUpdate();
             if (n > 0)
             {
@@ -101,7 +100,7 @@ public class Updates {
             String sql = "update teams set team_name=?,team_creation_date=?,team_description=?,team_points_req=?,game_id=?,region_id=? where team_id=?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, team.getTeam_name());
-            pst.setDate(2, team.getTeam_creation_date());
+            pst.setString(2, team.getTeam_creation_date());
             pst.setString(3, team.getTeam_description());
             pst.setInt(4, team.getTeam_point_req());
             pst.setInt(5, team.getGame_id());

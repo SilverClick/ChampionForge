@@ -4,17 +4,33 @@
  */
 package org.example.ui;
 
+import org.example.data.Players;
+
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 /**
  *
  * @author PC-LORENZO
  */
 public class PlayerProfile extends javax.swing.JInternalFrame {
 
+    Players player;
     /**
      * Creates new form PlayerProfile
      */
-    public PlayerProfile() {
+    public PlayerProfile(Players player) {
+        this.player = player;
         initComponents();
+        username.setText(player.getPlayer_name());
+        tpoints.setText(String.valueOf(player.getTournament_points()));
+        jTextArea1.setText(player.getPlayer_description());
+        // Eliminar el borde decorativo
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
+        ui.setNorthPane(null);
+        ui.setEastPane(null);
+        ui.setWestPane(null);
+        ui.setSouthPane(null);
+        this.setBorder(null);
     }
 
     /**

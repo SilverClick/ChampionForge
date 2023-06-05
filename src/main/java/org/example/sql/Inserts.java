@@ -54,19 +54,18 @@ public class Inserts {
         {
             Connection conect = null;
             conect = c.getConnection();
-            String sql = "insert into tournaments (tournament_name,tournament_description,tournament_size,group_stage,group_stage_size,tournament_points_req,looser_bracket,tournament_date,started,game_id,region_id) values (?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into tournaments (tournament_name,tournament_description,tournament_size,group_stage,group_stage_size,looser_bracket,tournament_date,started,game_id,region_id) values (?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = conect.prepareStatement(sql);
             pst.setString(1, tournament.getTournament_name());
             pst.setString(2,tournament.getTournament_description());
             pst.setInt(3,tournament.getTournament_size());
             pst.setBoolean(4,tournament.isGroup_stage());
             pst.setInt(5,tournament.getGroup_stage_size());
-            pst.setInt(6, tournament.getTournament_points_req());
-            pst.setBoolean(7,tournament.isLooser_bracket());
-            pst.setString(8, tournament.getTournament_date());
-            pst.setBoolean(9,tournament.isStarted());
-            pst.setInt(10,tournament.getGame_id());
-            pst.setInt(11,tournament.getRegion_id());
+            pst.setBoolean(6,tournament.isLooser_bracket());
+            pst.setString(7, tournament.getTournament_date());
+            pst.setBoolean(8,tournament.isStarted());
+            pst.setInt(9,tournament.getGame_id());
+            pst.setInt(10,tournament.getRegion_id());
             int n = pst.executeUpdate();
             if (n > 0)
             {
@@ -91,7 +90,7 @@ public class Inserts {
             String sql = "insert into teams (team_name,team_creation_date,team_description,team_points_req,game_id,region_id) values (?,?,?,?,?,?)";
             PreparedStatement pst = conect.prepareStatement(sql);
             pst.setString(1, team.getTeam_name());
-            pst.setDate(2, team.getTeam_creation_date());
+            pst.setString(2, team.getTeam_creation_date());
             pst.setString(3, team.getTeam_description());
             pst.setInt(4, team.getTeam_point_req());
             pst.setInt(5, team.getGame_id());
@@ -194,11 +193,12 @@ public class Inserts {
         try {
             Connection conect = null;
             conect = c.getConnection();
-            String sql = "insert into inscription (String inscription_date, int tournament_id, int team_id) values (?,?,?)";
+            String sql = "insert into inscription (inscription_date,tournament_id,team_id,tournament_position) values (?,?,?,?)";
             PreparedStatement pst = conect.prepareStatement(sql);
             pst.setString(1, inscription.getInscription_date());
             pst.setInt(2, inscription.getTournament_id());
             pst.setInt(3, inscription.getTeam_id());
+            pst.setInt(4,inscription.getTournament_position());
             int n = pst.executeUpdate();
             if (n > 0) {
                 JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");

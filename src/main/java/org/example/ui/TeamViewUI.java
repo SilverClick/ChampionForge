@@ -4,17 +4,44 @@
  */
 package org.example.ui;
 
+import org.example.data.Teams;
+import org.example.data.Tournaments;
+import org.example.mvc.Controller;
+
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 /**
  *
  * @author PC-LORENZO
  */
 public class TeamViewUI extends javax.swing.JInternalFrame {
 
+    boolean select;
+    ArrayList<Teams> teams;
+    MainFrame frame;
+    String[] titles= new String[]{"NAME", "DESCRIPTION", "TOURNAMENT POINTS REQUIRED", "GAME"};
+    Tournaments tournament;
     /**
      * Creates new form TeamViewUI
      */
-    public TeamViewUI() {
+    public TeamViewUI(MainFrame frame, ArrayList<Teams> teams, boolean select, Tournaments tournament) {
+        this.select=select;
+        this.tournament=tournament;
+        this.frame=frame;
+        this.teams=teams;
         initComponents();
+        // Eliminar el borde decorativo
+        gameCbox.removeAllItems();
+        gameCbox=Controller.gameCbox(gameCbox);
+        jTable2= Controller.seeDataTeams(jTable2,titles,teams);
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
+        ui.setNorthPane(null);
+        ui.setEastPane(null);
+        ui.setWestPane(null);
+        ui.setSouthPane(null);
+        this.setBorder(null);
     }
 
     /**
@@ -70,7 +97,7 @@ public class TeamViewUI extends javax.swing.JInternalFrame {
 
         tPointsCbox.setBackground(new java.awt.Color(0, 0, 0));
         tPointsCbox.setForeground(new java.awt.Color(255, 157, 0));
-        tPointsCbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tPointsCbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1000", "2500", "5000" }));
         tPointsCbox.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0)));
         logPanel.add(tPointsCbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, 330, 50));
 
@@ -79,35 +106,43 @@ public class TeamViewUI extends javax.swing.JInternalFrame {
         jTable2.setForeground(new java.awt.Color(255, 157, 0));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "NAME", "DESCRIPTION", "TOURNAMENT POINTS REQUIRED", "GAME"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable2.setFillsViewportHeight(true);
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+            jTable2.getColumnModel().getColumn(2).setResizable(false);
+            jTable2.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         logPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 277, 1120, 390));
 
         searchB.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\creationUI\\search.png")); // NOI18N
         searchB.setContentAreaFilled(false);
+        searchB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBActionPerformed(evt);
+            }
+        });
         logPanel.add(searchB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 210, 80, 70));
 
         logBg.setBackground(new java.awt.Color(0, 0, 0));
@@ -143,6 +178,35 @@ public class TeamViewUI extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void searchBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBActionPerformed
+        // TODO add your handling code here:
+        Controller.emptyTable(jTable2,titles);
+        if (nameField.getText().equals("")){
+            Controller.searchTeamsTp(jTable2,titles,Integer.parseInt((String) tPointsCbox.getSelectedItem()),Controller.getGameId((String) gameCbox.getSelectedItem()),teams);
+        }else {
+            Controller.searchTeamsName(jTable2,titles,nameField.getText(),Integer.parseInt((String) tPointsCbox.getSelectedItem()),Controller.getGameId((String) gameCbox.getSelectedItem()),teams);
+        }
+    }//GEN-LAST:event_searchBActionPerformed
+
+    public void jTable2MouseClicked(MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        // TODO add your handling code here:
+        int fila = jTable2.getSelectedRow();
+        String name = (String) jTable2.getValueAt(fila, 0);
+        Teams team=Controller.queryTeams(Controller.getTeamId(name));
+        try
+        {
+            if (!select){
+                Controller.teamProfile(frame,team,Controller.getPlayersFromTeams(Controller.queryTeams(Controller.getTeamId(name))));
+                this.dispose();
+            }else {
+                Controller.joinTournament(tournament,team);
+            }
+        } catch (Exception ex)
+        {
+            System.out.println("ERROR AL SELECCIONAR UN JUGADOR : " + ex.getMessage());
+        }
+    }//GEN-LAST:event_jTable2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

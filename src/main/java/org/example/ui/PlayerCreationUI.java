@@ -4,6 +4,11 @@
  */
 package org.example.ui;
 
+import org.example.mvc.Controller;
+
+import javax.swing.*;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 /**
  *
  * @author PC-LORENZO
@@ -17,6 +22,15 @@ public class PlayerCreationUI extends javax.swing.JInternalFrame {
     public PlayerCreationUI(MainFrame frame) {
         this.frame = frame;
         initComponents();
+        jComboBox1.removeAllItems();
+        jComboBox1= Controller.regionCbox(jComboBox1);
+        // Eliminar el borde decorativo
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
+        ui.setNorthPane(null);
+        ui.setEastPane(null);
+        ui.setWestPane(null);
+        ui.setSouthPane(null);
+        this.setBorder(null);
     }
 
     /**
@@ -138,6 +152,9 @@ public class PlayerCreationUI extends javax.swing.JInternalFrame {
 
     private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signButtonActionPerformed
         // TODO add your handling code here:
+        Controller.createAndInsertPlayer(1,userField.getText(),pwdField.getText(),descriptionTField.getText(),1000,Controller.getRegionId((String) jComboBox1.getSelectedItem()));
+        this.dispose();
+        Controller.logIn(frame);
     }//GEN-LAST:event_signButtonActionPerformed
 
 
@@ -145,7 +162,7 @@ public class PlayerCreationUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel bg;
     private javax.swing.JLabel descriptionLabel;
     private javax.swing.JTextArea descriptionTField;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private JComboBox jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel logBg;
     private javax.swing.JPanel logPanel;

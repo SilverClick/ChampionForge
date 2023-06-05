@@ -4,17 +4,37 @@
  */
 package org.example.ui;
 
+import org.example.data.Players;
+import org.example.mvc.Controller;
+
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 /**
  *
  * @author PC-LORENZO
  */
 public class PlayerViewUI extends javax.swing.JInternalFrame {
 
+    ArrayList<Players> players;
+    MainFrame frame;
+    String[] titles= new String[]{"USERNAME", "DESCRIPTION", "TOURNAMENT POINTS"};
     /**
      * Creates new form PlayerViewUI
      */
-    public PlayerViewUI() {
+    public PlayerViewUI(MainFrame frame,ArrayList<Players> players) {
+        this.frame=frame;
+        this.players = players;
         initComponents();
+        jTable2=Controller.seeDataPlayers(jTable2,titles,players);
+        // Eliminar el borde decorativo
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
+        ui.setNorthPane(null);
+        ui.setEastPane(null);
+        ui.setWestPane(null);
+        ui.setSouthPane(null);
+        this.setBorder(null);
     }
 
     /**
@@ -59,7 +79,7 @@ public class PlayerViewUI extends javax.swing.JInternalFrame {
 
         tPointsCbox.setBackground(new java.awt.Color(0, 0, 0));
         tPointsCbox.setForeground(new java.awt.Color(255, 157, 0));
-        tPointsCbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tPointsCbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1000", "2500", "5000" }));
         tPointsCbox.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 157, 0), new java.awt.Color(255, 157, 0)));
         logPanel.add(tPointsCbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 330, 50));
 
@@ -68,35 +88,42 @@ public class PlayerViewUI extends javax.swing.JInternalFrame {
         jTable2.setForeground(new java.awt.Color(255, 157, 0));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3"
+                "USERNAME", "DESCRIPTION", "TOURNAMENT POINTS"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable2.setFillsViewportHeight(true);
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+            jTable2.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         logPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 277, 960, 390));
 
         searchB.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC-LORENZO\\Documents\\NetBeansProjects\\ChampionForge\\src\\icons\\creationUI\\search.png")); // NOI18N
         searchB.setContentAreaFilled(false);
+        searchB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBActionPerformed(evt);
+            }
+        });
         logPanel.add(searchB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 210, 80, 70));
 
         logBg.setBackground(new java.awt.Color(0, 0, 0));
@@ -132,6 +159,30 @@ public class PlayerViewUI extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void searchBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBActionPerformed
+        // TODO add your handling code here:
+        Controller.emptyTable(jTable2,titles);
+        if (userField.getText().equals("")){
+            Controller.searchPlayersTp(jTable2,titles,Integer.parseInt((String) tPointsCbox.getSelectedItem()),players);
+        }else {
+            Controller.searchPlayersName(jTable2,titles,userField.getText(),Integer.parseInt((String) tPointsCbox.getSelectedItem()),players);
+        }
+
+    }//GEN-LAST:event_searchBActionPerformed
+
+    private void jTable2MouseClicked(MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        // TODO add your handling code here:
+        try
+        {
+            int fila = jTable2.getSelectedRow();
+            String name = (String) jTable2.getValueAt(fila, 0);
+            Controller.playerProfile(frame,Controller.queryPlayer(Controller.getPlayerId(name)));
+        } catch (Exception ex)
+        {
+            System.out.println("ERROR AL SELECCIONAR UN JUGADOR : " + ex.getMessage());
+        }
+    }//GEN-LAST:event_jTable2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

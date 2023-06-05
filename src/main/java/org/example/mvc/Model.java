@@ -1,5 +1,8 @@
 package org.example.mvc;
 
+
+
+
 import conect.Conection;
 import org.example.data.*;
 import org.example.sql.Deletes;
@@ -7,16 +10,19 @@ import org.example.sql.Inserts;
 import org.example.sql.Query;
 import org.example.sql.Updates;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import java.sql.Date;
 
 public class Model {
-    static Conection C = Conection.getInstance();
-    static Query myQuery = new Query(C);
-    static Deletes myDeletes = new Deletes(C);
-    static Updates myUpdates = new Updates(C);
-    static Inserts myInserts = new Inserts(C);
+    static Conection c = Conection.getInstance();
+    static Query myQuery = new Query(c);
+    static Deletes myDeletes = new Deletes(c);
+    static Updates myUpdates = new Updates(c);
+    static Inserts myInserts = new Inserts(c);
 
     /**
      * Create Games
@@ -47,8 +53,8 @@ public class Model {
      */
 
     //Method to create an inscription.
-    public Inscription createInscription(int inscription_id,String inscription_date,int tournament_id,int team_id ){
-        Inscription aux = new Inscription(inscription_id,inscription_date,tournament_id,team_id);
+    public Inscription createInscription(int inscription_id,String inscription_date,int tournament_id,int team_id, int tournament_position ){
+        Inscription aux = new Inscription(inscription_id,inscription_date,tournament_id,team_id,tournament_position);
         return aux;
     }
 
@@ -130,7 +136,7 @@ public class Model {
      */
 
     //Method to create a team.
-    public Teams createTeam(int team_id, String team_name, Date team_creation_date , String team_description, int teams_points_req,
+    public Teams createTeam(int team_id, String team_name, String team_creation_date , String team_description, int teams_points_req,
                             int game_id, int region_id){
         Teams aux = new Teams( team_id,team_name, team_creation_date ,team_description,teams_points_req,
         game_id,  region_id);
@@ -144,7 +150,6 @@ public class Model {
      * @param tournament_size
      * @param group_stage
      * @param group_stage_size
-     * @param tournament_points_req
      * @param looser_bracket
      * @param tournament_date
      * @param started
@@ -156,10 +161,10 @@ public class Model {
     //Method to create a tournament.
 
     public Tournaments createTournament(int tournament_id, String tournament_name, String tournament_description,
-                                        int tournament_size, boolean group_stage, int group_stage_size, int tournament_points_req, boolean looser_bracket,
+                                        int tournament_size, boolean group_stage, int group_stage_size, boolean looser_bracket,
                                         String tournament_date,boolean started,int game_id, int region_id){
         Tournaments aux = new Tournaments(tournament_id, tournament_name, tournament_description,
-                tournament_size,  group_stage,  group_stage_size,  tournament_points_req,  looser_bracket,
+                tournament_size,  group_stage,  group_stage_size,  looser_bracket,
                 tournament_date, started,game_id,  region_id);
         return aux;
     }
@@ -189,7 +194,6 @@ public class Model {
      * @param tournament_size
      * @param group_stage
      * @param group_stage_size
-     * @param tournament_points_req
      * @param looser_bracket
      * @param tournament_date
      * @param started
@@ -198,9 +202,9 @@ public class Model {
      */
 
     //Method to create and insert a tournament.
-    public void createAndInsertTournament(int tournament_id, String tournament_name, String tournament_description, int tournament_size, boolean group_stage, int group_stage_size, int tournament_points_req, boolean looser_bracket, String tournament_date, boolean started, int game_id, int region_id) {
+    public void createAndInsertTournament(int tournament_id, String tournament_name, String tournament_description, int tournament_size, boolean group_stage, int group_stage_size, boolean looser_bracket, String tournament_date, boolean started, int game_id, int region_id) {
         Tournaments tournament = createTournament(tournament_id, tournament_name, tournament_description,
-                tournament_size, group_stage, group_stage_size, tournament_points_req, looser_bracket,
+                tournament_size, group_stage, group_stage_size, looser_bracket,
                 tournament_date, started, game_id, region_id);
         myInserts.createTournament(tournament);
 
@@ -244,10 +248,10 @@ public class Model {
      */
 
     //Method to create and insert an inscription.
-    public void createAndInsertInscription(int inscription_id, String inscription_date, Tournaments tournament,Teams team){
+    public void createAndInsertInscription(int inscription_id, String inscription_date, Tournaments tournament,Teams team, int tournament_position){
         int tournament_id=tournament.getTournament_id();
         int team_id=team.getTeam_id();
-        Inscription inscription=createInscription(inscription_id, inscription_date, tournament_id,team_id );
+        Inscription inscription=createInscription(inscription_id, inscription_date, tournament_id,team_id,tournament_position);
         myInserts.createInscription(inscription);
     }
 
@@ -297,7 +301,7 @@ public class Model {
 
     //Method to create and insert a team.
     public void createAndInsertTeam(int team_id, String team_name, String team_creation_date, String team_description, int teams_points_req, int game_id, int region_id) {
-        Teams team = createTeam(team_id, team_name, Date.valueOf(team_creation_date), team_description, teams_points_req, game_id, region_id);
+        Teams team = createTeam(team_id, team_name, team_creation_date, team_description, teams_points_req, game_id, region_id);
         myInserts.createTeam(team);
     }
     /**
@@ -582,6 +586,162 @@ public class Model {
     //Method to update a tournament.
     public void updateTournament(Tournaments tournament){
         myUpdates.updateTournament(tournament);
+    }
+
+    /**
+     * Database login
+     * @param user
+     * @param password
+     * @return
+     */
+    public boolean dbLogin(String user, String password){
+        boolean found= false;
+        boolean logged = false;
+        try {
+            Statement st = c.getConnection().createStatement();
+            st.execute("select * from players");
+            ResultSet rs = st.getResultSet();
+            String dbPassword= "";
+            while (rs.next() && !found) {
+                if (rs.getString("player_name").equals(user)){
+                    found=true;
+                    dbPassword=rs.getString("player_password");
+                }
+            }
+            if (found==true&&dbPassword.equals(password)){
+                logged=true;
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return logged;
+    }
+
+
+    public ArrayList<Regions> getRegions(){
+        return myQuery.getRegions();
+    }
+    public ArrayList<Games> getGames(){
+        return myQuery.getGames();
+    }
+    public ArrayList<Teams> getTeams(){
+        return myQuery.getTeams();
+    }
+    public ArrayList<Tournaments> getTournaments(){
+        return myQuery.getTournaments();
+    }
+
+    public int getRegionId(String name) {
+        int id = 0;
+        try {
+            Statement st = c.getConnection().createStatement();
+            st.execute("select region_id from regions where region_name='" + name + "'");
+            ResultSet rs = st.getResultSet();
+            rs.next();
+            System.out.println(rs.getInt(1));
+            id = rs.getInt(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+
+    public int getPlayerId(String name) {
+        int id = 0;
+        try {
+            Statement st = c.getConnection().createStatement();
+            st.execute("select player_id from players where player_name='" + name + "'");
+            ResultSet rs = st.getResultSet();
+            rs.next();
+            System.out.println(rs.getInt(1));
+            id = rs.getInt(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+
+    public int getGameId(String name) {
+        int id = 0;
+        try {
+            Statement st = c.getConnection().createStatement();
+            st.execute("select game_id from games where game_name='" + name + "'");
+            ResultSet rs = st.getResultSet();
+            rs.next();
+            System.out.println(rs.getInt(1));
+            id = rs.getInt(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+    public int getTeamId(String name) {
+        int id = 0;
+        try {
+            Statement st = c.getConnection().createStatement();
+            st.execute("select team_id from teams where team_name='" + name + "'");
+            ResultSet rs = st.getResultSet();
+            rs.next();
+            System.out.println(rs.getInt(1));
+            id = rs.getInt(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+
+    public int getTournamentId(String name) {
+        int id = 0;
+        try {
+            Statement st = c.getConnection().createStatement();
+            st.execute("select tournament_id from tournaments where tournament_name='" + name + "'");
+            ResultSet rs = st.getResultSet();
+            rs.next();
+            System.out.println(rs.getInt(1));
+            id = rs.getInt(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+
+    public ArrayList<Players> getPlayers(){
+        return myQuery.getPlayers();
+    }
+
+    public ArrayList<Inscription> getInscriptions(){
+        return myQuery.getInscription();
+    }
+
+    public ArrayList<Teams> getTeamsFromPlayer(Players player){
+        ArrayList<Teams> teams = new ArrayList<Teams>();
+        for (Roster roster : myQuery.getRoster()){
+            if (roster.getPlayer_id()==player.getPlayer_id()){
+                teams.add(queryTeams(roster.getTeam_id()));
+            }
+        }
+        return teams;
+    }
+    public ArrayList<Players> getPlayersFromTeams(Teams team){
+        ArrayList<Players> players = new ArrayList<Players>();
+        for (Roster roster : myQuery.getRoster()){
+            if (roster.getTeam_id()==team.getTeam_id()){
+                players.add(queryPlayer(roster.getPlayer_id()));
+            }
+        }
+        return players;
+    }
+
+    public ArrayList<Tournaments> getTournamentsFromPlayer(Players player){
+        ArrayList<Tournaments> tournaments = new ArrayList<Tournaments>();
+        for (Inscription inscription : myQuery.getInscription()){
+            for (Teams team : getTeamsFromPlayer(player)){
+                if (team.getTeam_id()==inscription.getTeam_id()){
+                    tournaments.add(queryTournament(inscription.getTournament_id()));
+                }
+            }
+        }
+        return tournaments;
     }
 
 }
