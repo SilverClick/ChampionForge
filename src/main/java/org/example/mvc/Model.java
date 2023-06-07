@@ -15,15 +15,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import java.sql.Date;
 import java.util.Observable;
 
 public class Model extends Observable {
-    static Conection C = Conection.getInstance();
-    static Query myQuery = new Query(C);
-    static Deletes myDeletes = new Deletes(C);
-    static Updates myUpdates = new Updates(C);
-    static Inserts myInserts = new Inserts(C);
+    static Conection c = Conection.getInstance();
+    static Query myQuery = new Query(c);
+    static Deletes myDeletes = new Deletes(c);
+    static Updates myUpdates = new Updates(c);
+    static Inserts myInserts = new Inserts(c);
 
     /**
      * Create Games
