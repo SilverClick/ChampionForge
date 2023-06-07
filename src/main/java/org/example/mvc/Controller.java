@@ -21,6 +21,8 @@ public class Controller {
 
 
     public static void main(String[] args) {
+        OUpdate myObserver = new OUpdate();
+        myModel.addObserver(myObserver);
     Controller c = new Controller();
         MainFrame.launch();
     }

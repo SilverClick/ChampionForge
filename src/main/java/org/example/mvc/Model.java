@@ -16,13 +16,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import java.sql.Date;
+import java.util.Observable;
 
-public class Model {
-    static Conection c = Conection.getInstance();
-    static Query myQuery = new Query(c);
-    static Deletes myDeletes = new Deletes(c);
-    static Updates myUpdates = new Updates(c);
-    static Inserts myInserts = new Inserts(c);
+public class Model extends Observable {
+    static Conection C = Conection.getInstance();
+    static Query myQuery = new Query(C);
+    static Deletes myDeletes = new Deletes(C);
+    static Updates myUpdates = new Updates(C);
+    static Inserts myInserts = new Inserts(C);
 
     /**
      * Create Games
@@ -194,6 +195,7 @@ public class Model {
      * @param tournament_size
      * @param group_stage
      * @param group_stage_size
+     * @param tournament_points_req
      * @param looser_bracket
      * @param tournament_date
      * @param started
@@ -538,7 +540,13 @@ public class Model {
      */
 
     //Method to update a match.
-    public void updateMatch(Match match){myUpdates.updateMatch(match);}
+    public void updateMatch(Match match){
+
+        myUpdates.updateMatch(match);
+        setChanged();
+        // notifica el cambio al observer
+        notifyObservers();
+    }
 
     /**
      * Update Players
